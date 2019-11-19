@@ -1,0 +1,5 @@
+---
+- name: Run role test
+  hosts: docker
+  roles:
+    - atom
