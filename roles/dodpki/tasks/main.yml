@@ -1,0 +1,7 @@
+---
+- name: include tasks
+  include: "{{ lookup('first_found', possible) }}"
+  vars:
+    possible:
+      - "{{ platform }}.yml"
+      - unsupported.yml

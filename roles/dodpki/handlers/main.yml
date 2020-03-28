@@ -1,0 +1,8 @@
+---
+- name: update-ca-certificates
+  command:
+    cmd: '/usr/sbin/update-ca-certificates'
+
+- name: update-ca-trust
+  command:
+    cmd: '/usr/bin/update-ca-trust'
