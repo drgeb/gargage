@@ -10,12 +10,12 @@ REV="${2:-master}"
 
 # Install Ansible
 if [ -e /etc/os-release ] && grep 'ubuntu' /etc/os-release > /dev/null; then
-  apt install git ansible
+  sudo apt install git ansible
 elif [ -e /etc/os-release ] && grep 'centos' /etc/os-release > /dev/null; then
-  yum install -y git ansible
+  sudo yum install -y git ansible
 elif [ -e /etc/os-release ] && grep 'amzn' /etc/os-release > /dev/null; then
-  amazon-linux-extras install -y epel
-  yum install -y git ansible
+  sudo amazon-linux-extras install -y epel
+  sudo yum install -y git ansible
 else
   echo "Unsupported OS"
   exit 1
