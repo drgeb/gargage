@@ -1,0 +1,22 @@
+---
+base_packages:
+  - man
+  - less
+  - openssl
+  - ssh
+  - tar
+  - gzip
+  - bzip2
+  - zip
+  - unzip
+  - curl
+  - wget
+  - procps
+  - htop
+  - dnsutils
+  - mlocate
+  - sed
+  - gawk
+  - neovim
+  - git
+  - apt-file
