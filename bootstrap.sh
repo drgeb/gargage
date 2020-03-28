@@ -34,8 +34,4 @@ fi
 cd "${PLAYBOOK_DEST}" || exit 1
 git checkout "${REV}"
 
-if [ "$(id -u)" -eq "0" ]; then
-  ansible-playbook "${PLAYBOOK}" -i hosts
-else 
-  ansible-playbook "${PLAYBOOK}" -i hosts -K
-fi
+ansible-playbook "${PLAYBOOK}" -i hosts
