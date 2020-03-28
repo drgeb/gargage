@@ -1,0 +1,11 @@
+---
+- name: install certificates
+  become: yes
+  copy:
+    src: 'certs/'
+    dest: '/usr/local/share/ca-certificates'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  notify:
+    - 'update-ca-certificates'

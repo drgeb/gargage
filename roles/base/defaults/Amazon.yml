@@ -1,0 +1,23 @@
+---
+base_packages:
+  - man
+  - less
+  - openssl
+  - openssh-clients
+  - tar
+  - gzip
+  - bzip2
+  - zip
+  - unzip
+  - curl
+  - wget
+  - procps-ng
+  - htop
+  - bind-utils
+  - mlocate
+  - which
+  - sed
+  - gawk
+  - neovim
+  - git
+  - yum-utils

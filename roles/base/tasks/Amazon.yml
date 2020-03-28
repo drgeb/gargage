@@ -1,4 +1,10 @@
 ---
+- name: enable epel
+  become: yes
+  command:
+    cmd: 'amazon-linux-extras install epel'
+    creates: '/etc/yum.repos.d/epel.repo'
+
 - name: install packages
   become: yes
   package:

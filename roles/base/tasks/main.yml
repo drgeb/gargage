@@ -1,20 +1,17 @@
 ---
-- name: 'load variables for os type'
-  #  include_vars: "{{ lookup('first_found', possible_files) }}"
-  include_vars: 'Ubuntu.yml'
+- debug:
+    msg: "{{ ansible_user_id }}"
 
-- name: 'install base packages'
-  become: yes
-  package:
-    name: "{{ item }}"
-  with_items:
-    - "{{ base_packages }}"
+- name: include variables
+  include_vars: "{{ lookup('first_found', possible) }}"
+  vars:
+    possible:
+      - "defaults/{{ platform }}.yml"
+      - defaults/none.yml
 
-- name: 'create bin dir'
-  file:
-    path: '~/bin'
-    mode: '0755'
-    state: 'directory'
-
-
-
+- name: include tasks
+  include: "{{ lookup('first_found', possible) }}"
+  vars:
+    possible:
+      - "{{ platform }}.yml"
+      - unsupported.yml

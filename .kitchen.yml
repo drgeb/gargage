@@ -1,0 +1,35 @@
+---
+driver:
+  name: docker
+
+provisioner:
+  hosts: workstations
+  name: ansible_playbook
+  roles_path: roles
+  ansible_verbosity: 2
+  ansible_verbose: true
+  ansible_connection: ssh
+  ansible_sudo: false
+  playbook: ./playbook.yml
+
+verifier:
+  name: inspec
+  use_sudo: false
+  sudo_path: true
+
+
+platforms:
+  #- name: ubuntu-18.04
+  #- name: centos-7
+  - name: amazonlinux
+    driver_config:
+      image: amazonlinux:ansible
+      platform: rhel
+
+suites:
+  - name: default
+    verifier:
+      inspec_tests:
+        - tests/roles/base
+        - tests/roles/dodpki
+        - tests/roles/docker
