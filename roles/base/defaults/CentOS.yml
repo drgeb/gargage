@@ -21,3 +21,4 @@ base_packages:
   - gawk
   - neovim
   - git
+  - yum-utils

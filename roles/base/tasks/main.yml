@@ -1,4 +1,7 @@
 ---
+- debug:
+    msg: "{{ ansible_user_id }}"
+
 - name: include variables
   include_vars: "{{ lookup('first_found', possible) }}"
   vars:

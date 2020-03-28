@@ -9,6 +9,7 @@ provisioner:
   ansible_verbosity: 2
   ansible_verbose: true
   ansible_connection: ssh
+  ansible_sudo: false
   playbook: ./playbook.yml
 
 verifier:
@@ -29,4 +30,6 @@ suites:
   - name: default
     verifier:
       inspec_tests:
-        - tests/integration/default
+        - tests/roles/base
+        - tests/roles/dodpki
+        - tests/roles/docker

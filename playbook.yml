@@ -3,3 +3,4 @@
   roles:
     - base
     - dodpki
+    - docker
