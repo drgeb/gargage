@@ -2,8 +2,9 @@
 
 PLAYBOOK_SRC=https://gitlab.com/kb9zzw/dev-bootstrap.git
 PLAYBOOK_DIR=~/.ansible/playbooks
-PLAYBOOK_DEST="${PLAYBOOK_DIR}/dev-bootstrap.git"
+PLAYBOOK_DEST="${PLAYBOOK_DIR}/dev-bootstrap"
 PLAYBOOK="${1:-playbook.yml}"
+REV="${2:-master}"
 
 # Install Ansible
 if [ -e /etc/os-release ] && grep 'ubuntu' /etc/os-release >& /dev/null; then
@@ -28,5 +29,6 @@ else
 fi
 
 # Run the playbook
-cd "${PLAYBOOK_DEST}"
-ansible playbook ${PLAYBOOK} -i hosts
+cd "${PLAYBOOK_DEST}" || exit 1
+git checkout "${REV}"
+ansible-playbook "${PLAYBOOK}" -i hosts -K
