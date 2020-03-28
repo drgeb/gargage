@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Bootstrap script
 
 PLAYBOOK_SRC=https://gitlab.com/kb9zzw/dev-bootstrap.git
@@ -7,11 +9,11 @@ PLAYBOOK="${1:-playbook.yml}"
 REV="${2:-master}"
 
 # Install Ansible
-if [ -e /etc/os-release ] && grep 'ubuntu' /etc/os-release >& /dev/null; then
+if [ -e /etc/os-release ] && grep 'ubuntu' /etc/os-release > /dev/null; then
   apt install git ansible
-elif [ -e /etc/os-release ] && grep 'centos' /etc/os-release >& /dev/null; then
+elif [ -e /etc/os-release ] && grep 'centos' /etc/os-release > /dev/null; then
   yum install -y git ansible
-elif [ -e /etc/os-release ] && grep 'amzn' /etc/os-release >& /dev/null; then
+elif [ -e /etc/os-release ] && grep 'amzn' /etc/os-release > /dev/null; then
   amazon-linux-extras install -y epel
   yum install -y git ansible
 else
@@ -31,4 +33,9 @@ fi
 # Run the playbook
 cd "${PLAYBOOK_DEST}" || exit 1
 git checkout "${REV}"
-ansible-playbook "${PLAYBOOK}" -i hosts -K
+
+if [ "$(id -u)" -eq "0" ]; then
+  ansible-playbook "${PLAYBOOK}" -i hosts
+else 
+  ansible-playbook "${PLAYBOOK}" -i hosts -K
+fi
