@@ -10,7 +10,8 @@ describe command('gimp --version') do
   its('exit_status') { should eq 0 }
 end
 
-describe command('firefox --version') do
-  its('exit_status') { should eq 0 }
+unless os.name == 'amazon'
+  describe command('firefox --version') do
+    its('exit_status') { should eq 0 }
+  end
 end
-
