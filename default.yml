@@ -2,15 +2,15 @@
 - hosts: all
   roles:
     - base
-    #- dodpki
-    #- docker
-    #- python
-    #- nodejs
-    #- desktop
-    #- cloudfoundry
-    #- anaconda
-    #- ruby
-    #- chefdk
-    #- R
+    - dodpki
+    - docker
+    - python
+    - nodejs
+    - desktop
+    - cloudfoundry
+    - anaconda
+    - ruby
+    - chefdk
+    - R
     - vscode
-    #- dotfiles
+    - dotfiles
