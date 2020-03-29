@@ -37,3 +37,7 @@ suites:
         - tests/roles/python
         - tests/roles/nodejs
         - tests/roles/desktop
+        - tests/roles/cloudfoundry
+        - tests/roles/anaconda
+        - tests/roles/ruby
+        - tests/roles/dotfiles
