@@ -1,0 +1,6 @@
+---
+- name: not supported
+  debug:
+    msg: >
+      chefdk role not currently supported for MacOSX.
+      Install manually from https://downloads.chef.io/chefdk
