@@ -36,3 +36,4 @@ suites:
         - tests/roles/docker
         - tests/roles/python
         - tests/roles/nodejs
+        - tests/roles/desktop

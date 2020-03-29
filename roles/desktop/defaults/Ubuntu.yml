@@ -1,0 +1,13 @@
+---
+desktop_chrome_enabled: true
+desktop_chrome_repo: 'deb "http://dl.google.com/linux/chrome/deb/" stable main'
+desktop_chrome_repo_key: 'https://dl.google.com/linux/linux_signing_key.pub'
+desktop_chrome_repo_id: "4CCA1EAF950CEE4AB83976DCA040830F7FAC5991"
+
+desktop_packages:
+  - libreoffice-calc
+  - libreoffice-writer
+  - libreoffice-draw
+  - libreoffice-impress
+  - gimp
+  - firefox

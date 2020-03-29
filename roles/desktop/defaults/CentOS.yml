@@ -1,0 +1,12 @@
+---
+desktop_chrome_enabled: true
+desktop_chrome_repo_baseurl: 'http://dl.google.com/linux/chrome/rpm/stable/$basearch'
+desktop_chrome_repo_gpgkey: 'https://dl.google.com/linux/linux_signing_key.pub'
+
+desktop_packages:
+  - libreoffice-calc
+  - libreoffice-writer
+  - libreoffice-draw
+  - libreoffice-impress
+  - gimp
+  - firefox

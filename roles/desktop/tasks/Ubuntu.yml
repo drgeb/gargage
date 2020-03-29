@@ -1,0 +1,30 @@
+---
+- name: install google chrome repo key
+  become: true
+  apt_key:
+    url: "{{ desktop_chrome_repo_key }}"
+    id: "{{ desktop_chrome_repo_id }}"
+    state: present
+  when: desktop_chrome_enabled
+
+- name: install chrome repo
+  become: true
+  apt_repository:
+    repo: "{{ desktop_chrome_repo }}"
+    state: present
+  when: desktop_chrome_enabled
+
+- name: install chrome
+  become: true
+  package:
+    name: google-chrome-stable
+    state: present
+  when: desktop_chrome_enabled
+
+- name: install packages
+  become: true
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ desktop_packages }}"
