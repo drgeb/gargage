@@ -1,0 +1,6 @@
+---
+- name: install rbenv
+  shell: >
+    {{ ruby_rbenv_script }}
+  args:
+    creates: "{{ ruby_rbenv_dir }}"
