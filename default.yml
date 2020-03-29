@@ -11,5 +11,6 @@
     #- anaconda
     #- ruby
     #- chefdk
-    - R
+    #- R
+    - vscode
     #- dotfiles

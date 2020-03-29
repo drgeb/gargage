@@ -1,3 +1,6 @@
 ---
 vscode_repo_baseurl: 'https://packages.microsoft.com/yumrepos/vscode'
 vscode_repo_gpgkey: 'https://packages.microsoft.com/keys/microsoft.asc'
+
+vscode_packages:
+  - code

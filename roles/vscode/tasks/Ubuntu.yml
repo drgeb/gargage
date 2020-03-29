@@ -14,5 +14,7 @@
 - name: install packages
   become: true
   package:
-    name: code
+    name: "{{ item }}"
     state: present
+  with_items:
+    - "{{ vscode_packages }}"
