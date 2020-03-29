@@ -1,1 +1,10 @@
-CentOS.yml
+---
+desktop_chrome_enabled: true
+desktop_chrome_repo_baseurl: 'http://dl.google.com/linux/chrome/rpm/stable/$basearch'
+desktop_chrome_repo_gpgkey: 'https://dl.google.com/linux/linux_signing_key.pub'
+
+desktop_packages: []
+
+desktop_extras:
+  - libreoffice
+  - gimp
