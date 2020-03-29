@@ -34,3 +34,4 @@ suites:
         - tests/roles/base
         - tests/roles/dodpki
         - tests/roles/docker
+        - tests/roles/python
