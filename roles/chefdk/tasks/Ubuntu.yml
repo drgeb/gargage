@@ -1,0 +1,15 @@
+---
+- name: get chefdk package
+  become: true
+  get_url:
+    url: "{{ chefdk_package_url }}"
+    dest: "{{ chefdk_package  }}"
+    checksum: "{{ chefdk_checksum }}"
+    owner: 'root'
+    mode: '0644'
+
+- name: install chefdk
+  become: true
+  apt:
+    deb: "{{ chefdk_package }}"
+    state: present

@@ -10,4 +10,5 @@
     - cloudfoundry
     - anaconda
     - ruby
+    - chefdk
     - dotfiles

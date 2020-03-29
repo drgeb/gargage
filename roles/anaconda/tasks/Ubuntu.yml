@@ -10,5 +10,5 @@
 - name: install anaconda
   become: false
   command:
-    cmd: "{{ anaconda_installer_dest }} -b -p {{ anaconda_install_dir }}"
+    cmd: "bash -c '{{ anaconda_installer_dest }} -b -p {{ anaconda_install_dir }}'"
     creates: "{{ anaconda_install_dir }}"
