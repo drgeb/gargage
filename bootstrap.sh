@@ -7,7 +7,12 @@ PLAYBOOK_DIR=~/.ansible/playbooks
 PLAYBOOK_DEST="${PLAYBOOK_DIR}/garage"
 PLAYBOOK="${1:-default}"
 
-# Install Ansible
+echo_exit() {
+  echo $1
+  exit $2
+}
+
+# Install Git & Ansible
 if [ -e /etc/os-release ] && grep 'ubuntu' /etc/os-release > /dev/null; then
   sudo apt install git ansible
 elif [ -e /etc/os-release ] && grep 'centos' /etc/os-release > /dev/null; then
@@ -16,6 +21,7 @@ elif [ -e /etc/os-release ] && grep 'amzn' /etc/os-release > /dev/null; then
   sudo amazon-linux-extras install -y epel
   sudo yum install -y git ansible
 elif echo $OSTYPE | grep 'darwin' > /dev/null; then
+  brew --version || echo_exit "Homebrew required" 1
   brew install git ansible
 else
   echo "Unsupported OS"
@@ -30,4 +36,4 @@ fi
 
 # Run the playbook
 cd "${PLAYBOOK_DEST}" || exit 1
-ansible-playbook "${PLAYBOOK}.yml" -i hosts
+ansible-playbook "${PLAYBOOK}.yml" -i hosts -K
