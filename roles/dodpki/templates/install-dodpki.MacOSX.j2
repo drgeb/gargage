@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Utility script to load DoD CA into MacOS Keychain
+
+SRC="{{ dodpki_certs_dir }}"
+
+# load root certs
+for cert in $SRC/DoD_Root*.crt; do
+  /usr/bin/security add-trusted-cert -d -r trustRoot \
+    -k /Library/Keychains/System.keychain "${cert}"
+done
+
+# load intermediate certs
+for cert in $SRC/DOD_*.crt; do
+  /usr/bin/security add-trusted-cert -d -r trustAsRoot \
+    -k /Library/Keychains/System.keychain "${cert}"
+done
+
+echo "DOD Certs Installed"

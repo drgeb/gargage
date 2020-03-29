@@ -1,0 +1,24 @@
+---
+- name: install cert script
+  become: true
+  template:
+    src: install-dodpki.MacOSX.j2
+    dest: /usr/local/bin/install-dodpki
+    owner: 'root'
+    mode: '0755'
+
+- name: copy certificates
+  become: true
+  copy:
+    src: 'certs/'
+    dest: "{{ dodpki_certs_dir }}"
+    owner: 'root'
+    mode: '0644'
+
+- name: load certs into keychain
+  become: true
+  shell: >
+    /usr/local/bin/install-dodpki && \
+    touch {{ dodpki_certs_dir }}/DODPKI_INSTALLED
+  args:
+    creates: "{{ dodpki_certs_dir }}/DODPKI_INSTALLED"
