@@ -1,0 +1,6 @@
+---
+- name: install cf-cli
+  become: false
+  homebrew:
+    name: cloudfoundry/tap/cf-cli
+    state: present
