@@ -1,6 +1,6 @@
 ---
 docker_repo_enabled: true
-docker_repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+docker_repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 docker_repo_gpgkey: "https://download.docker.com/linux/ubuntu/gpg"
 docker_repo_id: "9DC858229FC7DD38854AE2D88D81803C0EBFCD88"
 

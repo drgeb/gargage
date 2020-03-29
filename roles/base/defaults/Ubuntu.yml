@@ -21,3 +21,4 @@ base_packages:
   - git
   - apt-file
   - lsb-release
+  - sudo
