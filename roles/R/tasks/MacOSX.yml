@@ -1,0 +1,13 @@
+---
+- name: install R
+  become: false
+  homebrew_cask:
+    name: r
+    state: present
+
+- name: install rstudio
+  become: false
+  homebrew_cask:
+    name: rstudio
+    state: present
+  when: R_rstudio_enabled
