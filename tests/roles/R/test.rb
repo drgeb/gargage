@@ -6,6 +6,6 @@ describe package('rstudio') do
   it {should be_installed}
 end
 
-describe file{'/usr/bin/rstudio'} do
+describe file('/usr/bin/rstudio') do
   it {should exist}
 end
