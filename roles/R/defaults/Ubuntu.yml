@@ -6,5 +6,6 @@ R_packages:
 R_rstudio_enabled: true
 R_rstudio_version: '1.2.5033'
 R_rstudio_package: "rstudio-{{ R_rstudio_version }}-amd64.deb"
+R_rstudio_download_dir: "{{ ansible_user_id }}/.downloads"
 R_rstudio_checksum: 'sha256:08eaa295f939b410b4ccab74cf056b67edaa0dfb5a504f8117a31428e38a1ef5'
 R_rstudio_package_url: "https://download1.rstudio.org/desktop/bionic/amd64/{{ R_rstudio_package }}"
