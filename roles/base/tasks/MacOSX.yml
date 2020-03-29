@@ -1,0 +1,13 @@
+---
+- name: install packages
+  become: false
+  homebrew:
+    name: "{{ base_packages }}"
+    state: present
+
+- name: install casks
+  become: false
+  homebrew_cask:
+    name: "{{ base_casks }}"
+    state: present
+

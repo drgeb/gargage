@@ -15,6 +15,8 @@ elif [ -e /etc/os-release ] && grep 'centos' /etc/os-release > /dev/null; then
 elif [ -e /etc/os-release ] && grep 'amzn' /etc/os-release > /dev/null; then
   sudo amazon-linux-extras install -y epel
   sudo yum install -y git ansible
+elif echo $OSTYPE | grep 'darwin' > /dev/null; then
+  brew install git ansible
 else
   echo "Unsupported OS"
   exit 1
