@@ -1,0 +1,6 @@
+---
+- name: install nvm
+  shell: >
+    {{ nodejs_nvm_script }}
+  args:
+    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"

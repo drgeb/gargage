@@ -20,3 +20,5 @@ base_packages:
   - neovim
   - git
   - apt-file
+  - build-essential
+  - libssl-dev
