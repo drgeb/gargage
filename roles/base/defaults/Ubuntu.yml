@@ -20,5 +20,3 @@ base_packages:
   - neovim
   - git
   - apt-file
-  - lsb-release
-  - sudo
