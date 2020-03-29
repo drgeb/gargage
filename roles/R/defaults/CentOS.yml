@@ -1,0 +1,11 @@
+---
+R_packages:
+  - R
+  - R-devel
+
+R_rstudio_enabled: true
+R_rstudio_version: '1.2.5033'
+R_rstudio_download_dir: "{{ ansible_env.HOME }}/.downloads"
+R_rstudio_package: "rstudio-{{ R_rstudio_version }}-x86_64.rpm"
+R_rstudio_checksum: 'sha256:452bc0d00412369d8cd1762c6c168cfb0bc1797e504f0e1f949f8707e9144e02'
+R_rstudio_package_url: "https://download1.rstudio.org/desktop/fedora28/x86_64/{{ R_rstudio_package }}"

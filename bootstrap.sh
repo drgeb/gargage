@@ -2,9 +2,9 @@
 
 # Bootstrap script
 
-PLAYBOOK_SRC=https://gitlab.com/kb9zzw/dev-bootstrap.git
+PLAYBOOK_SRC=https://gitlab.com/kb9zzw/garage.git
 PLAYBOOK_DIR=~/.ansible/playbooks
-PLAYBOOK_DEST="${PLAYBOOK_DIR}/dev-bootstrap"
+PLAYBOOK_DEST="${PLAYBOOK_DIR}/garage"
 PLAYBOOK="${1:-default}"
 
 # Install Ansible

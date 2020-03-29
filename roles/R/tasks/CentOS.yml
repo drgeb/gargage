@@ -1,0 +1,35 @@
+---
+- name: install packages
+  become: true
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ R_packages }}"
+
+- name: create download directory
+  become: false
+  file:
+    name: "{{ R_rstudio_download_dir }}"
+    state: directory
+    owner: "{{ ansible_user_id }}"
+    mode: '0755'
+  when: R_rstudio_enabled
+
+- name: get rstudio package
+  become: false
+  get_url:
+    url: "{{ R_rstudio_package_url }}"
+    dest: "{{ R_rstudio_download_dir }}"
+    checksum: "{{ R_rstudio_checksum }}"
+    owner: "{{ ansible_user_id }}"
+    mode: '0644'
+  when: R_rstudio_enabled
+
+- name: install rstudio
+  become: true
+  yum:
+    name: "{{ R_rstudio_download_dir }}/{{ R_rstudio_package }}"
+    disable_gpg_check: true
+    state: present
+  when: R_rstudio_enabled
