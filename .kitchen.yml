@@ -17,15 +17,26 @@ verifier:
   use_sudo: false
 
 platforms:
-  - name: ubuntu
+  - name: ubuntu18
     driver_config:
       image: ubuntu:18.04
-  - name: centos
+      platform: ubuntu
+  - name: ubuntu20
+    driver_config:
+      image: ubuntu:20.04
+      platform: ubuntu
+  - name: centos7
     driver_config:
       image: centos:7
+      platform: rhel
+  - name: centos8
+    driver_config:
+      image: centos:8
+      platform: rhel
   - name: amazonlinux
     driver_config:
       image: amazonlinux:ansible
+      platform: amazonlinux
 
 suites:
   - name: default

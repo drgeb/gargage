@@ -1,14 +1,24 @@
 ---
+- name: create download directory
+  become: false
+  file:
+    name: "{{ anaconda_download_dir }}"
+    state: directory
+    owner: "{{ ansible_user_id }}"
+    mode: "0755"
+
 - name: get anaconda installer
   become: false
   get_url:
     url: "{{ anaconda_installer_url }}"
-    dest: "{{ anaconda_installer_dest }}"
+    dest: "{{ anaconda_download_dir }}"
     owner: "{{ ansible_user_id }}"
     mode: '0755'
 
 - name: install anaconda
   become: false
-  command:
-    cmd: "bash -c '{{ anaconda_installer_dest }} -b -p {{ anaconda_install_dir }}'"
+  shell: >
+    bash -c '{{ anaconda_download_dir }}/{{ anaconda_installer_script }} \
+      -b -p {{ anaconda_install_dir }}'
+  args:
     creates: "{{ anaconda_install_dir }}"
