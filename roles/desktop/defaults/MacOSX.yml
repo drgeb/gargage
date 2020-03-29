@@ -1,0 +1,8 @@
+---
+desktop_casks:
+  - libreoffice
+  - drawio
+  - firefox
+  - gimp
+  - google-chrome
+  - xquartz
