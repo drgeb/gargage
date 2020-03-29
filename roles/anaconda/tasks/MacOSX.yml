@@ -1,0 +1,6 @@
+---
+- name: install anaconda
+  become: false
+  homebrew_cask:
+    name: anaconda
+    state: present
