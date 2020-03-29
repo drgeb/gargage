@@ -1,0 +1,6 @@
+# Just the basics
+---
+- hosts: all
+  roles:
+    - base
+    - ruby
