@@ -1,0 +1,3 @@
+---
+- debug:
+    msg: "{{ role_name }} role is unsupported for platform={{ platform }}."
