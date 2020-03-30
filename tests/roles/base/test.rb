@@ -8,7 +8,6 @@ top -v
 htop -v
 dig -v
 less -V
-man -V
 locate -V
 updatedb -V
 ssh -V
