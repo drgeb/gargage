@@ -1,0 +1,16 @@
+---
+image: docker:stable
+
+stages:
+  - test
+
+Kitchen Tests:
+  stage: test
+  services:
+    - name: docker:dind
+  variables:
+    DOCKER_HOST: tcp://docker:2376
+  script:
+    - docker info
+  tags:
+    - docker
