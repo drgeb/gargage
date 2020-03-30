@@ -4,6 +4,9 @@ image: docker:stable
 stages:
   - test
 
+services:
+  name: docker:dind
+
 Kitchen Tests:
   stage: test
   script:
