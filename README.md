@@ -24,6 +24,11 @@ The bootstrap command also accepts an optional playbook setting, which will tran
 curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/bootstrap.sh | bash -s -- custom
 ```
 
+Current supported playbooks:
+* minimal = just the base role
+* data_science = Data Science tools
+* custom = example customizable playbook
+
 On a fresh system, installation may take 10-20 minutes.
 
 ## Supported environments
