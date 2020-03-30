@@ -1,5 +1,5 @@
 ---
-image: docker:stable
+image: ruby:2.5
 
 stages:
   - test
@@ -10,6 +10,8 @@ services:
 Kitchen Tests:
   stage: test
   script:
-    - docker info
+    - gem install bundler
+    - bundle install
+    - kitchen test ubuntu18
   tags:
     - docker
