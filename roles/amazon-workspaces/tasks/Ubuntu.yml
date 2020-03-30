@@ -1,0 +1,19 @@
+---
+- name: install repo key
+  become: true
+  apt_key:
+    url: "{{ amazon-workspaces_repo_key }}"
+    state: present
+
+- name: install repo
+  become: true
+  apt_repository:
+    filename: 'amazon-workspaces-clients'
+    repo: "{{ amazon-workspaces_repo }}"
+    state: present
+
+- name: install amazon-workspaces
+  become: true
+  package:
+    name: workspacesclient
+    state: present

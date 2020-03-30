@@ -1,0 +1,5 @@
+---
+- name: install amazon-workspaces
+  homebrew_cask:
+    name: amazon-workspaces
+    state: present

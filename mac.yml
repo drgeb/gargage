@@ -1,0 +1,5 @@
+# Just the basics
+---
+- hosts: all
+  roles:
+    - amazon-workspaces
