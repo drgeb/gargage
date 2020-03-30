@@ -1,4 +1,5 @@
 vendor
 .kitchen
+.ruby-version
 *.retry
 *.swp
