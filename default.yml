@@ -8,6 +8,7 @@
     - nodejs
     - desktop
     - amazon-workspaces
+    - awscli
     - cloudfoundry
     - anaconda
     - ruby
