@@ -18,6 +18,6 @@ Kitchen Tests:
   script:
     - gem install bundler
     - bundle install
-    - kitchen test ubuntu18
+    - ./vendor/bundle/ruby/2.6.0/bin/kitchen test ubuntu18
   tags:
     - docker
