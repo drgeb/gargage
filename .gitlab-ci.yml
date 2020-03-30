@@ -1,11 +1,17 @@
 ---
-image: docker:stable
+image: kb9zzw/ansible-test
 
 stages:
   - test
 
 services:
   - name: docker:dind
+
+before_script:
+  - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
+
+after_script:
+  - docker logout ${CI_REGISTRY}
 
 Kitchen Tests:
   stage: test
