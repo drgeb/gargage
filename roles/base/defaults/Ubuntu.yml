@@ -23,4 +23,3 @@ base_packages:
   - apt
   - apt-file
   - python-apt
-  - build-essentials

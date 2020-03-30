@@ -2,4 +2,4 @@
 ---
 - hosts: all
   roles:
-    - amazon-workspaces
+    - awscli
