@@ -5,7 +5,7 @@ stages:
   - test
 
 services:
-  name: docker:dind
+  - name: docker:dind
 
 Kitchen Tests:
   stage: test
