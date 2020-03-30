@@ -16,6 +16,8 @@ which which
 sed --version
 awk --version
 nvim --version
+make -v
+gcc -v
 git --version}.split("\n")
 
 test_commands.each do |cmd|
