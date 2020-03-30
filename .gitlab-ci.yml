@@ -1,5 +1,5 @@
 ---
-image: chef/chefdk:latest
+image: docker:stable
 
 stages:
   - test
@@ -10,8 +10,6 @@ services:
 Kitchen Tests:
   stage: test
   script:
-    - apt update
-    - apt install -y docker
     - gem install bundler
     - bundle install
     - kitchen test ubuntu18
