@@ -15,9 +15,9 @@ echo_exit() {
 # Install Git & Ansible
 if [ -e /etc/os-release ] && grep 'ubuntu' /etc/os-release > /dev/null; then
   sudo apt update
-  sudo apt install software-properties-common
+  sudo apt install -y software-properties-common
   sudo apt-add-repository --yes --update ppa:ansible/ansible
-  sudo apt install git ansible
+  sudo apt install -y git ansible
 elif [ -e /etc/os-release ] && grep 'centos' /etc/os-release > /dev/null; then
   sudo yum install -y git ansible
 elif [ -e /etc/os-release ] && grep 'amzn' /etc/os-release > /dev/null; then
