@@ -1,6 +1,5 @@
 ---
 base_packages:
-  - man
   - less
   - openssl
   - ssh
@@ -19,6 +18,9 @@ base_packages:
   - gawk
   - neovim
   - git
-  - apt-file
   - build-essential
   - libssl-dev
+  - apt
+  - apt-file
+  - python-apt
+  - build-essentials

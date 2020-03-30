@@ -8,7 +8,6 @@ top -v
 htop -v
 dig -v
 less -V
-man -V
 locate -V
 updatedb -V
 ssh -V
@@ -16,6 +15,8 @@ which which
 sed --version
 awk --version
 nvim --version
+make -v
+gcc -v
 git --version}.split("\n")
 
 test_commands.each do |cmd|

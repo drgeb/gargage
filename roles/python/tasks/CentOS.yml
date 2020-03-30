@@ -6,3 +6,15 @@
     state: present
   with_items:
     - "{{ python_packages }}"
+
+- name: install pyenv
+  become: false
+  command:
+    cmd: "{{ python_pyenv_script }}"
+    creates: "{{ python_pyenv_dir }}"
+
+- name: install pyenv-virtualenv
+  become: false
+  command:
+    cmd: "{{ python_pyenv_virtualenv_script }}"
+    creates: "{{ python_pyenv_dir }}/plugins/pyenv-virtualenv"
