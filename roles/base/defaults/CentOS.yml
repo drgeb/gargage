@@ -21,3 +21,7 @@ base_packages:
   - neovim
   - git
   - yum-utils
+  - make
+  - automake
+  - gcc
+  - gcc-c++
