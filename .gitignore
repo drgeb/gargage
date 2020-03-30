@@ -1,3 +1,4 @@
+vendor
 .kitchen
 *.retry
 *.swp
