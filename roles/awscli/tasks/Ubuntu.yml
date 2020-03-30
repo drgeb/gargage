@@ -1,10 +1,6 @@
 ---
-- debug:
-    msg: 'this role installs the awscli as a local pip module.  A reasonable version of python & pip is required.'
-
 - name: install awscli
-  become: false
+  become: true
   pip:
     name: awscli
-    extra_args: '--user'
     state: present

@@ -1,6 +1,9 @@
 ---
 python_packages:
-  - python3
+  - python
+  - python-virtualenv
+  - python-setuptools
+  - python2-pip
 
 python_pyenv_dir: "{{ ansible_env.HOME}}/.pyenv"
 python_pyenv_script: "git clone https://github.com/pyenv/pyenv.git {{ python_pyenv_dir }}"
