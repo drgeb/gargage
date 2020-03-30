@@ -1,5 +1,5 @@
 ---
-image: kb9zzw/ansible-test
+image: registry.gitlab.com/kb9zzw/ansible-test:latest
 
 stages:
   - test
