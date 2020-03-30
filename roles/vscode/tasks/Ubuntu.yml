@@ -8,13 +8,12 @@
 - name: install vscode repo
   become: true
   apt_repository:
+    filename: 'vscode'
     repo: "{{ vscode_repo }}"
     state: present
 
-- name: install packages
+- name: install vscode
   become: true
   package:
-    name: "{{ item }}"
+    name: code
     state: present
-  with_items:
-    - "{{ vscode_packages }}"

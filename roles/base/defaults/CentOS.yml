@@ -1,7 +1,6 @@
 ---
 base_packages:
   - epel-release
-  - man
   - less
   - openssl
   - openssh-clients
