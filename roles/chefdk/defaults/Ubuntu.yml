@@ -1,6 +1,3 @@
 ---
-chefdk_version: "4.7.73"
-chefdk_package: "chefdk_{{ chefdk_version }}-1_amd64.deb"
-chefdk_checksum: "sha256:a901a40665a3bf4542bdcb9944882b270926a1ef40a0b66ec06fd16f5ded81d9"
-chefdk_download_dir: "{{ ansible_env.HOME }}/.downloads"
-chefdk_package_url: "https://packages.chef.io/files/stable/chefdk/{{ chefdk_version }}/ubuntu/18.04/chefdk_{{ chefdk_version }}-1_amd64.deb"
+chefdk_repo: "deb https://packages.chef.io/repos/apt/stable bionic main"
+chefdk_repo_key: "https://packages.chef.io/chef.asc"

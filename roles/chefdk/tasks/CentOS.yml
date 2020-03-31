@@ -1,24 +1,17 @@
 ---
-- name: create download dir
-  become: false
-  file:
-    name: "{{ chefdk_download_dir }}"
-    state: directory
-    owner: "{{ ansible_user_id }}"
-    mode: '0755'
-
-- name: get chefdk package
-  become: false
-  get_url:
-    url: "{{ chefdk_package_url }}"
-    dest: "{{ chefdk_download_dir }}"
-    checksum: "{{ chefdk_checksum }}"
-    owner: "{{ ansible_user_id }}"
-    mode: '0644'
+- name: install repo
+  become: true
+  yum_repository:
+    name: "chef"
+    description: "Chef"
+    baseurl: "{{ chefdk_repo_baseurl }}"
+    gpgkey: "{{ chefdk_repo_gpgkey }}"
+    gpgcheck: true
+    enabled: true
+    state: present
 
 - name: install chefdk
   become: true
-  yum:
-    name: "{{ chefdk_download_dir}}/{{ chefdk_package }}"
-    disable_gpg_check: true
+  package:
+    name: chefdk
     state: present

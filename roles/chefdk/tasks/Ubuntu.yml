@@ -1,23 +1,18 @@
 ---
-- name: create download dir
-  become: false
-  file:
-    name: "{{ chefdk_download_dir }}"
-    state: directory
-    owner: "{{ ansible_user_id }}"
-    mode: "0755"
+- name: install repo key
+  become: true
+  apt_key:
+    url: "{{ chefdk_repo_key }}"
+    state: present
 
-- name: get chefdk package
-  become: false
-  get_url:
-    url: "{{ chefdk_package_url }}"
-    dest: "{{ chefdk_download_dir  }}"
-    checksum: "{{ chefdk_checksum }}"
-    owner: "{{ ansible_user_id }}"
-    mode: '0644'
+- name: install repo
+  become: true
+  apt_repository:
+    repo: "{{ chefdk_repo }}"
+    state: present
 
 - name: install chefdk
   become: true
-  apt:
-    deb: "{{ chefdk_download_dir }}/{{ chefdk_package }}"
+  package:
+    name: chefdk
     state: present
