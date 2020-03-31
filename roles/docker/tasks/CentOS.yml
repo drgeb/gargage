@@ -33,3 +33,10 @@
     append: true
   with_items:
     - "{{ docker_users }}"
+
+- name: install docker-compose
+  become: true
+  shell: >
+    {{ docker_compose_script }}
+  args:
+    creates: '/usr/local/bin/docker-compose'

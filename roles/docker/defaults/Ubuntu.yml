@@ -6,6 +6,7 @@ docker_repo_id: "9DC858229FC7DD38854AE2D88D81803C0EBFCD88"
 
 docker_packages:
   - docker-ce
+  - docker-compose
 
 docker_users:
   - "{{ ansible_user_id }}"
