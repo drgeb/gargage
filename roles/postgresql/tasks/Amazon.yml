@@ -1,20 +1,6 @@
 ---
-- name: install packages
+- name: install postgresql
   become: true
-  package:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - "{{ python_packages }}"
-
-- name: install pyenv
-  become: false
-  command:
-    cmd: "{{ python_pyenv_script }}"
-    creates: "{{ python_pyenv_dir }}"
-
-- name: install pyenv-virtualenv
-  become: false
-  command:
-    cmd: "{{ python_pyenv_virtualenv_script }}"
-    creates: "{{ python_pyenv_dir }}/plugins/pyenv-virtualenv"
+  command: 
+    cmd: "amazon-linux-extras install -y postgresql{{ postgresql_major_version }}"
+    creates: '/usr/bin/psql'

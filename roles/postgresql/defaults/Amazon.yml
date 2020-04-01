@@ -1,12 +1,2 @@
 ---
-python_packages:
-  - python
-  - python-virtualenv
-  - python-setuptools
-  - python2-pip
-
-python_pyenv_dir: "{{ ansible_env.HOME}}/.pyenv"
-python_pyenv_script: "git clone https://github.com/pyenv/pyenv.git {{ python_pyenv_dir }}"
-python_pyenv_virtualenv_script: >
-  git clone https://github.com/pyenv/pyenv-virtualenv.git
-  {{ python_pyenv_dir }}/plugins/pyenv-virtualenv
+postgresql_major_version: '11'

@@ -1,10 +1,12 @@
 ---
-- name: install pyenv
+- name: install packages
+  become: false
   homebrew:
-    name: pyenv
+    name: "{{ postgresql_packages }}"
     state: present
 
-- name: install pyenv-virtualenv
-  homebrew:
-    name: pyenv-virtualenv
+- name: install cask packages
+  become: false
+  homebrew_cask:
+    name: "{{ postgresql_casks }}"
     state: present
