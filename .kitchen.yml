@@ -21,7 +21,7 @@ verifier:
   use_sudo: false
   reporter:
     - cli
-    - json:reports/test-output.json
+    - junit:reports/test-output.xml
 
 platforms:
   - name: ubuntu18

@@ -13,11 +13,36 @@ before_script:
 after_script:
   - docker logout ${CI_REGISTRY}
 
-Kitchen Tests:
+Test Ubuntu 18_04:
   stage: test
   script:
-    - gem install bundler:1.17.2
     - bundle install
     - kitchen test ubuntu18
+  artifacts:
+    reports:
+      junit: reports/test-output.xml
+  tags:
+    - docker
+
+Test CentOS7:
+  stage: test
+  script:
+    - bundle install
+    - kitchen test centos7
+  artifacts:
+    reports:
+      junit: reports/test-output.xml
+  tags:
+    - docker
+
+Test AmazonLinux2:
+  stage: test
+  script:
+    - docker build -f tests/fixtures/docker/amazonlinux/Dockerfile tests/fixtures/docker/amazonlinux -t amazonlinux:ansible
+    - bundle install
+    - kitchen test amazonlinux
+  artifacts:
+    reports:
+      junit: reports/test-output.xml
   tags:
     - docker
