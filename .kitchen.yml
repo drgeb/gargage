@@ -2,6 +2,10 @@
 driver:
   name: docker
 
+transport:
+  name: docker
+  use_internal_network: true
+
 provisioner:
   hosts: workstations
   name: ansible_playbook
