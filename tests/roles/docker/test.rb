@@ -4,7 +4,7 @@ describe command('docker') do
 end
 
 describe command('docker-compose --version') do
-  its('exit_status') {should eq 0}
+    its('exit_status') {should eq 0}
 end
 
 describe group('docker') do

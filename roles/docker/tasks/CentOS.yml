@@ -39,4 +39,4 @@
   shell: >
     {{ docker_compose_script }}
   args:
-    creates: '/usr/local/bin/docker-compose'
+    creates: '/usr/bin/docker-compose'

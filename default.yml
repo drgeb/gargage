@@ -1,5 +1,18 @@
-# Just the basics
 ---
 - hosts: all
   roles:
+    - base
+    - dodpki
     - docker
+    - python
+    - nodejs
+    - desktop
+    - amazonworkspaces
+    - awscli
+    - cloudfoundry
+    - anaconda
+    - ruby
+    - chefdk
+    - R
+    - vscode
+    - dotfiles

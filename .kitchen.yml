@@ -15,24 +15,27 @@ provisioner:
 verifier:
   name: inspec
   use_sudo: false
+  reporter:
+    - cli
+    - json:reports/test-output.json
 
 platforms:
   - name: ubuntu18
     driver_config:
       image: ubuntu:18.04
       platform: ubuntu
-  - name: ubuntu20
-    driver_config:
-      image: ubuntu:20.04
-      platform: ubuntu
+  #- name: ubuntu20
+  #  driver_config:
+  #    image: ubuntu:20.04
+  #    platform: ubuntu
   - name: centos7
     driver_config:
       image: centos:7
       platform: rhel
-  - name: centos8
-    driver_config:
-      image: centos:8
-      platform: rhel
+  #- name: centos8
+  #  driver_config:
+  #    image: centos:8
+  #    platform: rhel
   - name: amazonlinux
     driver_config:
       image: amazonlinux:ansible
