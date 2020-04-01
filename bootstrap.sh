@@ -47,6 +47,9 @@ install_deps() {
   fi
 }
 
+# check for dependencies
+install_deps
+
 # check if we're running locally
 if [ ! -e "roles/base" ]; then
   # it's remote
@@ -55,8 +58,6 @@ if [ ! -e "roles/base" ]; then
   cd ${PLAYBOOK_DIR}
 fi
 
-# check for dependencies
-install_deps
 
 # Run the playbook
 ansible-playbook "${PLAYBOOK}.yml" -i hosts -K && banner
