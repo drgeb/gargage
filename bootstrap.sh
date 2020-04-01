@@ -55,9 +55,8 @@ if [ ! -e "roles/base" ]; then
   # it's remote
   mkdir -p ${PLAYBOOK_DIR}
   git clone "${PLAYBOOK_SRC}" "${PLAYBOOK_DEST}" || exit 1
-  cd ${PLAYBOOK_DIR}
+  cd ${PLAYBOOK_DIR}/garage
 fi
-
 
 # Run the playbook
 ansible-playbook "${PLAYBOOK}.yml" -i hosts -K && banner
