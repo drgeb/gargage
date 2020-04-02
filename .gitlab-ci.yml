@@ -7,6 +7,11 @@ stages:
 services:
   - name: docker:dind
 
+variables:
+  KITCHEN_YAML: .kitchen-docker.yml
+  KITCHEN_TRANSPORT: docker
+  KITCHEN_USE_INTERNAL_NETWORK: true
+
 before_script:
   - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
 
@@ -17,7 +22,7 @@ Test Ubuntu 18_04:
   stage: test
   script:
     - bundle install
-    - kitchen test ubuntu18
+    - kitchen test ubuntu18 -d always
   artifacts:
     reports:
       junit: reports/test-output.xml
@@ -28,7 +33,7 @@ Test CentOS7:
   stage: test
   script:
     - bundle install
-    - kitchen test centos7
+    - kitchen test centos7 -d always
   artifacts:
     reports:
       junit: reports/test-output.xml
@@ -40,7 +45,7 @@ Test AmazonLinux2:
   script:
     - docker build -f tests/fixtures/docker/amazonlinux/Dockerfile tests/fixtures/docker/amazonlinux -t amazonlinux:ansible
     - bundle install
-    - kitchen test amazonlinux
+    - kitchen test amazonlinux -d always
   artifacts:
     reports:
       junit: reports/test-output.xml

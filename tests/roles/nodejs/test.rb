@@ -1,3 +1,3 @@
-describe file('/home/kitchen/.nvm') do
+describe file('~/.nvm') do
   it {should exist}
 end

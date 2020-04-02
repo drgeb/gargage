@@ -1,3 +1,3 @@
-describe file('/home/kitchen/.rbenv') do
+describe file('~/.rbenv') do
   it {should exist}
 end

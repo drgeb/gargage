@@ -1,3 +1,3 @@
-describe file('/home/kitchen/.vimrc') do
+describe file('~/.vimrc') do
   it {should exist}
 end
