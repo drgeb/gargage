@@ -14,7 +14,7 @@ provisioner:
   ansible_verbose: true
   ansible_connection: ssh
   ansible_sudo: false
-  playbook: ./default.yml
+  playbook: ./full.yml
 
 verifier:
   name: inspec
