@@ -13,6 +13,8 @@
     - anaconda
     - ruby
     - chefdk
+    - postgresql
+    - terraform
     - R
     - vscode
     - dotfiles

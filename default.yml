@@ -15,6 +15,7 @@
     - chefdk
     - postgresql
     - terraform
+    - kubernetes
     - R
     - vscode
     - dotfiles

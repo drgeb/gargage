@@ -1,0 +1,66 @@
+---
+driver:
+  name: ec2
+  aws_ssh_key_id: id_rsa_gitlab
+  security_group_ids: ['sg-0096ec61497b7d1d6']
+  region: us-east-1
+  availability_zone: a
+  subnet_id: subnet-c5ee22a2
+  instance_type: t3.xlarge
+  associate_public_ip: true
+
+transport:
+  ssh_key: ~/.ssh/id_rsa_gitlab.pem
+  connection_timeout: 10
+  connection_retries: 5
+
+provisioner:
+  hosts: workstations
+  name: ansible_playbook
+  roles_path: roles
+  ansible_verbosity: 2
+  ansible_verbose: true
+  ansible_connection: ssh
+  ansible_sudo: false
+  playbook: ./default.yml
+
+verifier:
+  name: inspec
+  use_sudo: false
+  reporter:
+    - cli
+    - junit:reports/test-output.xml
+
+platforms:
+  - name: ubuntu-18.04
+    driver:
+      image_search:
+        owner-id: 099720109477
+        name: ubuntu/images/*/ubuntu-*-18.04*
+      transport:
+        username: ubuntu
+      block_device_mappings:
+        - device_name: /dev/sda1
+          ebs:
+            volume_size: 20
+            delete_on_termination: true
+
+suites:
+  - name: default
+    verifier:
+      inspec_tests:
+        - tests/roles/base
+        - tests/roles/dodpki
+        - tests/roles/docker
+        - tests/roles/python
+        - tests/roles/nodejs
+        - tests/roles/desktop
+        - tests/roles/cloudfoundry
+        - tests/roles/anaconda
+        - tests/roles/ruby
+        - tests/roles/chefdk
+        - tests/roles/R
+        - tests/roles/postgresql
+        - tests/roles/terraform
+        - tests/roles/vscode
+        - tests/roles/dotfiles

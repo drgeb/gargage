@@ -1,0 +1,66 @@
+---
+driver:
+  name: docker
+
+transport:
+  name: <%= ENV['KITCHEN_TRANSPORT'] || 'ssh' %>
+  use_internal_network: <%= ENV['KITCHEN_USE_INTERNAL_NETWORK'] || false %>
+
+provisioner:
+  hosts: workstations
+  name: ansible_playbook
+  roles_path: roles
+  ansible_verbosity: 2
+  ansible_verbose: true
+  ansible_connection: ssh
+  ansible_sudo: false
+  playbook: ./default.yml
+
+verifier:
+  name: inspec
+  use_sudo: false
+  reporter:
+    - cli
+    - junit:reports/test-output.xml
+
+platforms:
+  - name: ubuntu18
+    driver_config:
+      image: ubuntu:18.04
+      platform: ubuntu
+  #- name: ubuntu20
+  #  driver_config:
+  #    image: ubuntu:20.04
+  #    platform: ubuntu
+  - name: centos7
+    driver_config:
+      image: centos:7
+      platform: rhel
+  #- name: centos8
+  #  driver_config:
+  #    image: centos:8
+  #    platform: rhel
+  - name: amazonlinux
+    driver_config:
+      image: amazonlinux:ansible
+      platform: amazonlinux
+
+suites:
+  - name: default
+    verifier:
+      inspec_tests:
+        - tests/roles/base
+        - tests/roles/dodpki
+        - tests/roles/docker
+        - tests/roles/python
+        - tests/roles/nodejs
+        - tests/roles/desktop
+        - tests/roles/cloudfoundry
+        - tests/roles/anaconda
+        - tests/roles/ruby
+        - tests/roles/chefdk
+        - tests/roles/R
+        - tests/roles/postgresql
+        - tests/roles/terraform
+        - tests/roles/vscode
+        - tests/roles/dotfiles
