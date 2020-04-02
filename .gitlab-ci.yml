@@ -8,9 +8,9 @@ services:
   - name: docker:dind
 
 variables:
-  KITCHEN_YAML: .kitchen-docker.yml
-  KITCHEN_TRANSPORT: docker
-  KITCHEN_USE_INTERNAL_NETWORK: true
+  - KITCHEN_YAML: .kitchen-docker.yml
+  - KITCHEN_TRANSPORT: docker
+  - KITCHEN_USE_INTERNAL_NETWORK: true
 
 before_script:
   - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
