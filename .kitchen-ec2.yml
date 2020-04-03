@@ -44,6 +44,31 @@ platforms:
           ebs:
             volume_size: 20
             delete_on_termination: true
+  - name: amazonlinux
+    driver:
+      image_search:
+        owner-alias: amazon
+        name: 'amzn2-ami-hvm-2.0.????????.?-x86_64-gp2'
+      transport:
+        username: ec2-user
+      block_device_mappings:
+        - device_name: /dev/xvda
+          ebs:
+            volume_size: 20
+            delete_on_termination: true
+      user_data: tests/fixtures/ec2/amazonlinux/user_data.sh
+  - name: centos7
+    driver:
+      image_search:
+        owner-id: 679593333241
+        name: 'CentOS Linux 7 x86_64 HVM EBS*'
+      transport:
+        username: centos
+      block_device_mappings:
+        - device_name: /dev/sda1
+          ebs:
+            volume_size: 20
+            delete_on_termination: true
 
 suites:
   - name: default
