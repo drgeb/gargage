@@ -32,7 +32,7 @@ verifier:
     - junit:reports/test-output.xml
 
 platforms:
-  - name: ubuntu-18.04
+  - name: ubuntu18
     driver:
       image_search:
         owner-id: 099720109477
@@ -52,6 +52,7 @@ suites:
         - tests/roles/base
         - tests/roles/dodpki
         - tests/roles/docker
+        - tests/roles/kubernetes
         - tests/roles/python
         - tests/roles/nodejs
         - tests/roles/desktop
