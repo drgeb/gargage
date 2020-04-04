@@ -4,6 +4,7 @@
     - base
     - dodpki
     - docker
+    - kubernetes
     - python
     - nodejs
     - desktop

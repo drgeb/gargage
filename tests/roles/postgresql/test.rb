@@ -3,7 +3,7 @@ describe command('psql --version') do
   its('exit_status') { should eq 0 }
 end
 
-unless os.name == 'amazonlinux'
+unless os.name =~ /amazon/
   describe command('pgadmin4') do
     it { should exist }
   end

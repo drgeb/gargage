@@ -14,7 +14,7 @@ provisioner:
   ansible_verbose: true
   ansible_connection: ssh
   ansible_sudo: false
-  playbook: ./default.yml
+  playbook: ./full.yml
 
 verifier:
   name: inspec
@@ -28,6 +28,7 @@ platforms:
     driver_config:
       image: ubuntu:18.04
       platform: ubuntu
+      username: kitchen
   #- name: ubuntu20
   #  driver_config:
   #    image: ubuntu:20.04
@@ -48,6 +49,8 @@ platforms:
 suites:
   - name: default
     verifier:
+      inputs:
+        username: kitchen
       inspec_tests:
         - tests/roles/base
         - tests/roles/dodpki

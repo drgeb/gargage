@@ -15,6 +15,5 @@ end
 # Test TLS Handshake to DOD Server
 describe command("openssl s_client -connect #{test_server} <<< Q") do
   its('stdout') {should match (/Verify return code: 0 \(ok\)/)}
-  its('stderr') { should eq ""}
   its('exit_status') {should eq 0}
 end

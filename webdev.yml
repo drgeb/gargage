@@ -1,0 +1,12 @@
+---
+- hosts: all
+  roles:
+    - base
+    - dodpki
+    - docker
+    - kubernetes
+    - python
+    - nodejs
+    - awscli
+    - cloudfoundry
+    - vscode

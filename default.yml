@@ -3,9 +3,10 @@
   roles:
     - base
     - dodpki
-    - docker
     - python
     - nodejs
+    - docker
+    - kubernetes
     - desktop
     - amazonworkspaces
     - awscli
@@ -15,7 +16,5 @@
     - chefdk
     - postgresql
     - terraform
-    - kubernetes
     - R
     - vscode
-    - dotfiles
