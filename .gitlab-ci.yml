@@ -2,28 +2,35 @@
 image: registry.gitlab.com/kb9zzw/ansible-test:latest
 
 stages:
+  - prepare
   - test
-
-#services:
-#  - name: docker:dind
 
 variables:
   KITCHEN_YAML: .kitchen-ec2.yml
   #KITCHEN_TRANSPORT: docker
   #KITCHEN_USE_INTERNAL_NETWORK: 'true'
 
-#before_script:
-#- docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
-
-#after_script:
-#- docker logout ${CI_REGISTRY}
+Prepare Image:
+  stage: prepare
+  services:
+    - name: docker:dind
+  before_script:
+    - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
+  script:
+    - docker build -t ${CI_REGISTRY_IMAGE} -f Dockerfile.test .
+    - docker push ${CI_REGISTRY_IMAGE}
+  after_script:
+    - docker logout ${CI_REGISTRY}
 
 Test Ubuntu 18_04:
   stage: test
+  image: ${CI_REGISTRY_IMAGE}
   script:
-    - bundle install
     - kitchen test ubuntu18 -d always
+  after_script:
+    - kitchen destroy ubuntu
   artifacts:
+    expire_in: 7d
     reports:
       junit: reports/test-output.xml
   tags:
@@ -31,10 +38,13 @@ Test Ubuntu 18_04:
 
 Test CentOS7:
   stage: test
+  image: ${CI_REGISTRY_IMAGE}
   script:
-    - bundle install
-    - kitchen test centos7 -d always
+    - kitchen test centos7 -d alwaysa
+  after_script:
+    - kitchen destroy centos7
   artifacts:
+    expire_in: 7d
     reports:
       junit: reports/test-output.xml
   tags:
@@ -42,11 +52,13 @@ Test CentOS7:
 
 Test AmazonLinux2:
   stage: test
+  image: ${CI_REGISTRY_IMAGE}
   script:
-    #- docker build -f tests/fixtures/docker/amazonlinux/Dockerfile tests/fixtures/docker/amazonlinux -t amazonlinux:ansible
-    - bundle install
     - kitchen test amazonlinux -d always
+  after_script:
+    - kitchen destroy amazonlinux
   artifacts:
+    expire_in: 7d
     reports:
       junit: reports/test-output.xml
   tags:
