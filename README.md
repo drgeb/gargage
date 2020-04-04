@@ -18,7 +18,10 @@ TL;DR... here's how you install it.  You'll need sudo privileges on your system 
 **Default playbook**
 ```
 # Enter your 'sudo' credentials when prompted.
-curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/bootstrap.sh | bash
+curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash
+
+# Or, if downloaded locally...
+./install.sh
 ```
 
 The bootstrap command also accepts an optional playbook setting, which will translate to `[name].yml`.  Without it, the default `default.yml` playbook will be run.
@@ -37,7 +40,10 @@ This playbook installs a subset of roles that might be useful for the data scien
 
 ```
 # Enter your 'sudo' credentials when prompted.
-curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/bootstrap.sh | bash -s -- data_science
+curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- data_science
+
+# Or if downloaded locally...
+./install.sh data_science
 ```
 
 **Web Development playbook**
@@ -56,7 +62,10 @@ This playbook installs a subset of roles that might be useful to web developers.
 
 ```
 # Enter your 'sudo' credentials when prompted.
-curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/bootstrap.sh | bash -s -- webdev
+curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- webdev
+
+# Or if downloaded locally...
+./install.sh webdev
 ```
 
 **Full**
@@ -65,7 +74,10 @@ This is the kitchen sink.  It installs everything currently supported, including
 
 ```
 # Enter your 'sudo' credentials when prompted.
-curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/bootstrap.sh | bash -s -- full
+curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- full
+
+# Or if downloaded locally...
+./install.sh full
 ```
 
 **Minimal**
@@ -74,7 +86,10 @@ This installs just the `base` role.
 
 ```
 # Enter your 'sudo' credentials when prompted.
-curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/bootstrap.sh | bash -s -- minimal
+curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- minimal
+
+# Or if downloaded locally...
+./install.sh minimal
 ```
 
 **Custom playbook**
@@ -83,7 +98,10 @@ This is an example of a playbook that installs the base role with a custom list 
 
 ```
 # Enter your 'sudo' credentials when prompted.
-curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/bootstrap.sh | bash -s -- custom
+curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- custom
+
+# Or if downloaded locally...
+./install.sh custom
 ```
 
 Current supported playbooks:
