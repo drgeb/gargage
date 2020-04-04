@@ -10,7 +10,7 @@ driver:
   associate_public_ip: true
 
 transport:
-  ssh_key: <%= ENV['SSH_KEY'] || ''~/.ssh/id_rsa_gitlab.pem' %>
+  ssh_key: <%= ENV['SSH_KEY'] || '~/.ssh/id_rsa_gitlab.pem' %>
   connection_timeout: 10
   connection_retries: 5
 
