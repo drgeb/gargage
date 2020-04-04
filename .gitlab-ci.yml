@@ -16,14 +16,14 @@ Prepare Image:
   before_script:
     - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
   script:
-    - docker build -t "${CI_REGISTRY_IMAGE}-test" -f Dockerfile.test .
-    - docker push "${CI_REGISTRY_IMAGE}-test"
+    - docker build -t "${CI_REGISTRY_IMAGE}/test-executor" -f Dockerfile.test .
+    - docker push "${CI_REGISTRY_IMAGE}/test-executor"
   after_script:
     - docker logout ${CI_REGISTRY}
 
 Test Ubuntu 18_04:
   stage: test
-  image: "${CI_REGISTRY_IMAGE}-test"
+  image: "${CI_REGISTRY_IMAGE}/test-executor"
   script:
     - kitchen test ubuntu18 -d always
   after_script:
@@ -37,7 +37,7 @@ Test Ubuntu 18_04:
 
 Test CentOS7:
   stage: test
-  image: "${CI_REGISTRY_IMAGE}-test"
+  image: "${CI_REGISTRY_IMAGE}/test-executor"
   script:
     - kitchen test centos7 -d always
   after_script:
@@ -51,7 +51,7 @@ Test CentOS7:
 
 Test AmazonLinux2:
   stage: test
-  image: "${CI_REGISTRY_IMAGE}-test"
+  image: "${CI_REGISTRY_IMAGE}/test-executor"
   script:
     - kitchen test amazonlinux -d always
   after_script:
