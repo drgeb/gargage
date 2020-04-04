@@ -11,8 +11,9 @@ driver:
 
 transport:
   ssh_key: <%= ENV['SSH_KEY'] || '~/.ssh/id_rsa_gitlab.pem' %>
-  #  connection_timeout: 10
-  #connection_retries: 5
+  max_ssh_essions: 2
+  connection_timeout: 10
+  connection_retries: 5
 
 provisioner:
   hosts: workstations
@@ -57,7 +58,7 @@ platforms:
           ebs:
             volume_size: 20
             delete_on_termination: true
-            #user_data: tests/fixtures/ec2/amazonlinux/user_data.sh
+      #user_data: tests/fixtures/ec2/amazonlinux/user_data.sh
   - name: centos7
     driver:
       image_search:
