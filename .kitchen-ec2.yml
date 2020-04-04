@@ -6,11 +6,12 @@ driver:
   region: us-east-1
   availability_zone: a
   subnet_id: subnet-c5ee22a2
-  instance_type: t3.xlarge
+  instance_type: t3.medium
   associate_public_ip: true
 
 transport:
-  ssh_key: ~/.ssh/id_rsa_gitlab.pem
+  ssh_key: <%= ENV['SSH_KEY'] || '~/.ssh/id_rsa_gitlab.pem' %>
+  max_ssh_essions: 2
   connection_timeout: 10
   connection_retries: 5
 
@@ -22,7 +23,8 @@ provisioner:
   ansible_verbose: true
   ansible_connection: ssh
   ansible_sudo: false
-  playbook: ./default.yml
+  playbook: ./full.yml
+  custom_pre_install_command: 'command -v amazon-linux-extras &> /dev/null && sudo amazon-linux-extras install -y epel && sudo yum install -y ansible'
 
 verifier:
   name: inspec
@@ -32,13 +34,38 @@ verifier:
     - junit:reports/test-output.xml
 
 platforms:
-  - name: ubuntu-18.04
+  - name: ubuntu18
     driver:
       image_search:
         owner-id: 099720109477
         name: ubuntu/images/*/ubuntu-*-18.04*
       transport:
         username: ubuntu
+      block_device_mappings:
+        - device_name: /dev/sda1
+          ebs:
+            volume_size: 20
+            delete_on_termination: true
+  - name: amazonlinux
+    driver:
+      image_search:
+        owner-alias: amazon
+        name: 'amzn2-ami-hvm-2.0.????????.?-x86_64-gp2'
+      transport:
+        username: ec2-user
+      block_device_mappings:
+        - device_name: /dev/xvda
+          ebs:
+            volume_size: 20
+            delete_on_termination: true
+      #user_data: tests/fixtures/ec2/amazonlinux/user_data.sh
+  - name: centos7
+    driver:
+      image_search:
+        owner-id: 679593333241
+        name: 'CentOS Linux 7 x86_64 HVM EBS*'
+      transport:
+        username: centos
       block_device_mappings:
         - device_name: /dev/sda1
           ebs:
@@ -52,6 +79,7 @@ suites:
         - tests/roles/base
         - tests/roles/dodpki
         - tests/roles/docker
+        - tests/roles/kubernetes
         - tests/roles/python
         - tests/roles/nodejs
         - tests/roles/desktop

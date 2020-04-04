@@ -5,6 +5,12 @@ find useful.  It also sets up my shell environment, so that I can spend more tim
 
 I wrote this to help with my environment setup, but it is flexible enough that it can be adapted to other use cases.  It is highly customizable.
 
+## What does it do?
+
+The playbook runs through a series of `roles`, each one installing a particular theme or software package.  These can be found in the `roles` folder and are specified in a playbook file (i.e. `default.yml`).  For example, the `python` role sets up my Python environment.
+
+Roles can be mixed and matched.  Generally, they are independent of each other.  The only one that needs to be there is the `base` role, since that provides tools that some of the other roles need.  `base` role should always be specified first.
+
 ## Install
 
 TL;DR... here's how you install it.  You'll need sudo privileges on your system to run this.
@@ -12,16 +18,90 @@ TL;DR... here's how you install it.  You'll need sudo privileges on your system 
 **Default playbook**
 ```
 # Enter your 'sudo' credentials when prompted.
-curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/bootstrap.sh | bash
+curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash
+
+# Or, if downloaded locally...
+./install.sh
 ```
 
-The bootstrap command also accepts an optional playbook setting, which will translate to `playbook-[name].yml`.  Without it, the default `playbook.yml` playbook will be run.
+The bootstrap command also accepts an optional playbook setting, which will translate to `[name].yml`.  Without it, the default `default.yml` playbook will be run.
 
-**Custom playbook**
+**Data Science playbook**
+
+This playbook installs a subset of roles that might be useful for the data scientists.  It includes:
+
+* base
+* dodpki
+* python
+* anaconda
+* desktop
+* R (includes RStudio)
+* postgresql (includes pgAdmin4)
 
 ```
 # Enter your 'sudo' credentials when prompted.
-curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/bootstrap.sh | bash -s -- custom
+curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- data_science
+
+# Or if downloaded locally...
+./install.sh data_science
+```
+
+**Web Development playbook**
+
+This playbook installs a subset of roles that might be useful to web developers.  It includes:
+
+* base
+* dodpki
+* docker
+* kubernetes (just kubectl)
+* python
+* nodejs
+* awscli
+* cloudfoundry
+* vscode
+
+```
+# Enter your 'sudo' credentials when prompted.
+curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- webdev
+
+# Or if downloaded locally...
+./install.sh webdev
+```
+
+**Full**
+
+This is the kitchen sink.  It installs everything currently supported, including my `dotfiles` management.
+
+```
+# Enter your 'sudo' credentials when prompted.
+curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- full
+
+# Or if downloaded locally...
+./install.sh full
+```
+
+**Minimal**
+
+This installs just the `base` role.
+
+```
+# Enter your 'sudo' credentials when prompted.
+curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- minimal
+
+# Or if downloaded locally...
+./install.sh minimal
+```
+
+**Custom playbook**
+
+This is an example of a playbook that installs the base role with a custom list of packages, in this case just 'git'.
+
+```
+# Enter your 'sudo' credentials when prompted.
+curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- custom
+
+# Or if downloaded locally...
+./install.sh custom
 ```
 
 Current supported playbooks:
@@ -42,12 +122,6 @@ These systems are supported:
 
 I may add more over time.
 
-## What does it do?
-
-The playbook runs through a series of `roles`, each one installing a particular theme or software package.  These can be found in the `roles` folder and are specified in the `playbook.yml` file.  For example, the `python` role sets up my Python environment.
-
-Roles can be mixed and matched.  Generally, they are independent of each other.  The only one that needs to be there is the `base` role, since that provides tools that some of the other roles need.  `base` role should always be specified first.
-
 ## The general approach
 
 I prefer to install software from managed repositories, since those tend to get automatically updated.  This is my order of preference:
@@ -61,9 +135,12 @@ I prefer to install software from managed repositories, since those tend to get 
 
 The latter two I prefer to do in user space, rather than system space if possible.
 
+**Updates**
+
 The playbook should be idempotent, meaning it can be run multiple times without side effects.  This allows the environment to be updated when I develop new capabilities.  To apply the playbook manually, run this command from the root level of the project:
 
 ```
+# Optionally, `git clone origin master`
 ansible-playbook playbook.yml -i hosts -K
 ```
 
@@ -86,6 +163,12 @@ Each role is self-contained in the `roles` directory. It is possible to add your
 ### Testing
 
 Testing is done via Kitchen and Inspec.  Test routines are applied using kitchen-docker and can be found in the `tests` folder.  There is a `.test-setup.sh` script that installs the necessary Ruby Gems and Docker images necessary to run the test suite.
+
+To test:
+
+```
+kitchen test
+```
 
 **NOTE**:  Due to the limitations of running MacOSX in Docker, the MacOSX tasks are not extensively tested.
 
