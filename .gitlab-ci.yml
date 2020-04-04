@@ -12,11 +12,11 @@ variables:
   #KITCHEN_TRANSPORT: docker
   #KITCHEN_USE_INTERNAL_NETWORK: 'true'
 
-before_script:
-  - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
+#before_script:
+#- docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
 
-after_script:
-  - docker logout ${CI_REGISTRY}
+#after_script:
+#- docker logout ${CI_REGISTRY}
 
 Test Ubuntu 18_04:
   stage: test
