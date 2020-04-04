@@ -11,8 +11,8 @@ driver:
 
 transport:
   ssh_key: <%= ENV['SSH_KEY'] || '~/.ssh/id_rsa_gitlab.pem' %>
-  connection_timeout: 10
-  connection_retries: 5
+  #  connection_timeout: 10
+  #connection_retries: 5
 
 provisioner:
   hosts: workstations
@@ -23,6 +23,7 @@ provisioner:
   ansible_connection: ssh
   ansible_sudo: false
   playbook: ./full.yml
+  custom_pre_install_command: 'command -v amazon-linux-extras &> /dev/null && sudo amazon-linux-extras install -y epel && sudo yum install -y ansible'
 
 verifier:
   name: inspec
@@ -56,7 +57,7 @@ platforms:
           ebs:
             volume_size: 20
             delete_on_termination: true
-      user_data: tests/fixtures/ec2/amazonlinux/user_data.sh
+            #user_data: tests/fixtures/ec2/amazonlinux/user_data.sh
   - name: centos7
     driver:
       image_search:

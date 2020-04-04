@@ -4,8 +4,8 @@ image: registry.gitlab.com/kb9zzw/ansible-test:latest
 stages:
   - test
 
-services:
-  - name: docker:dind
+#services:
+#  - name: docker:dind
 
 variables:
   KITCHEN_YAML: .kitchen-ec2.yml
@@ -43,7 +43,7 @@ Test CentOS7:
 Test AmazonLinux2:
   stage: test
   script:
-    - docker build -f tests/fixtures/docker/amazonlinux/Dockerfile tests/fixtures/docker/amazonlinux -t amazonlinux:ansible
+    #- docker build -f tests/fixtures/docker/amazonlinux/Dockerfile tests/fixtures/docker/amazonlinux -t amazonlinux:ansible
     - bundle install
     - kitchen test amazonlinux -d always
   artifacts:
