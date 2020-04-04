@@ -1,6 +1,4 @@
 ---
-image: registry.gitlab.com/kb9zzw/ansible-test:latest
-
 stages:
   - prepare
   - test
@@ -12,19 +10,20 @@ variables:
 
 Prepare Image:
   stage: prepare
+  image: docker:stable
   services:
     - name: docker:dind
   before_script:
     - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
   script:
-    - docker build -t ${CI_REGISTRY_IMAGE} -f Dockerfile.test .
-    - docker push ${CI_REGISTRY_IMAGE}
+    - docker build -t "${CI_REGISTRY_IMAGE}-test" -f Dockerfile.test .
+    - docker push "${CI_REGISTRY_IMAGE}-test"
   after_script:
     - docker logout ${CI_REGISTRY}
 
 Test Ubuntu 18_04:
   stage: test
-  image: ${CI_REGISTRY_IMAGE}
+  image: "${CI_REGISTRY_IMAGE}-test"
   script:
     - kitchen test ubuntu18 -d always
   after_script:
@@ -38,9 +37,9 @@ Test Ubuntu 18_04:
 
 Test CentOS7:
   stage: test
-  image: ${CI_REGISTRY_IMAGE}
+  image: "${CI_REGISTRY_IMAGE}-test"
   script:
-    - kitchen test centos7 -d alwaysa
+    - kitchen test centos7 -d always
   after_script:
     - kitchen destroy centos7
   artifacts:
@@ -52,7 +51,7 @@ Test CentOS7:
 
 Test AmazonLinux2:
   stage: test
-  image: ${CI_REGISTRY_IMAGE}
+  image: "${CI_REGISTRY_IMAGE}-test"
   script:
     - kitchen test amazonlinux -d always
   after_script:
