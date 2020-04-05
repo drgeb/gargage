@@ -1,0 +1,4 @@
+---
+virtualbox_repo_baseurl: 'http://download.virtualbox.org/virtualbox/rpm/el/$releasever/$basearch'
+virtualbox_repo_gpgkey: 'https://www.virtualbox.org/download/oracle_vbox.asc'
+virtualbox_package: 'VirtualBox-6.1'
