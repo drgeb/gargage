@@ -1,4 +1,10 @@
 ---
+- name: install prerequisites
+  become: true
+  package:
+    name: unzip
+    state: present
+
 - name: ensure install dir exists
   become: false
   file:
