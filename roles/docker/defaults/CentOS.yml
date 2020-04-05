@@ -1,5 +1,4 @@
 ---
-docker_repo_enabled: true
 docker_repo_baseurl: "https://download.docker.com/linux/centos/7/$basearch/stable"
 docker_repo_gpgkey: "https://download.docker.com/linux/centos/gpg"
 
