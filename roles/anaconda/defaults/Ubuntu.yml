@@ -4,3 +4,15 @@ anaconda_installer_script: "Anaconda3-{{ anaconda_version }}-Linux-x86_64.sh"
 anaconda_installer_url: "https://repo.anaconda.com/archive/{{ anaconda_installer_script }}"
 anaconda_download_dir: "{{ ansible_env.HOME}}/.downloads"
 anaconda_install_dir: "{{ ansible_env.HOME }}/anaconda3"
+
+anaconda_packages:
+  - libgl1-mesa-glx
+  - libegl1-mesa
+  - libxrandr2
+  - libxrandr2
+  - libxss1
+  - libxcursor1
+  - libxcomposite1
+  - libasound2
+  - libxi6
+  - libxtst6

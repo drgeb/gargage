@@ -1,4 +1,12 @@
 ---
+- name: install packages
+  become: true
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ anaconda_packages }}"
+
 - name: create download directory
   become: false
   file:
