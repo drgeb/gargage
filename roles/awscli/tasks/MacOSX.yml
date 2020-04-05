@@ -1,1 +1,6 @@
-Ubuntu.yml
+---
+- name: install awscli
+  become: false
+  homebrew:
+    name: awscli
+    state: present

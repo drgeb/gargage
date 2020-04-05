@@ -1,6 +1,6 @@
 ---
 - name: install awscli
   become: true
-  pip:
+  package:
     name: awscli
     state: present

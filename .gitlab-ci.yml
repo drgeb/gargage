@@ -14,14 +14,14 @@ Prep Executor:
   before_script:
     - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
   script:
-    - docker build -t "${CI_REGISTRY_IMAGE}/test-executor" -f Dockerfile.test .
+    - docker build -t "${CI_REGISTRY_IMAGE}/test-executor" -f tests/Dockerfile.test-executor .
     - docker push "${CI_REGISTRY_IMAGE}/test-executor"
   after_script:
     - docker logout ${CI_REGISTRY}
   only:
     changes:
       - Gemfile*
-      - Dockerfile.test
+      - tests/Dockerfile.test
 
 Test Ubuntu 18_04:
   stage: test

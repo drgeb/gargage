@@ -1,3 +1,4 @@
 describe command('aws --version') do
-  its('exit_status') { should eq 0 }
+  its('stdout') {should match (/aws-cli/)}
+  its('exit_status') {should eq 0}
 end
