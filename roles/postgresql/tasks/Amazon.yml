@@ -1,6 +1,14 @@
 ---
 - name: install postgresql
   become: true
-  command: 
+  command:
     cmd: "amazon-linux-extras install -y postgresql{{ postgresql_major_version }}"
     creates: '/usr/bin/psql'
+
+- name: install packages
+  become: true
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ postgresql_packages }}"
