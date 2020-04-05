@@ -9,10 +9,8 @@
     gpgkey: "{{ vscode_repo_gpgkey }}"
     enabled: true
 
-- name: install packages
+- name: install vscode
   become: true
   package:
-    name: "{{ item }}"
+    name: code
     state: present
-  with_items: 
-    - "{{ vscode_packages }}"
