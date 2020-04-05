@@ -59,8 +59,9 @@ platforms:
             volume_size: 20
             delete_on_termination: true
     lifecycle:
-      - remote: sudo amazon-linux-extras install -y epel
-      - remote: sudo yum install -y ansible
+      pre_converge:
+        - remote: sudo amazon-linux-extras install -y epel
+        - remote: sudo yum install -y ansible
 
   - name: centos7
     driver:

@@ -18,6 +18,10 @@ Prep Executor:
     - docker push "${CI_REGISTRY_IMAGE}/test-executor"
   after_script:
     - docker logout ${CI_REGISTRY}
+  only:
+    changes:
+      - Gemfile*
+      - Dockerfile.test
 
 Test Ubuntu 18_04:
   stage: test
