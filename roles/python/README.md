@@ -1,6 +1,8 @@
 # role python
 
-Installs Python development tools
+Installs Python development tools.  This generally installs Python2 and Python3 system-level
+packages as well as pyenv and the pyenv-virtualenv plugin, which can be used 
+to add additional Python versions and/or virtual environments.
 
 ### Ubuntu
 
