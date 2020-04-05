@@ -14,6 +14,7 @@
     - anaconda
     - ruby
     - chefdk
+    - java
     - postgresql
     - terraform
     - R

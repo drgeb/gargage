@@ -56,6 +56,7 @@ This playbook installs a subset of roles that might be useful to web developers.
 * kubernetes (just kubectl)
 * python
 * nodejs
+* java
 * awscli
 * cloudfoundry
 * vscode
@@ -92,7 +93,7 @@ curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- m
 ./install.sh minimal
 ```
 
-**Custom playbook**
+**Custom Playbook**
 
 This is an example of a playbook that installs the base role with a custom list of packages, in this case just 'git'.
 

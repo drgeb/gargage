@@ -1,0 +1,18 @@
+---
+- name: include variables
+  include_vars: "{{ lookup('first_found', possible) }}"
+  vars:
+    possible:
+      - "defaults/{{ platform }}.yml"
+      - defaults/none.yml
+
+- name: include tasks
+  include: "{{ lookup('first_found', possible) }}"
+  vars:
+    possible:
+      - "{{ platform }}.yml"
+      - unsupported.yml
+
+- name: '🎶 java java jing jing jing 🎶'
+  debug:
+    msg: 'https://www.youtube.com/watch?v=TAX0gJt-aZg'

@@ -7,7 +7,7 @@
     baseurl: "{{ docker_repo_baseurl }}"
     gpgcheck: true
     gpgkey: "{{ docker_repo_gpgkey }}"
-    enabled: "{{ docker_repo_enabled }}"
+    enabled: true
 
 - name: install packages
   become: true

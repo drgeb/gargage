@@ -1,0 +1,24 @@
+---
+- name: install packages
+  become: true
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ java_packages }}"
+
+- name: create gradle install dir
+  become: true
+  file:
+    path: "{{ java_gradle_dir }}"
+    state: directory
+    owner: 'root'
+    group: 'root'
+    mode: '0755'
+
+- name: install gradle
+  become: true
+  unarchive:
+    src: "{{ java_gradle_url }}"
+    dest: "{{ java_gradle_dir }}"
+    remote_src: true
