@@ -16,10 +16,12 @@ base_packages:
   - mlocate
   - sed
   - gawk
+  - jq
   - neovim
   - git
   - build-essential
   - libssl-dev
+  - libnss3-tools
   - apt
   - apt-file
   - python-apt

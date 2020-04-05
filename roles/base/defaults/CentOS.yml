@@ -20,8 +20,10 @@ base_packages:
   - gawk
   - neovim
   - git
+  - jq
   - yum-utils
   - make
   - automake
+  - nss-tools
   - gcc
   - gcc-c++

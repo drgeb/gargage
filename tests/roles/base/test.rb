@@ -17,6 +17,8 @@ awk --version
 nvim --version
 make -v
 gcc -v
+jq --version
+certutil -H
 git --version}.split("\n")
 
 test_commands.each do |cmd|

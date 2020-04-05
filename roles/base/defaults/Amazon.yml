@@ -1,6 +1,5 @@
 ---
 base_packages:
-  - man
   - less
   - openssl
   - openssh-clients
@@ -18,10 +17,12 @@ base_packages:
   - which
   - sed
   - gawk
+  - jq
   - neovim
   - git
   - yum-utils
   - make
   - automake
+  - nss-tools
   - gcc
   - gcc-c++
