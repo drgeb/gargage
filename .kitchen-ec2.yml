@@ -23,8 +23,7 @@ provisioner:
   ansible_verbose: true
   ansible_connection: ssh
   ansible_sudo: false
-  playbook: ./full.yml
-  custom_pre_install_command: 'command -v amazon-linux-extras &> /dev/null && sudo amazon-linux-extras install -y epel && sudo yum install -y ansible'
+  playbook: <%= ENV['PLAYBOOK'] || './full.yml' %>
 
 verifier:
   name: inspec
@@ -46,6 +45,7 @@ platforms:
           ebs:
             volume_size: 20
             delete_on_termination: true
+
   - name: amazonlinux
     driver:
       image_search:
@@ -58,7 +58,10 @@ platforms:
           ebs:
             volume_size: 20
             delete_on_termination: true
-      #user_data: tests/fixtures/ec2/amazonlinux/user_data.sh
+    lifecycle:
+      - remote: sudo amazon-linux-extras install -y epel
+      - remote: sudo yum install -y ansible
+
   - name: centos7
     driver:
       image_search:

@@ -16,8 +16,8 @@ PLAYBOOK_DEST="${PLAYBOOK_DIR}/garage"
 PLAYBOOK="${1:-default}"
 
 echo_exit() {
-  echo $1
-  exit $2
+  echo "$1"
+  exit "$2"
 }
 
 install_deps() {
@@ -37,7 +37,7 @@ install_deps() {
     # We're Amazon Linux
     command -v ansible > /dev/null 2>&1 || sudo yum install epel ansible
     command -v git > /dev/null 2>&1 || sudo yum install git
-  elif echo $OSTYPE | grep 'darwin' > /dev/null; then
+  elif echo "$OSTYPE" | grep 'darwin' > /dev/null; then
     # We're MacOSX
     command -v brew > /dev/null 2>&1 || echo_exit "Homebrew required" 1
     command -v ansible > /dev/null 2>&1 || brew install ansible
@@ -59,4 +59,5 @@ if [ ! -e "roles/base" ]; then
 fi
 
 # Run the playbook
+echo "Enter sudo password for BECOME password."
 ansible-playbook "${PLAYBOOK}.yml" -i hosts -K && banner

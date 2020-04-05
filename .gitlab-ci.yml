@@ -5,10 +5,8 @@ stages:
 
 variables:
   KITCHEN_YAML: .kitchen-ec2.yml
-  #KITCHEN_TRANSPORT: docker
-  #KITCHEN_USE_INTERNAL_NETWORK: 'true'
 
-Prepare Image:
+Prep Executor:
   stage: prepare
   image: docker:stable
   services:
