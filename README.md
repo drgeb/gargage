@@ -40,20 +40,20 @@ This playbook installs a subset of roles that might be useful for the data scien
 
 ```
 # Enter your 'sudo' credentials when prompted.
-curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- data_science
+curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- data
 
 # Or if downloaded locally...
-./install.sh data_science
+./install.sh data
 ```
 
-**Web Development Playbook**
+**Software Development Playbook**
 
 This playbook installs a subset of roles that might be useful to web developers.  It includes:
 
 * base
 * dodpki
 * docker
-* kubernetes (just kubectl)
+* kubernetes
 * python
 * nodejs
 * java
@@ -63,10 +63,10 @@ This playbook installs a subset of roles that might be useful to web developers.
 
 ```
 # Enter your 'sudo' credentials when prompted.
-curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- webdev
+curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- development
 
 # Or if downloaded locally...
-./install.sh webdev
+./install.sh development
 ```
 
 **Full Playbook**
