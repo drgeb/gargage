@@ -176,3 +176,5 @@ kitchen test
 ### Related Projects
 
 This project sets up my `dotfiles` (see role).  This is my shell configuration, which is managed via Fresh (https://gitlab.com/kb9zzw/dotfiles).  If you want your shell environment to be just like mine, you can add this role to your playbook.
+
+Looking for a Windows bootstrap script?  Try my [garage-win](https://gitlab.com/kb9zzw/garage-win), based on Chocolatey.
