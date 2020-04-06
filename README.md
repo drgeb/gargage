@@ -15,15 +15,18 @@ Roles can be mixed and matched.  Generally, they are independent of each other. 
 
 TL;DR... here's how you install it.  You'll need sudo privileges on your system to run this.
 
-**Default playbook**
+**Default Playbook**
 ```
 # Enter your 'sudo' credentials when prompted.
-curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/bootstrap.sh | bash
+curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash
+
+# Or, if downloaded locally...
+./install.sh
 ```
 
 The bootstrap command also accepts an optional playbook setting, which will translate to `[name].yml`.  Without it, the default `default.yml` playbook will be run.
 
-**Data Science playbook**
+**Data Science Playbook**
 
 This playbook installs a subset of roles that might be useful for the data scientists.  It includes:
 
@@ -37,10 +40,13 @@ This playbook installs a subset of roles that might be useful for the data scien
 
 ```
 # Enter your 'sudo' credentials when prompted.
-curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/bootstrap.sh | bash -s -- data_science
+curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- data_science
+
+# Or if downloaded locally...
+./install.sh data_science
 ```
 
-**Web Development playbook**
+**Web Development Playbook**
 
 This playbook installs a subset of roles that might be useful to web developers.  It includes:
 
@@ -50,40 +56,53 @@ This playbook installs a subset of roles that might be useful to web developers.
 * kubernetes (just kubectl)
 * python
 * nodejs
+* java
 * awscli
 * cloudfoundry
 * vscode
 
 ```
 # Enter your 'sudo' credentials when prompted.
-curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/bootstrap.sh | bash -s -- webdev
+curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- webdev
+
+# Or if downloaded locally...
+./install.sh webdev
 ```
 
-**Full**
+**Full Playbook**
 
 This is the kitchen sink.  It installs everything currently supported, including my `dotfiles` management.
 
 ```
 # Enter your 'sudo' credentials when prompted.
-curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/bootstrap.sh | bash -s -- full
+curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- full
+
+# Or if downloaded locally...
+./install.sh full
 ```
 
-**Minimal**
+**Minimal Playbook**
 
 This installs just the `base` role.
 
 ```
 # Enter your 'sudo' credentials when prompted.
-curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/bootstrap.sh | bash -s -- minimal
+curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- minimal
+
+# Or if downloaded locally...
+./install.sh minimal
 ```
 
-**Custom playbook**
+**Custom Playbook**
 
 This is an example of a playbook that installs the base role with a custom list of packages, in this case just 'git'.
 
 ```
 # Enter your 'sudo' credentials when prompted.
-curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/bootstrap.sh | bash -s -- custom
+curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- custom
+
+# Or if downloaded locally...
+./install.sh custom
 ```
 
 Current supported playbooks:
@@ -144,7 +163,7 @@ Each role is self-contained in the `roles` directory. It is possible to add your
 
 ### Testing
 
-Testing is done via Kitchen and Inspec.  Test routines are applied using kitchen-docker and can be found in the `tests` folder.  There is a `.test-setup.sh` script that installs the necessary Ruby Gems and Docker images necessary to run the test suite.
+Testing is done via Kitchen and Inspec.  Test routines are applied using kitchen-docker or kitchen-ec2 and can be found in the `tests` folder.  There is a `.test-setup.sh` script that installs the necessary Ruby Gems and Docker images necessary to run the test suite.
 
 To test:
 
@@ -152,8 +171,10 @@ To test:
 kitchen test
 ```
 
-**NOTE**:  Due to the limitations of running MacOSX in Docker, the MacOSX tasks are not extensively tested.
+**NOTE**:  Due to the limitations of running MacOSX in Docker or EC2, the MacOSX tasks are not extensively tested.
 
 ### Related Projects
 
 This project sets up my `dotfiles` (see role).  This is my shell configuration, which is managed via Fresh (https://gitlab.com/kb9zzw/dotfiles).  If you want your shell environment to be just like mine, you can add this role to your playbook.
+
+Looking for a Windows bootstrap script?  Try my [garage-win](https://gitlab.com/kb9zzw/garage-win), based on Chocolatey.
