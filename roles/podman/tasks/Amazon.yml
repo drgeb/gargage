@@ -1,0 +1,29 @@
+---
+- name: install docker
+  become: true
+  command:
+    cmd: 'amazon-linux-extras install -y docker'
+    creates: '/usr/bin/docker'
+
+- name: create docker group
+  become: true
+  group:
+    name: docker
+    state: present
+
+- name: append users to docker group
+  become: true
+  user:
+    name: "{{ item }}"
+    groups:
+      - docker
+    append: true
+  with_items:
+    - "{{ docker_users }}"
+
+- name: install docker-compose
+  become: true
+  shell: >
+    {{ docker_compose_script }}
+  args:
+    creates: '/usr/bin/docker-compose'

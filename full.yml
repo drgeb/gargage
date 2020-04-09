@@ -5,6 +5,7 @@
     - dodpki
     - docker
     - kubernetes
+    - podman
     - python
     - nodejs
     - desktop
