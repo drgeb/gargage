@@ -2,12 +2,14 @@
 driver:
   name: ec2
   aws_ssh_key_id: id_rsa_gitlab
-  security_group_ids: ['sg-0096ec61497b7d1d6']
+  security_group_ids: ['sg-0c2b15509b6422523']
   region: us-east-1
   availability_zone: a
-  subnet_id: subnet-c5ee22a2
+  subnet_id: subnet-0a7e69f750deb16b0
   instance_type: t3.medium
-  associate_public_ip: true
+  iam_profile_name: test_profile
+  associate_public_ip: false
+  interface: id
 
 transport:
   ssh_key: <%= ENV['SSH_KEY'] || '~/.ssh/id_rsa_gitlab.pem' %>
@@ -75,6 +77,7 @@ platforms:
           ebs:
             volume_size: 20
             delete_on_termination: true
+      user_data: tests/user_data.sh
 
 suites:
   - name: default
