@@ -16,10 +16,10 @@ Prep Executor:
     - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/tests/Dockerfile.ec2-executor --destination $CI_REGISTRY_IMAGE
   tags:
     - docker
-#  only:
-#    changes:
-#      - Gemfile*
-#      - tests/Dockerfile.ec2-executor
+  only:
+    changes:
+      - Gemfile*
+      - tests/Dockerfile.ec2-executor
 
 Test Ubuntu 18_04:
   stage: test
