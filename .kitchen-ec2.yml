@@ -6,10 +6,11 @@ driver:
   region: us-east-1
   availability_zone: a
   subnet_id: subnet-0a7e69f750deb16b0
-  instance_type: t3.medium
+  instance_type: m3.medium
   iam_profile_name: test_profile
   associate_public_ip: false
   interface: id
+  spot_price: <%= ENV['SPOT_PRICE'] || nil %>
 
 transport:
   ssh_key: <%= ENV['SSH_KEY'] || '~/.ssh/id_rsa_gitlab.pem' %>
