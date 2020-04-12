@@ -59,6 +59,8 @@ suites:
         - tests/roles/base
         - tests/roles/dodpki
         - tests/roles/docker
+        - tests/roles/podman
+        - tests/roles/kubernetes
         - tests/roles/python
         - tests/roles/nodejs
         - tests/roles/desktop
@@ -70,5 +72,6 @@ suites:
         - tests/roles/postgresql
         - tests/roles/terraform
         - tests/roles/vscode
-        - tests/roles/amazonworkspaces
+        - tests/roles/vscode
+        - tests/roles/atom
         - tests/roles/dotfiles

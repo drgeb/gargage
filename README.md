@@ -48,7 +48,7 @@ curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- d
 
 **Software Development Playbook**
 
-This playbook installs a subset of roles that might be useful to web developers.  It includes:
+This playbook installs a subset of roles that might be useful to developers.  It includes:
 
 * base
 * dodpki
@@ -177,4 +177,4 @@ kitchen test
 
 This project sets up my `dotfiles` (see role).  This is my shell configuration, which is managed via Fresh (https://gitlab.com/kb9zzw/dotfiles).  If you want your shell environment to be just like mine, you can add this role to your playbook.
 
-Looking for a Windows bootstrap script?  Try my [garage-win](../../garage-win), based on Chocolatey. 
+Looking for a Windows bootstrap script?  Try my [garage-win](../../../garage-win), based on Chocolatey. 

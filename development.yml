@@ -5,9 +5,11 @@
     - dodpki
     - docker
     - kubernetes
+    - podman
     - python
     - nodejs
     - java
     - awscli
     - cloudfoundry
     - vscode
+    - atom
