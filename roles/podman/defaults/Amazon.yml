@@ -1,9 +1,7 @@
 ---
-docker_users:
-  - "{{ ansible_user_id }}"
+podman_repo_baseurl: 'http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_7/'
+podman_repo_gpgkey: 'http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_7/repodata/repomd.xml.key'
 
-docker_compose_version: '1.25.4'
-docker_compose_script: >
-  curl -L https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose &&
-  chmod +x /usr/local/bin/docker-compose &&
-  ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+podman_packages:
+  - podman
+  - buildah

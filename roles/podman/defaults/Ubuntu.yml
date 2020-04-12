@@ -4,3 +4,4 @@ podman_repo_key: "https://download.opensuse.org/repositories/devel:/kubic:/libco
 
 podman_packages:
   - podman
+  - buildah
