@@ -1,0 +1,16 @@
+---
+- name: install repo
+  become: true
+  yum_repository:
+    name: 'atom.io'
+    description: "Atom Editor"
+    baseurl: "{{ atom_repo_baseurl }}"
+    gpgcheck: true
+    gpgkey: "{{ atom_repo_gpgkey }}"
+    enabled: true
+
+- name: install atom
+  become: true
+  package:
+    name: atom
+    state: present

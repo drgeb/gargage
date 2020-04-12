@@ -1,0 +1,19 @@
+---
+- name: install repo key
+  become: true
+  apt_key:
+    url: "{{ atom_repo_key }}"
+    state: present
+
+- name: install repo
+  become: true
+  apt_repository:
+    filename: 'vscode'
+    repo: "{{ atom_repo }}"
+    state: present
+
+- name: install atom
+  become: true
+  package:
+    name: atom
+    state: present

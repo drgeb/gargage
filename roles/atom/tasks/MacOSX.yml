@@ -1,0 +1,5 @@
+---
+- name: install atom
+  homebrew_cask:
+    name: atom
+    state: present

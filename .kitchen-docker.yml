@@ -72,5 +72,6 @@ suites:
         - tests/roles/postgresql
         - tests/roles/terraform
         - tests/roles/vscode
-        - tests/roles/amazonworkspaces
+        - tests/roles/vscode
+        - tests/roles/atom
         - tests/roles/dotfiles
