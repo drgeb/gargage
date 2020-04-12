@@ -5,7 +5,8 @@
     name: 'atom.io'
     description: "Atom Editor"
     baseurl: "{{ atom_repo_baseurl }}"
-    gpgcheck: true
+    repo_gpgcheck: true
+    gpgcheck: false
     gpgkey: "{{ atom_repo_gpgkey }}"
     enabled: true
 
