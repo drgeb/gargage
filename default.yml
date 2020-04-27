@@ -2,4 +2,20 @@
 - hosts: all
   roles:
     - base
+    - dodpki
+    - python
+    - nodejs
     - docker
+    - kubernetes
+    - desktop
+    - amazonworkspaces
+    - awscli
+    - cloudfoundry
+    - anaconda
+    - ruby
+    - chefdk
+    - java
+    - postgresql
+    - terraform
+    - R
+    - vscode
