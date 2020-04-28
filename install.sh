@@ -31,12 +31,12 @@ install_deps() {
     command -v git > /dev/null 2>&1 || sudo apt install -y git
   elif [ -e /etc/os-release ] && grep 'centos' /etc/os-release > /dev/null; then
     # We're CentOS
-    command -v ansible > /dev/null 2>&1 || sudo yum install ansible
-    command -v git > /dev/null 2>&1 || sudo yum install git
+    command -v ansible > /dev/null 2>&1 || sudo yum install -y ansible
+    command -v git > /dev/null 2>&1 || sudo yum install -y git
   elif [ -e /etc/os-release ] && grep 'amzn' /etc/os-release > /dev/null; then
     # We're Amazon Linux
-    command -v ansible > /dev/null 2>&1 || sudo yum install epel ansible
-    command -v git > /dev/null 2>&1 || sudo yum install git
+    command -v ansible > /dev/null 2>&1 || sudo yum install -y epel ansible
+    command -v git > /dev/null 2>&1 || sudo yum install -y git
   elif echo "$OSTYPE" | grep 'darwin' > /dev/null; then
     # We're MacOSX
     command -v brew > /dev/null 2>&1 || echo_exit "Homebrew required" 1
