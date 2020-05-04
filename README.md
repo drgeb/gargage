@@ -36,7 +36,6 @@ This playbook installs a subset of roles that might be useful for the data scien
 * anaconda
 * desktop
 * R (includes RStudio)
-* postgresql (includes pgAdmin4)
 
 ```
 # Enter your 'sudo' credentials when prompted.

@@ -15,7 +15,6 @@
     - ruby
     - chefdk
     - java
-    - postgresql
     - terraform
     - R
     - vscode
