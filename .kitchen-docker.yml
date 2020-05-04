@@ -43,7 +43,7 @@ platforms:
   #    platform: rhel
   - name: amazonlinux
     driver_config:
-      image: amazonlinux:ansible
+      image: amazonlinux
       platform: amazonlinux
     lifecycle:
       pre_converge:
