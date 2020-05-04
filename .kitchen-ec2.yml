@@ -97,7 +97,6 @@ suites:
         - tests/roles/ruby
         - tests/roles/chefdk
         - tests/roles/R
-        - tests/roles/postgresql
         - tests/roles/terraform
         - tests/roles/vscode
         - tests/roles/atom
