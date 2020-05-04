@@ -19,6 +19,7 @@ base_packages:
   - gawk
   - jq
   - neovim
+  - terminator
   - git
   - yum-utils
   - make

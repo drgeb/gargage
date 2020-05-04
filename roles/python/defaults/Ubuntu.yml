@@ -1,11 +1,7 @@
 ---
 python_packages:
   - git
-  - python
-  - python-setuptools
-  - python-pip
-  - python-dev
-  - python-virtualenv
+  - tk-dev
   - python3
   - python3-setuptools
   - python3-pip
