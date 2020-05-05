@@ -6,7 +6,7 @@ driver:
   region: us-east-1
   availability_zone: c
   subnet_id: subnet-0fafdd2fa8f3b1597
-  instance_type: <%= ENV['INSTANCE_TYPE] || 't3.medium' %>
+  instance_type: <%= ENV['INSTANCE_TYPE'] || 't3.medium' %>
   iam_profile_name: managed
   associate_public_ip: false
   interface: id
