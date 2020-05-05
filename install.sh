@@ -31,7 +31,7 @@ install_deps() {
     command -v git > /dev/null 2>&1 || sudo apt install -y git
   elif [ -e /etc/os-release ] && grep 'centos' /etc/os-release > /dev/null; then
     # We're CentOS
-    command -v ansible > /dev/null 2>&1 || sudo yum install -y ansible
+    command -v ansible > /dev/null 2>&1 || sudo yum install -y epel-release ansible
     command -v git > /dev/null 2>&1 || sudo yum install -y git
   elif [ -e /etc/os-release ] && grep 'amzn' /etc/os-release > /dev/null; then
     # We're Amazon Linux
