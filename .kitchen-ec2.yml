@@ -101,4 +101,3 @@ suites:
         - tests/roles/vscode
         - tests/roles/atom
         - tests/roles/amazonworkspaces
-        - tests/roles/dotfiles

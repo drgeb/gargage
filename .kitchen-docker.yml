@@ -97,4 +97,3 @@ suites:
         - tests/roles/vscode
         - tests/roles/vscode
         - tests/roles/atom
-        - tests/roles/dotfiles
