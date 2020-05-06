@@ -2,14 +2,13 @@
 driver:
   name: ec2
   aws_ssh_key_id: id_rsa_gitlab
-  security_group_ids: ['sg-0d0efa63a5570c319']
+  security_group_ids: ['sg-01bbd0773f002eced']
   region: us-east-1
   availability_zone: c
-  subnet_id: subnet-0fafdd2fa8f3b1597
+  subnet_id: subnet-0b649bd7c7300e988
   instance_type: <%= ENV['INSTANCE_TYPE'] || 't3.medium' %>
   iam_profile_name: managed
-  associate_public_ip: false
-  interface: id
+  associate_public_ip: true
   spot_price: <%= ENV['SPOT_PRICE'] || nil %>
 
 transport:
