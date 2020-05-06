@@ -25,9 +25,9 @@ Test Ubuntu 18_04:
   stage: test
   image: "${CI_REGISTRY_IMAGE}/ec2-executor"
   script:
+    - curl -sL http://checkip.amazonaws.com
     - kitchen test ubuntu18 -d always
   after_script:
-    - curl -sL http://checkip.amazonaws.com
     - kitchen destroy ubuntu
   artifacts:
     expire_in: 7d
