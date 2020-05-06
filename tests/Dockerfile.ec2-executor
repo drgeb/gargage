@@ -10,9 +10,9 @@ RUN apt-get update \
 && apt-get install -y software-properties-common \
 && apt-add-repository --yes ppa:ansible/ansible \
 && apt-get install -y \
+    curl \
     ruby \
     ruby-dev \
-    curl \
     python-pip \
     python-setuptools \
     ca-certificates \
