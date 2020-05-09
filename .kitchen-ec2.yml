@@ -3,8 +3,7 @@ driver:
   name: ec2
   aws_ssh_key_id: id_rsa_gitlab
   security_group_ids: 
-    - 'sg-01bbd0773f002eced'
-    - 'sg-0cdb25881c307a330'
+    - sg-0878f16e66ab9144e
   region: us-east-1
   availability_zone: c
   subnet_id: subnet-0b649bd7c7300e988
