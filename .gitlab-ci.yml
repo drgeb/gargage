@@ -41,16 +41,16 @@ Prep Executor:
       - tests/Dockerfile.ec2-executor
 
 Test Ubuntu 18_04:
-  <<: *common_test
+  <<: *test_template
   variables:
     PLATFORM: ubuntu18
 
 Test CentOS7:
-  <<: *common_test
+  <<: *test_template
   variables:
     PLATFORM: centos7
 
 Test AmazonLinux2:
-  <<: *common_test
+  <<: *test_template
   variables:
     PLATFORM: amazonlinux
