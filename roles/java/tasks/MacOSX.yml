@@ -1,12 +1,4 @@
 ---
-- name: install packages
-  become: true
-  package:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - "{{ java_packages }}"
-
 - name: install sdkman
   become: false
   shell: >

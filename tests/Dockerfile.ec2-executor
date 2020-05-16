@@ -5,11 +5,15 @@ ENV DEBIAN_FRONTEND=noninteractive
 ADD Gemfile /Gemfile
 ADD Gemfile.lock /Gemfile.lock
 ADD tests/session-manager-plugin.deb /session-manager-plugin.deb
+ADD tests/ssh_config /root/.ssh/config
+ADD tests/updatesg /usr/local/bin/updatesg
 
-RUN apt-get update \
+RUN chmod 755 /usr/local/bin/updatesg \
+&& apt-get update \
 && apt-get install -y software-properties-common \
 && apt-add-repository --yes ppa:ansible/ansible \
 && apt-get install -y \
+    curl \
     ruby \
     ruby-dev \
     python-pip \
@@ -28,5 +32,3 @@ RUN apt-get update \
           /tmp/* \
           /var/tmp/* \
           /*.deb
-
-ADD tests/ssh_config /root/.ssh/config

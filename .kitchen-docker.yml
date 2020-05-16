@@ -14,7 +14,7 @@ provisioner:
   ansible_verbose: true
   ansible_connection: ssh
   ansible_sudo: false
-  playbook: ./full.yml
+  playbook: ./test.yml
 
 verifier:
   name: inspec
@@ -29,6 +29,15 @@ platforms:
       image: ubuntu:18.04
       platform: ubuntu
       username: kitchen
+      # Special config so we can enable systemd
+      run_command: /sbin/init
+      privileged: true
+      volume:
+        - /sys/fs/cgroup:/sys/fs/cgroup
+      provision_command:
+        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+        - systemctl enable ssh.service
+
   #- name: ubuntu20
   #  driver_config:
   #    image: ubuntu:20.04
@@ -37,18 +46,33 @@ platforms:
     driver_config:
       image: centos:7
       platform: rhel
+      # Special config so we can enable systemd
+      run_command: /sbin/init
+      privileged: true
+      volume:
+        - /sys/fs/cgroup:/sys/fs/cgroup
+      provision_command:
+        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+        - systemctl enable sshd.service
+
   #- name: centos8
   #  driver_config:
   #    image: centos:8
   #    platform: rhel
   - name: amazonlinux
     driver_config:
-      image: amazonlinux:ansible
+      image: amazonlinux
       platform: amazonlinux
-    lifecycle:
-      pre_converge:
-        - remote: sudo amazon-linux-extras install -y epel
-        - remote: sudo yum install -y ansible
+      # Special config so we can enable systemd
+      run_command: /sbin/init
+      privileged: true
+      volume:
+        - /sys/fs/cgroup:/sys/fs/cgroup
+      provision_command:
+        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+        - systemctl enable sshd.service
+        - amazon-linux-extras install -y epel
+        - yum install -y ansible
 
 suites:
   - name: default
@@ -69,9 +93,7 @@ suites:
         - tests/roles/ruby
         - tests/roles/chefdk
         - tests/roles/R
-        - tests/roles/postgresql
         - tests/roles/terraform
         - tests/roles/vscode
         - tests/roles/vscode
         - tests/roles/atom
-        - tests/roles/dotfiles

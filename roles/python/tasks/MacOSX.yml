@@ -1,4 +1,9 @@
 ---
+- name: install tcl-tk
+  homebrew:
+    name: tcl-tk
+    state: present
+
 - name: install pyenv
   homebrew:
     name: pyenv

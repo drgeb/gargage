@@ -1,27 +1,28 @@
 # role java
 
-Installs Java development tools. Includes Java 1.8, plus Java 11 (where available).
+Installs Java development tools.  Primarily, it installs sdkman which can
+be used to manage Java and Java-related tools locally.
+
+A system Java 8 JDK is also installed.
 
 ### Ubuntu
 
 Note: Gradle is installed from system packages.
 
 * java_packages: List of DEB packages to install.
+* java_sdkman_script: Script to install sdkman
 
 ### CentOS
 
 * java_packages: List of YUM packages to install.
-* java_gradle_version: Version of Gradle to install
-* java_gradle_url: Gradle download URL
-* java_gradle_dir: Gradle install dir
+* java_sdkman_script: Script to install sdkman
+*
 
 ### Amazon
 
 * java_packages: List of YUM packages to install.
-* java_gradle_version: Version of Gradle to install
-* java_gradle_url: Gradle download URL
-* java_gradle_dir: Gradle install dir
+* java_sdkman_script: Script to install sdkman
 
 ### MacOSX
 
-Not supported yet.
+* java_sdkman_script: Script to install sdkman

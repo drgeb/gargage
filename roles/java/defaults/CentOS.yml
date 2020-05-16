@@ -1,12 +1,9 @@
 ---
 java_packages:
+  - curl
+  - zip
   - unzip
   - java-1.8.0-openjdk-devel
-  - java-11-openjdk-devel
-  - groovy
-  - ant
-  - maven
 
-java_gradle_version: '6.3'
-java_gradle_url: "https://services.gradle.org/distributions/gradle-{{ java_gradle_version }}-bin.zip"
-java_gradle_dir: '/opt/gradle'
+java_sdkman_script: >
+  curl -s "https://get.sdkman.io?rcupdate=false" | bash

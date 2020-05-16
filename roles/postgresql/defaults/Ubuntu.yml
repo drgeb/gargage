@@ -1,9 +1,0 @@
----
-postgresql_major_version: '12'
-postgresql_repo: 'deb http://apt.postgresql.org/pub/repos/apt bionic-pgdg main'
-postgresql_repo_key: 'https://www.postgresql.org/media/keys/ACCC4CF8.asc'
-
-postgresql_packages:
-  - "postgresql-{{ postgresql_major_version }}"
-  - "postgresql-{{ postgresql_major_version }}-postgis-3"
-  - pgadmin4

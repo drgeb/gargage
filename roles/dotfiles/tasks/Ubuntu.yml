@@ -1,6 +1,0 @@
----
-- name: install dotfiles
-  shell: >
-    {{ dotfiles_script }}
-  args:
-    creates: "{{ ansible_env.HOME }}/.dotfiles"

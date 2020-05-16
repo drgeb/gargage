@@ -36,7 +36,6 @@ This playbook installs a subset of roles that might be useful for the data scien
 * anaconda
 * desktop
 * R (includes RStudio)
-* postgresql (includes pgAdmin4)
 
 ```
 # Enter your 'sudo' credentials when prompted.
@@ -71,7 +70,7 @@ curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- d
 
 **Full Playbook**
 
-This is the kitchen sink.  It installs everything currently supported, including my `dotfiles` management.
+This is the kitchen sink.  It installs everything currently supported.
 
 ```
 # Enter your 'sudo' credentials when prompted.
@@ -174,7 +173,5 @@ kitchen test
 **NOTE**:  Due to the limitations of running MacOSX in Docker or EC2, the MacOSX tasks are not extensively tested.
 
 ### Related Projects
-
-This project sets up my `dotfiles` (see role).  This is my shell configuration, which is managed via Fresh (https://gitlab.com/kb9zzw/dotfiles).  If you want your shell environment to be just like mine, you can add this role to your playbook.
 
 Looking for a Windows bootstrap script?  Try my [garage-win](../../../garage-win), based on Chocolatey. 
