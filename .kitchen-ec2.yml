@@ -14,7 +14,7 @@ driver:
 
 transport:
   ssh_key: <%= ENV['SSH_KEY'] || '~/.ssh/id_rsa_gitlab.pem' %>
-  max_ssh_essions: 2
+  max_ssh_sessions: 5
   connection_timeout: 10
   connection_retries: 5
 
