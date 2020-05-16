@@ -26,7 +26,6 @@ Test Ubuntu 18_04:
   stage: test
   image: "${CI_REGISTRY_IMAGE}/ec2-executor"
   script:
-    - curl -sL http://checkip.amazonaws.com
     - kitchen test ubuntu18 -d always
   after_script:
     - kitchen destroy ubuntu
@@ -41,7 +40,6 @@ Test CentOS7:
   stage: test
   image: "${CI_REGISTRY_IMAGE}/ec2-executor"
   script:
-    - curl -sL http://checkip.amazonaws.com
     - kitchen test centos7 -d always
   after_script:
     - kitchen destroy centos7
@@ -56,7 +54,6 @@ Test AmazonLinux2:
   stage: test
   image: "${CI_REGISTRY_IMAGE}/ec2-executor"
   script:
-    - curl -sL http://checkip.amazonaws.com
     - kitchen test amazonlinux -d always
   after_script:
     - kitchen destroy amazonlinux
