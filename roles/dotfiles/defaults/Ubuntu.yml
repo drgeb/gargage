@@ -1,4 +1,0 @@
----
-dotfiles_script: >
-  FRESH_LOCAL_SOURCE=https://gitlab.com/kb9zzw/dotfiles.git \
-    bash -c "`curl -sL https://get.freshshell.com`"

@@ -1,9 +1,0 @@
----
-postgresql_major_version: '12'
-postgresql_repo_rpm: "https://download.postgresql.org/pub/repos/yum/reporpms/EL-{{ ansible_distribution_major_version }}-x86_64/pgdg-redhat-repo-latest.noarch.rpm"
-
-postgresql_packages:
-  - "postgresql{{ postgresql_major_version }}"
-  - "postgis30_{{ postgresql_major_version }}"
-  - 'pgadmin4'
-  - 'pgadmin4-desktop-common'

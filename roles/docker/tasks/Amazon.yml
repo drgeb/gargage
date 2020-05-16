@@ -4,6 +4,7 @@
   command:
     cmd: 'amazon-linux-extras install -y docker'
     creates: '/usr/bin/docker'
+  notify: "restart docker"
 
 - name: create docker group
   become: true
@@ -27,3 +28,4 @@
     {{ docker_compose_script }}
   args:
     creates: '/usr/bin/docker-compose'
+    warn: false

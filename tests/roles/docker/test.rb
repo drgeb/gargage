@@ -5,6 +5,11 @@ describe command('docker') do
   its('exit_status') {should eq 0}
 end
 
+describe service('docker') do
+  it {should be_enabled}
+  it {should be_running}
+end
+
 describe command('docker-compose --version') do
     its('exit_status') {should eq 0}
 end

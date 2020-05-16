@@ -1,9 +1,0 @@
----
-postgresql_major_version: '12'
-
-postgresql_packages:
-  - "postgresql@{{ postgresql_major_version }}"
-  - 'postgis'
-
-postgresql_casks:
-  - 'pgadmin4' 
