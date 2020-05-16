@@ -5,6 +5,24 @@ stages:
 
 variables:
   KITCHEN_YAML: .kitchen-ec2.yml
+  GROUP_ID: "sg-0284bddba141545e9"
+
+.test_template: &test_template
+  stage: test
+  image: "${CI_REGISTRY_IMAGE}/ec2-executor"
+  before_script:
+    - updatesg -g ${GROUP_ID}
+  script:
+    - kitchen test ${PLATFORM} -d always
+  after_script:
+    - kitchen destroy ${PLATFORM}
+    - updatesg -r -g ${GROUP_ID}
+  artifacts:
+    expire_in: 7d
+    reports:
+      junit: reports/test-output.xml
+  tags:
+    - docker
 
 Prep Executor:
   stage: prepare
@@ -23,43 +41,16 @@ Prep Executor:
       - tests/Dockerfile.ec2-executor
 
 Test Ubuntu 18_04:
-  stage: test
-  image: "${CI_REGISTRY_IMAGE}/ec2-executor"
-  script:
-    - kitchen test ubuntu18 -d always
-  after_script:
-    - kitchen destroy ubuntu
-  artifacts:
-    expire_in: 7d
-    reports:
-      junit: reports/test-output.xml
-  tags:
-    - docker
+  <<: *common_test
+  variables:
+    PLATFORM: ubuntu18
 
 Test CentOS7:
-  stage: test
-  image: "${CI_REGISTRY_IMAGE}/ec2-executor"
-  script:
-    - kitchen test centos7 -d always
-  after_script:
-    - kitchen destroy centos7
-  artifacts:
-    expire_in: 7d
-    reports:
-      junit: reports/test-output.xml
-  tags:
-    - docker
+  <<: *common_test
+  variables:
+    PLATFORM: centos7
 
 Test AmazonLinux2:
-  stage: test
-  image: "${CI_REGISTRY_IMAGE}/ec2-executor"
-  script:
-    - kitchen test amazonlinux -d always
-  after_script:
-    - kitchen destroy amazonlinux
-  artifacts:
-    expire_in: 7d
-    reports:
-      junit: reports/test-output.xml
-  tags:
-    - docker
+  <<: *common_test
+  variables:
+    PLATFORM: amazonlinux
