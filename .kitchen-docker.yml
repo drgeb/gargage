@@ -14,7 +14,7 @@ provisioner:
   ansible_verbose: true
   ansible_connection: ssh
   ansible_sudo: false
-  playbook: ./test.yml
+  playbook: <%= ENV['PLAYBOOK'] || './full.yml' %>
 
 verifier:
   name: inspec
@@ -38,10 +38,22 @@ platforms:
         - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
         - systemctl enable ssh.service
 
-  #- name: ubuntu20
-  #  driver_config:
-  #    image: ubuntu:20.04
-  #    platform: ubuntu
+  - name: ubuntu20
+    driver_config:
+      image: ubuntu:20.04
+      platform: ubuntu
+      username: kitchen
+      # Special config so we can enable systemd
+      run_command: /sbin/init
+      privileged: true
+      volume:
+        - /sys/fs/cgroup:/sys/fs/cgroup
+      provision_command:
+        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+        - systemctl enable ssh.service
+    provisioner:
+      ansible_apt_repo: null
+
   - name: centos7
     driver_config:
       image: centos:7
@@ -55,11 +67,24 @@ platforms:
         - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
         - systemctl enable sshd.service
 
-  #- name: centos8
-  #  driver_config:
-  #    image: centos:8
-  #    platform: rhel
-  - name: amazonlinux
+  - name: centos8
+    driver_config:
+      image: centos:8
+      platform: rhel
+      # Special config so we can enable systemd
+      run_command: /sbin/init
+      privileged: true
+      volume:
+        - /sys/fs/cgroup:/sys/fs/cgroup
+      provision_command:
+        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+        - systemctl enable sshd.service
+    provisioner:
+      custom_pre_install_command: >
+        sudo dnf install -y epel-release;
+        sudo dnf install -y ansible
+
+  - name: amazonlinux2
     driver_config:
       image: amazonlinux
       platform: amazonlinux
@@ -71,8 +96,9 @@ platforms:
       provision_command:
         - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
         - systemctl enable sshd.service
-        - amazon-linux-extras install -y epel
-        - yum install -y ansible
+    provisioner:
+      custom_pre_install_command: >
+        sudo amazon-linux-extras install -y epel ansible2
 
 suites:
   - name: default

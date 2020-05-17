@@ -4,9 +4,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 ADD Gemfile /Gemfile
 ADD Gemfile.lock /Gemfile.lock
-ADD tests/session-manager-plugin.deb /session-manager-plugin.deb
-ADD tests/ssh_config /root/.ssh/config
-ADD tests/updatesg /usr/local/bin/updatesg
+ADD docker/session-manager-plugin.deb /session-manager-plugin.deb
+ADD docker/ssh_config /root/.ssh/config
+ADD docker/updatesg /usr/local/bin/updatesg
 
 RUN chmod 755 /usr/local/bin/updatesg \
 && apt-get update \
