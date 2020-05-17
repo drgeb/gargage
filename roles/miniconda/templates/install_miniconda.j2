@@ -1,10 +1,17 @@
 #!/bin/bash
 
+cleanup() {
+  rm -rf "$HOME/{{ miniconda_installer_script }}"
+}
+
 # cleanup on exit
-trap EXIT rm -f {{ miniconda_installer_script }}
+trap cleanup EXIT
 
 # fetch miniconda
-curl -sLo {{ miniconda_installer_script }} {{ miniconda_installer_url }}
+curl -sLo "$HOME/{{ miniconda_installer_script }}" "{{ miniconda_installer_url }}"
+
+# Set permissions
+chmod 755 "$HOME/{{ miniconda_installer_script }}"
 
 # run the installer
-bash {{ miniconda_installer_script }} -b -p {{ miniconda_install_dir }}
+bash $HOME/{{ miniconda_installer_script }} -b -p {{ miniconda_install_dir }}

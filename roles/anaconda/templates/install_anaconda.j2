@@ -1,10 +1,17 @@
 #!/bin/bash
 
+cleanup() {
+  rm -rf "$HOME/{{ anaconda_installer_script }}"
+}
+
 # cleanup on exit
-trap EXIT rm -f {{ anaconda_installer_script }}
+trap cleanup EXIT
 
 # fetch anaconda
-curl -sLo {{ anaconda_installer_script }} {{ anaconda_installer_url }}
+curl -sLo "$HOME/{{ anaconda_installer_script }}" "{{ anaconda_installer_url }}"
+
+# Set permissions
+chmod 755 "$HOME/{{ anaconda_installer_script }}"
 
 # run the installer
-bash {{ anaconda_installer_script }} -b -p {{ anaconda_install_dir }}
+bash $HOME/{{ anaconda_installer_script }} -b -p {{ anaconda_install_dir }}
