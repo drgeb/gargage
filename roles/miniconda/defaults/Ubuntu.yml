@@ -1,0 +1,18 @@
+---
+miniconda_version: 'latest'
+miniconda_installer_script: "Miniconda3-{{ miniconda_version }}-Linux-x86_64.sh"
+miniconda_installer_url: "https://repo.anaconda.com/miniconda/{{ miniconda_installer_script }}"
+miniconda_install_dir: "{{ ansible_env.HOME }}/miniconda3"
+
+miniconda_packages:
+  - curl
+  - libgl1-mesa-glx
+  - libegl1-mesa
+  - libxrandr2
+  - libxrandr2
+  - libxss1
+  - libxcursor1
+  - libxcomposite1
+  - libasound2
+  - libxi6
+  - libxtst6

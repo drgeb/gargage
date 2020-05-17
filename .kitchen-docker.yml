@@ -90,6 +90,7 @@ suites:
         - tests/roles/desktop
         - tests/roles/cloudfoundry
         - tests/roles/anaconda
+        - tests/roles/miniconda
         - tests/roles/ruby
         - tests/roles/chefdk
         - tests/roles/R

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# cleanup on exit
+trap EXIT rm -f {{ miniconda_installer_script }}
+
+# fetch miniconda
+curl -sLo {{ miniconda_installer_script }} {{ miniconda_installer_url }}
+
+# run the installer
+bash {{ miniconda_installer_script }} -b -p {{ miniconda_install_dir }}
