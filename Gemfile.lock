@@ -292,7 +292,7 @@ GEM
       test-kitchen (>= 1.4)
     kitchen-docker (2.10.0)
       test-kitchen (>= 1.0.0)
-    kitchen-ec2 (3.5.0)
+    kitchen-ec2 (3.6.0)
       aws-sdk-ec2 (~> 1.0)
       excon
       multi_json
