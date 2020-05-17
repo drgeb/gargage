@@ -10,9 +10,6 @@ EOF
 }
 
 # Bootstrap script
-PLAYBOOK_SRC=https://gitlab.com/kb9zzw/garage.git
-PLAYBOOK_DIR=~/.ansible/playbooks
-PLAYBOOK_DEST="${PLAYBOOK_DIR}/garage"
 PLAYBOOK="${1:-default}"
 
 echo_exit() {
@@ -20,49 +17,42 @@ echo_exit() {
   exit "$2"
 }
 
-install_deps() {
-  if [ -e /etc/os-release ] && grep 'ubuntu' /etc/os-release > /dev/null; then
-    # we're Ubuntu
-    if ! command -v ansible > /dev/null 2>&1; then
-      sudo apt install -y software-properties-common
-      sudo apt-add-repository --yes --update ppa:ansible/ansible
-      sudo apt install -y ansible
-    fi
-    command -v git > /dev/null 2>&1 || sudo apt install -y git
-  elif [ -e /etc/os-release ] && grep 'centos' /etc/os-release > /dev/null; then
-    # We're CentOS
-    if ! command -v ansible > /dev/null 2>&1; then
-      sudo yum install -y epel-release
-      sudo yum install -y ansible
-    fi
-    command -v git > /dev/null 2>&1 || sudo yum install -y git
-  elif [ -e /etc/os-release ] && grep 'amzn' /etc/os-release > /dev/null; then
-    # We're Amazon Linux
-    if ! command -v ansible > /dev/null 2>&1; then
-      sudo amazon-linux-extras install -y epel
-      sudo yum install -y ansible
-    fi
-    command -v git > /dev/null 2>&1 || sudo yum install -y git
-  elif echo "$OSTYPE" | grep 'darwin' > /dev/null; then
-    # We're MacOSX
+install_ansible() {
+  if [ -e /etc/os-release ]; then
+    . /etc/os-release
+  fi
+
+  if echo "$OSTYPE" | grep 'darwin' > /dev/null; then
+    # we're MacOS
     command -v brew > /dev/null 2>&1 || echo_exit "Homebrew required" 1
-    command -v ansible > /dev/null 2>&1 || brew install ansible
-    command -v git > /dev/null 2>&1 || brew install git
+    brew install ansible
+  elif [ "$ID" = 'centos' ] && [ "$VERSION_ID" = "8" ]; then
+    # we're CentOS 8
+    sudo dnf install -y epel-release
+    sudo dnf install -y ansible
+  elif [ "$ID" = 'centos' ] && [ "$VERSION_ID" = "7" ]; then
+    # we're CentOS 7
+    sudo yum install -y epel-release
+    sudo yum install -y ansible
+  elif [ "$ID" = 'ubuntu' ] && [ "$VERSION_ID" = "20.04" ]; then
+    # we're Ubuntu 20.04
+    sudo apt install -y git ansible
+  elif [ "$ID" = 'ubuntu' ] && [ "$VERSION_ID" = "18.04" ]; then
+    # we're Ubuntu 18.04
+    sudo apt install -y software-properties-common
+    sudo apt-add-repository --yes --update ppa:ansible/ansible
+    sudo apt install -y ansible
+  elif [ "$ID" = 'amzn' ] && [ "$VERSION_ID" = "2" ]; then
+    # we're Amazon Linux 2
+    sudo amazon-linux-extras install -y epel ansible2
   else
+    # we're unsupported
     echo_exit "Unsupported OS" 1
   fi
 }
 
-# check for dependencies
-install_deps
-
-# check if we're running locally
-if [ ! -e "roles/base" ]; then
-  # it's remote
-  mkdir -p ${PLAYBOOK_DIR}
-  git clone "${PLAYBOOK_SRC}" "${PLAYBOOK_DEST}" || exit 1
-  cd ${PLAYBOOK_DIR}/garage
-fi
+# install ansible if not available
+command -v ansible > /dev/null || install_ansible
 
 # Run the playbook
 echo "Enter sudo password for BECOME password."
