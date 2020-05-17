@@ -24,7 +24,7 @@ RUN chmod 755 /usr/local/bin/updatesg \
     /session-manager-plugin.deb \
     ansible \
 && pip install awscli \
-&& gem install bundler:1.17.2 \
+&& gem install bundler:2.1.4 \
 && bundle install \
 && gem cleanup \
 && apt clean all \
