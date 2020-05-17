@@ -1,6 +1,7 @@
 ---
-podman_repo_baseurl: 'http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_7/'
-podman_repo_gpgkey: 'http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_7/repodata/repomd.xml.key'
+podman_repo_branch: 'testing'
+podman_repo_baseurl: "http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/{{ podman_repo_branch }}/CentOS_7/"
+podman_repo_gpgkey: 'http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/{{ podman_repo_branch }}/CentOS_7/repodata/repomd.xml.key'
 
 podman_packages:
   - podman
