@@ -1,5 +1,12 @@
 ---
 R_packages:
+  - "@Development Tools"
+  - libpng-devel
+  - libjpeg-turbo-devel
+  - libxml2-devel
+  - libcurl-devel
+  - openssl-devel
+  - libssh2-devel
   - R
   - R-devel
 

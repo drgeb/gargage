@@ -1,8 +1,14 @@
 ---
 R_packages:
+  - build-essential
+  - libpng-dev
+  - libjpeg-dev
+  - libxml2-dev
+  - openssl-dev
+  - libssh-dev
   - r-base
   - r-base-dev
 
 R_rstudio_enabled: true
-R_rstudio_version: '1.2.5033'
+R_rstudio_version: '1.2.5042'
 R_rstudio_package: "https://download1.rstudio.org/desktop/bionic/amd64/rstudio-{{ R_rstudio_version }}-amd64.deb"
