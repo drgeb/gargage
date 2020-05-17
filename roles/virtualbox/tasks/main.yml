@@ -3,14 +3,18 @@
   include_vars: "{{ lookup('first_found', possible) }}"
   vars:
     possible:
-      - "defaults/{{ platform }}-{{ version }}.yml"
       - "defaults/{{ platform }}.yml"
+      - "defaults/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+      - "defaults/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+      - "defaults/{{ ansible_distribution }}.yml"
       - defaults/none.yml
 
 - name: include tasks
   include: "{{ lookup('first_found', possible) }}"
   vars:
     possible:
-      - "{{ platform }}-{{ version }}.yml"
       - "{{ platform }}.yml"
+      - "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+      - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+      - "{{ ansible_distribution }}.yml"
       - unsupported.yml

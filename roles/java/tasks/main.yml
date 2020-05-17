@@ -4,6 +4,9 @@
   vars:
     possible:
       - "defaults/{{ platform }}.yml"
+      - "defaults/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+      - "defaults/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+      - "defaults/{{ ansible_distribution }}.yml"
       - defaults/none.yml
 
 - name: include tasks
@@ -11,8 +14,7 @@
   vars:
     possible:
       - "{{ platform }}.yml"
+      - "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+      - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+      - "{{ ansible_distribution }}.yml"
       - unsupported.yml
-
-- name: '🎶 java java jing jing jing 🎶'
-  debug:
-    msg: 'https://www.youtube.com/watch?v=TAX0gJt-aZg'
