@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# cleanup on exit
+trap EXIT rm -f {{ anaconda_installer_script }}
+
+# fetch anaconda
+curl -sLo {{ anaconda_installer_script }} {{ anaconda_installer_url }}
+
+# run the installer
+bash {{ anaconda_installer_script }} -b -p {{ anaconda_install_dir }}
