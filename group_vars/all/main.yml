@@ -1,2 +1,3 @@
 ---
 platform: "{{ ansible_distribution }}"
+version: "{{ ansible_distribution_version }}"

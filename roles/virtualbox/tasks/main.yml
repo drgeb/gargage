@@ -3,6 +3,7 @@
   include_vars: "{{ lookup('first_found', possible) }}"
   vars:
     possible:
+      - "defaults/{{ platform }}-{{ version }}.yml"
       - "defaults/{{ platform }}.yml"
       - defaults/none.yml
 
@@ -10,5 +11,6 @@
   include: "{{ lookup('first_found', possible) }}"
   vars:
     possible:
+      - "{{ platform }}-{{ version }}.yml"
       - "{{ platform }}.yml"
       - unsupported.yml
