@@ -2,10 +2,10 @@
 anaconda_version: "2020.02"
 anaconda_installer_script: "Anaconda3-{{ anaconda_version }}-Linux-x86_64.sh"
 anaconda_installer_url: "https://repo.anaconda.com/archive/{{ anaconda_installer_script }}"
-anaconda_download_dir: "{{ ansible_env.HOME}}/.downloads"
 anaconda_install_dir: "{{ ansible_env.HOME }}/anaconda3"
 
 anaconda_packages:
+  - curl
   - libgl1-mesa-glx
   - libegl1-mesa
   - libxrandr2
