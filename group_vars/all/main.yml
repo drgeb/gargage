@@ -1,2 +1,2 @@
 ---
-platform: "{{ ansible_distribution }}"
+platform: null

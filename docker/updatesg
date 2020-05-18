@@ -1,0 +1,42 @@
+#!/bin/bash
+
+lookup="https://api.ipify.org"
+action='authorize-security-group-ingress'
+
+while getopts ":rg:c:" opt; do
+  case "${opt}" in
+    g )
+      group_id=$OPTARG
+      ;;
+    c )
+      cidr=$OPTARG
+      ;;
+    r )
+      action=revoke-security-group-ingress
+      ;;
+    \? )
+      echo "Invalid Option: $OPTARG" 1>&2
+      exit 1
+      ;;
+    : )
+      echo "Invalid Option: $OPTARG requires an argument" 1>&2
+      exit 1
+      ;;
+  esac
+done
+shift $((OPTIND -1))
+
+if [ -z "$group_id" ]; then
+  echo "Group ID required"
+  exit 1
+fi
+
+if [ -z "$cidr" ]; then
+  cidr="$(curl -sL $lookup)/32"
+fi
+
+aws ec2 $action \
+  --group-id "$group_id" \
+  --protocol tcp \
+  --port 22 \
+  --cidr "$cidr"

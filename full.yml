@@ -13,6 +13,7 @@
     - awscli
     - cloudfoundry
     - anaconda
+    - miniconda
     - ruby
     - chefdk
     - java

@@ -17,10 +17,7 @@ TL;DR... here's how you install it.  You'll need sudo privileges on your system 
 
 **Default Playbook**
 ```
-# Enter your 'sudo' credentials when prompted.
-curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash
-
-# Or, if downloaded locally...
+# Clone this repo and run the installer.
 ./install.sh
 ```
 
@@ -38,10 +35,7 @@ This playbook installs a subset of roles that might be useful for the data scien
 * R (includes RStudio)
 
 ```
-# Enter your 'sudo' credentials when prompted.
-curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- data
-
-# Or if downloaded locally...
+# Clone this repo and run the installer.
 ./install.sh data
 ```
 
@@ -61,10 +55,7 @@ This playbook installs a subset of roles that might be useful to developers.  It
 * vscode
 
 ```
-# Enter your 'sudo' credentials when prompted.
-curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- development
-
-# Or if downloaded locally...
+# Clone this repo and run the installer.
 ./install.sh development
 ```
 
@@ -73,10 +64,7 @@ curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- d
 This is the kitchen sink.  It installs everything currently supported.
 
 ```
-# Enter your 'sudo' credentials when prompted.
-curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- full
-
-# Or if downloaded locally...
+# Clone this repo and run the installer.
 ./install.sh full
 ```
 
@@ -85,10 +73,7 @@ curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- f
 This installs just the `base` role.
 
 ```
-# Enter your 'sudo' credentials when prompted.
-curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- minimal
-
-# Or if downloaded locally...
+# Clone this repo and run the installer.
 ./install.sh minimal
 ```
 
@@ -97,10 +82,9 @@ curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- m
 This is an example of a playbook that installs the base role with a custom list of packages, in this case just 'git'.
 
 ```
-# Enter your 'sudo' credentials when prompted.
-curl -sL https://gitlab.com/kb9zzw/garage/-/raw/master/install.sh | bash -s -- custom
+# Clone this repo and edit custom.yml
 
-# Or if downloaded locally...
+# Then run the installer
 ./install.sh custom
 ```
 
