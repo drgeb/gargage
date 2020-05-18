@@ -4,7 +4,7 @@ R_packages:
   - libpng-dev
   - libjpeg-dev
   - libxml2-dev
-  - openssl-dev
+  - libssl-dev
   - libssh-dev
   - r-base
   - r-base-dev
