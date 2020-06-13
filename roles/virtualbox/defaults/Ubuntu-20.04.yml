@@ -1,4 +1,0 @@
----
-virtualbox_repo: 'deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian eoan contrib'
-virtualbox_repo_key: 'https://www.virtualbox.org/download/oracle_vbox_2016.asc'
-virtualbox_package: 'virtualbox-6.1'
