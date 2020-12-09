@@ -7,6 +7,13 @@
   with_items:
     - "{{ R_packages }}"
 
+- name: install rstudio rpm key
+  become: true
+  rpm_key:
+    key: "roles/R/files/RPM-GPG-KEY-rstudio"
+    state: present
+  when: R_rstudio_enabled
+
 - name: install rstudio
   become: true
   yum:

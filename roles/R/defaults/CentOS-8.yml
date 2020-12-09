@@ -11,5 +11,5 @@ R_packages:
   - R-devel
 
 R_rstudio_enabled: true
-R_rstudio_version: '1.2.5042'
+R_rstudio_version: '1.3.1093'
 R_rstudio_package: "https://download1.rstudio.org/desktop/fedora28/x86_64/rstudio-{{ R_rstudio_version }}-x86_64.rpm"
