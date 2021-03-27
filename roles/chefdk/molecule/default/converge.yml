@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include chefdk"
+      include_role:
+        name: "chefdk"

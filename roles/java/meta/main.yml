@@ -1,0 +1,40 @@
+---
+galaxy_info:
+  author: kb9zzw
+  description: bootstraps java development environment
+  issue_tracker_url: https://gitlab.com/kb9zzw/garage/-/issues
+
+  license: MIT
+
+  min_ansible_version: 2.9
+
+  # If this a Container Enabled role, provide the minimum Ansible Container version.
+  # min_ansible_container_version:
+
+  #
+  # Provide a list of supported platforms, and for each platform a list of versions.
+  # If you don't wish to enumerate all versions for a particular platform, use 'all'.
+  # To view available platforms and versions (or releases), visit:
+  # https://galaxy.ansible.com/api/v1/platforms/
+  #
+  platforms:
+    - name: Amazon Linux 2
+      versions:
+        - all
+    - name: EL
+      versions:
+        - 7
+        - 8
+    - name: Ubuntu
+      versions:
+        - focal
+    - name: MacOSX
+      versions:
+        - 10.15
+        - 11
+
+  galaxy_tags:
+    - java
+    - jdk
+
+dependencies: []

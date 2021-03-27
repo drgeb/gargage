@@ -1,3 +1,0 @@
----
-cloudfoundry_repo_baseurl: 'https://packages.cloudfoundry.org/fedora'
-cloudfoundry_repo_gpgkey: 'https://packages.cloudfoundry.org/fedora/cli.cloudfoundry.org.key'

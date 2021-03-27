@@ -1,9 +1,0 @@
----
-- hosts: all
-  roles:
-    - base
-
-  # Override role variables
-  vars:
-    base_packages:
-      - git

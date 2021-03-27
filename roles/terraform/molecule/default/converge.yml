@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    terraform_versions:
+      - 0.14.9
+    terraform_global_version: 0.14.9
+
+  tasks:
+    - name: "Include terraform"
+      include_role:
+        name: "terraform"

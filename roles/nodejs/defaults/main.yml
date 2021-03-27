@@ -1,0 +1,9 @@
+---
+platform: ''
+
+# NodeJS versions to install
+nodejs_versions:
+  - latest
+
+# NodeJS version to globally activate
+nodejs_global_version: latest

@@ -1,6 +1,1 @@
----
-- name: install terraform
-  become: false
-  homebrew:
-    name: terraform
-    state: present
+Linux.yml

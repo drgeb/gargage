@@ -1,0 +1,15 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+  - name: check package status
+    package:
+      name: gimp
+      state: present
+    check_mode: true
+    register: pkg_status
+
+  - name: test package is installed
+    assert:
+      that:
+        - not pkg_status.changed

@@ -1,0 +1,5 @@
+---
+platform: ''
+
+# Package dependencies
+amazonworkspaces_packages: []

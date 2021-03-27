@@ -1,0 +1,21 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+  - name: run docker
+    shell: "docker --version"
+    register: docker_output
+
+  - name: assert docker installed
+    assert:
+      that:
+        - "'Docker version' in docker_output.stdout"
+
+  - name: run docker-compose
+    shell: "docker-compose --version"
+    register: docker_compose_output
+
+  - name: assert docker-compose installed
+    assert:
+      that:
+        - "'docker-compose version' in docker_compose_output.stdout"

@@ -1,4 +1,21 @@
 ---
+- name: get extras status
+  become: true
+  shell: |
+    amazon-linux-extras list
+  register: extras_list
+  changed_when: false
+
+- name: enable extras
+  become: true
+  shell: |
+    amazon-linux-extras enable {{ item }} > /dev/null
+    amazon-linux-extras list
+  register: extras
+  changed_when: extras_list.stdout != extras.stdout
+  with_items:
+    - "{{ java_extras }}"
+
 - name: install packages
   become: true
   package:
@@ -7,10 +24,5 @@
   with_items:
     - "{{ java_packages }}"
 
-- name: install sdkman
-  become: false
-  shell: >
-    {{ java_sdkman_script }}
-  args:
-    creates: "{{ ansible_env.HOME }}/.sdkman"
-    warn: false
+- name: include asdf tasks
+  include: asdf.yml

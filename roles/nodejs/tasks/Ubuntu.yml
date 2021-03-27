@@ -1,8 +1,0 @@
----
-- name: install nvm
-  become: false
-  shell: >
-    {{ nodejs_nvm_script }}
-  args:
-    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
-    warn: false

@@ -1,9 +1,0 @@
----
-java_packages:
-  - curl
-  - zip
-  - unzip
-  - java-1.8.0-openjdk-devel
-
-java_sdkman_script: >
-  curl -s "https://get.sdkman.io?rcupdate=false" | bash

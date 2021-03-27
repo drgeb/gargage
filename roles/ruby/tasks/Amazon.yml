@@ -1,9 +1,20 @@
 ---
-- name: enable ruby2.6
+- name: get extras status
   become: true
-  command:
-    cmd: 'amazon-linux-extras install -y ruby2.6'
-    creates: '/usr/bin/ruby'
+  shell: |
+    amazon-linux-extras list
+  register: extras_list
+  changed_when: false
+
+- name: enable extras
+  become: true
+  shell: |
+    amazon-linux-extras enable {{ item }} > /dev/null
+    amazon-linux-extras list
+  register: extras
+  changed_when: extras_list.stdout != extras.stdout
+  with_items:
+    - "{{ ruby_extras }}"
 
 - name: install packages
   become: true
@@ -13,9 +24,5 @@
   with_items:
     - "{{ ruby_packages }}"
 
-- name: install rbenv
-  become: false
-  shell: >
-    {{ ruby_rbenv_script }}
-  args:
-    creates: "{{ ruby_rbenv_dir }}"
+- name: include asdf tasks
+  include: asdf.yml

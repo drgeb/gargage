@@ -1,0 +1,2 @@
+---
+dodpki_certs_dir: '/etc/pki/ca-trust/source/anchors'

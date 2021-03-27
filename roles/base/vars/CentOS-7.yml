@@ -1,0 +1,33 @@
+---
+base_epel_package: epel-release
+base_enable_epel: true
+base_enable_powertools: false
+
+base_packages:
+  - less
+  - openssl
+  - openssh-clients
+  - tar
+  - gzip
+  - bzip2
+  - zip
+  - unzip
+  - curl
+  - wget
+  - procps-ng
+  - htop
+  - bind-utils
+  - mlocate
+  - which
+  - sed
+  - gawk
+  - neovim
+  - terminator
+  - git
+  - jq
+  - make
+  - automake
+  - nss-tools
+  - gcc
+  - gcc-c++
+  - opensc

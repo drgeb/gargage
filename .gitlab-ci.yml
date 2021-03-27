@@ -1,56 +1,144 @@
 ---
+image: quay.io/ansible/toolset:latest
+
+services:
+  - docker:dind
+
 stages:
-  - prepare
   - test
 
 variables:
-  KITCHEN_YAML: .kitchen-ec2.yml
-  GROUP_ID: "sg-0284bddba141545e9"
+  DOCKER_HOST: "tcp://docker:2375"
+  PY_COLORS: 1
 
-.test_template: &test_template
+before_script:
+  - apt-get update && apt-get -y install yamllint
+  - docker -v
+  - python -V
+  - ansible --version
+  - molecule --version
+  - ansible-lint --version
+  - yamllint --version
+
+.role_test: &role_test
   stage: test
-  image: "${CI_REGISTRY_IMAGE}/ec2-executor"
-  before_script:
-    - updatesg -g ${GROUP_ID}
   script:
-    - kitchen test ${PLATFORM} -d always
-  after_script:
-    - kitchen destroy ${PLATFORM}
-    - updatesg -r -g ${GROUP_ID}
-  artifacts:
-    expire_in: 7d
-    reports:
-      junit: reports/test-output.xml
+    - cd roles/$ROLE
+    - molecule test
   tags:
     - docker
 
-Prep Executor:
-  stage: prepare
-  image: 
-    name: gcr.io/kaniko-project/executor:debug
-    entrypoint: [""]
-  script:
-    - mkdir -p /kaniko/.docker
-    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
-    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/docker/Dockerfile.ec2-executor --destination $CI_REGISTRY_IMAGE/ec2-executor
-  tags:
-    - docker
-  only:
-    changes:
-      - Gemfile*
-      - docker/Dockerfile.ec2-executor
-
-Test Ubuntu 18_04:
-  <<: *test_template
+molecule_role_amazonworkspaces:
+  <<: *role_test
   variables:
-    PLATFORM: ubuntu18
+    ROLE: amazonworkspaces
 
-Test CentOS7:
-  <<: *test_template
+molecule_role_asdf:
+  <<: *role_test
   variables:
-    PLATFORM: centos7
+    ROLE: asdf
 
-Test AmazonLinux2:
-  <<: *test_template
+molecule_role_atom:
+  <<: *role_test
   variables:
-    PLATFORM: amazonlinux
+    ROLE: atom
+
+molecule_role_awscli:
+  <<: *role_test
+  variables:
+    ROLE: awscli
+
+molecule_role_base:
+  <<: *role_test
+  variables:
+    ROLE: base
+
+molecule_role_chefdk:
+  <<: *role_test
+  variables:
+    ROLE: chefdk
+
+molecule_role_cf:
+  <<: *role_test
+  variables:
+    ROLE: cf
+
+molecule_role_chrome:
+  <<: *role_test
+  variables:
+    ROLE: chrome
+
+molecule_role_desktop:
+  <<: *role_test
+  variables:
+    ROLE: desktop
+
+molecule_role_docker:
+  <<: *role_test
+  variables:
+    ROLE: docker
+
+molecule_role_dodpki:
+  <<: *role_test
+  variables:
+    ROLE: dodpki
+
+molecule_role_java:
+  <<: *role_test
+  variables:
+    ROLE: java
+
+molecule_role_kubectl:
+  <<: *role_test
+  variables:
+    ROLE: kubectl
+
+molecule_role_nodejs:
+  <<: *role_test
+  variables:
+    ROLE: nodejs
+
+molecule_role_oc:
+  <<: *role_test
+  variables:
+    ROLE: oc
+
+molecule_role_podman:
+  <<: *role_test
+  variables:
+    ROLE: podman
+
+molecule_role_python:
+  <<: *role_test
+  variables:
+    ROLE: python
+
+molecule_role_R:
+  <<: *role_test
+  variables:
+    ROLE: R
+
+molecule_role_ruby:
+  <<: *role_test
+  variables:
+    ROLE: ruby
+
+molecule_role_terraform:
+  <<: *role_test
+  variables:
+    ROLE: terraform
+
+molecule_role_vagrant:
+  <<: *role_test
+  variables:
+    ROLE: vagrant
+
+molecule_role_virtualbox:
+  <<: *role_test
+  variables:
+    ROLE: virtualbox
+
+molecule_role_vscode:
+  <<: *role_test
+  variables:
+    ROLE: vscode

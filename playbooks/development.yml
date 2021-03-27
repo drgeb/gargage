@@ -1,0 +1,48 @@
+---
+- hosts: all
+  roles:
+    - base
+    - asdf
+    - atom
+    - awscli
+      cf
+    - docker
+    - dodpki
+    - java
+    - kubectl
+    - nodejs
+    - oc
+    - podman
+    - terraform
+    - vscode
+
+  vars:
+    cf_versions:
+      - latest
+      - 6.53.0
+    cf_global_version: latest
+
+    java_versions:
+      - latest
+    java_global_version: latest
+
+    kubectl_versions:
+      - latest
+    kubectl_global_version: latest
+
+    terraform_versions:
+      - latest
+    terraform_global_version: latest
+
+    python_versions:
+      - latest
+    python_global_version: latest
+
+    nodejs_versions:
+      - latest
+      - lts
+    nodejs_global_version: latest
+
+    oc_versions:
+      - latest
+    oc_global_version: latest

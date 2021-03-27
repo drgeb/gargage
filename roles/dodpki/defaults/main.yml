@@ -1,0 +1,5 @@
+---
+platform: ''
+
+# Certificate install path
+dodpki_certs_dir: '/etc/ssl/certs'

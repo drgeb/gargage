@@ -1,0 +1,38 @@
+---
+- name: core setup
+  become: true
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - redhat-lsb-core
+    - yum-utils
+    - gnupg
+
+- name: enable epel
+  become: true
+  package:
+    name: "{{ base_epel_package }}"
+    state: present
+  when: base_enable_epel
+
+- name: enable centos powertools
+  become: true
+  yum_repository:
+    name: powertools
+    description: CentOS Linux $releasever - PowerTools
+    file: CentOS-Linux-PowerTools
+    mirrorlist: 'http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=PowerTools&infra=$infra'
+    gpgcheck: true
+    gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial'
+    enabled: true
+    state: present
+  when: base_enable_powertools and ansible_distribution == 'CentOS'
+
+- name: install base packages
+  become: true
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ base_packages }}"

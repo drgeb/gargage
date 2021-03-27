@@ -1,0 +1,11 @@
+---
+# Prepare
+- name: prepare
+  hosts: all
+  tasks:
+    - name: setup packages
+      apt:
+        update_cache: true
+        name:
+          - gnupg
+        state: present

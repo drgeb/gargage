@@ -1,0 +1,16 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+    # we can't actually run VirtualBox on docker, so
+    # we'll just check that it is installed
+    - name: check for virtualbox
+      shell: command -v VirtualBox
+      args:
+        executable: /bin/bash
+      register: virtualbox_cmd
+
+    - name: verify virtualbox installed
+      assert:
+        that:
+          - '"VirtualBox" in virtualbox_cmd.stdout'

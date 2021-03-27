@@ -1,0 +1,13 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    asdf_plugins:
+      - kubectl
+    kubectl_versions:
+      - 1.20.5
+
+  tasks:
+    - name: "Include kubectl"
+      include_role:
+        name: "kubectl"

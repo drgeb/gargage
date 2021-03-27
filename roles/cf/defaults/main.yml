@@ -1,0 +1,9 @@
+---
+platform: ''
+
+# versions of cf to install
+cf_versions:
+  - latest
+
+# version of cf to globally activate
+cf_global_version: latest

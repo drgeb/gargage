@@ -1,0 +1,9 @@
+---
+platform: ''
+
+# versions of oc to install
+oc_versions:
+  - latest
+
+# version of oc to globally activate
+oc_global_version: latest

@@ -1,4 +1,11 @@
 ---
+- name: install dependencies
+  become: true
+  apt:
+    update_cache: true
+    name: gnupg
+    state: present
+
 - name: install repo key
   become: true
   apt_key:

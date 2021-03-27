@@ -1,0 +1,9 @@
+---
+platform: ''
+
+# versions of kubectl to install
+kubectl_versions:
+  - latest
+
+# version of kubectl to globally activate
+kubectl_global_version: latest

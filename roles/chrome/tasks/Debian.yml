@@ -1,0 +1,20 @@
+---
+- name: install google chrome repo key
+  become: true
+  apt_key:
+    url: "{{ chrome_repo_key }}"
+    id: "{{ chrome_repo_id }}"
+    state: present
+
+- name: install chrome repo
+  become: true
+  apt_repository:
+    repo: "{{ chrome_repo }}"
+    state: present
+
+- name: install chrome
+  become: true
+  apt:
+    update_cache: true
+    name: "{{ chrome_package }}"
+    state: present

@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include dodpki"
+      include_role:
+        name: "dodpki"

@@ -1,0 +1,15 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+    # we can't actually test vagrant on docker, so
+    # we'll just check that it is installed
+    - name: check for vagrant
+      stat:
+        path: "{{ ansible_env.HOME }}/.asdf/installs/vagrant/2.2.14/bin/vagrant"
+      register: vagrant_cmd
+
+    - name: verify vagrant installed
+      assert:
+        that:
+          - vagrant_cmd.stat.exists

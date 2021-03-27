@@ -1,0 +1,15 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+  - name: set global oc
+    command: "{{ ansible_env.HOME }}/.asdf/bin/asdf global oc 4.7.4"
+
+  - name: activate oc
+    command: "{{ ansible_env.HOME }}/.asdf/shims/oc version"
+    register: asdf_oc
+
+  - name: test oc installed
+    assert:
+      that:
+        - asdf_oc.stdout | regex_search('Client Version: 4.7.4')

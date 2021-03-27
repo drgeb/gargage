@@ -1,0 +1,11 @@
+---
+- name: install awscli
+  shell: |
+    mkdir {{ ansible_env.HOME }}/.awscli_tmp
+    curl -sL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" \
+      -o "{{ ansible_env.HOME }}/.awscli_tmp/awscliv2.zip"
+    unzip {{ ansible_env.HOME }}/.awscli_tmp/awscliv2.zip
+    ./aws/install -i {{ awscli_install_dir }} -b {{ awscli_bin_dir }}
+    rm -rf {{ ansible_env.HOME }}/.awscli_tmp
+  args:
+    creates: "{{ awscli_bin_dir }}/aws"

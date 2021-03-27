@@ -1,0 +1,22 @@
+---
+# Prepare
+- name: prepare
+  hosts: all
+  vars:
+    packages:
+      - curl
+      - unzip
+
+  tasks:
+    - name: setup packages
+      apt:
+        update_cache: true
+        name: "{{ packages }}"
+        state: present
+      when: ansible_os_family == 'Debian'
+
+    - name: setup packages
+      package:
+        name: "{{ packages }}"
+        state: present
+      when: ansible_os_family == 'RedHat'

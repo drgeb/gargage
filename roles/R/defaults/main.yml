@@ -1,0 +1,14 @@
+---
+platform: ''
+
+# Versions of R to install.  Default = none as this takes a long time to compile.
+R_versions: []
+
+# Version of R to globally activate
+R_global_version: None
+
+# Install rstudio?
+R_rstudio_enabled: true
+
+# Version of RStudio
+R_rstudio_version: 1.4.1106

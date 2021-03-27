@@ -1,0 +1,8 @@
+---
+desktop_packages:
+  - libreoffice-calc
+  - libreoffice-writer
+  - libreoffice-draw
+  - libreoffice-impress
+  - gimp
+  - firefox

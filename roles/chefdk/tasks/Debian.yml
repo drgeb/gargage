@@ -1,0 +1,25 @@
+---
+- name: install packages
+  become: true
+  apt:
+    update_cache: true
+    name: "{{ chefdk_packages }}"
+    state: present
+
+- name: install repo key
+  become: true
+  apt_key:
+    url: "{{ chefdk_repo_key }}"
+    state: present
+
+- name: install repo
+  become: true
+  apt_repository:
+    repo: "{{ chefdk_repo }}"
+    state: present
+
+- name: install chefdk
+  become: true
+  package:
+    name: chefdk
+    state: present

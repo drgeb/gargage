@@ -1,6 +1,6 @@
 ---
-- name: not supported
-  debug:
-    msg: >
-      docker role not currently supported for MacOSX.
-      Install manually from https://hub.docker.com/editions/community/docker-ce-desktop-mac
+- name: install docker
+  become: false
+  homebrew_cask:
+    name: "{{ docker_homebrew_casks }}"
+    state: present

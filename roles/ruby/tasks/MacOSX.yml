@@ -1,6 +1,8 @@
 ---
-- name: install rbenv
-  become: false
+- name: install packages
   homebrew:
-    name: rbenv
+    name: "{{ ruby_packages }}"
     state: present
+
+- name: include asdf tasks
+  include: asdf.yml

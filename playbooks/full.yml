@@ -1,0 +1,69 @@
+# The everything bagel
+# WARNING:  This may take over an hour to run
+---
+- hosts: all
+  roles:
+    - base
+    - amazonworkspaces
+    - asdf
+    - atom
+    - awscli
+    - chefdk
+    - chrome
+    - cf
+    - desktop
+    - docker
+    - dodpki
+    - java
+    - kubectl
+    - nodejs
+    - oc
+    - podman
+    - python
+    - R
+    - ruby
+    - terraform
+    - vagrant
+    - virtualbox
+    - vscode
+
+  vars:
+    cf_versions:
+      - latest
+      - 6.53.0
+    cf_global_version: latest
+
+    kubectl_versions:
+      - latest
+    kubectl_global_version: latest
+
+    python_versions:
+      - latest
+      - 3.8.8
+    python_global_version: latest
+
+    java_versions:
+      - latest
+    java_global_version: latest
+
+    nodejs_versions:
+      - latest
+    nodejs_global_version: latest
+
+    oc_versions:
+      - latest
+    oc_global_version: latest
+
+    R_rstudio_enabled: true
+
+    terraform_versions:
+      - latest
+    terraform_global_version: latest
+
+    vagrant_versions:
+      - latest
+    vagrant_global_version: latest
+
+    ruby_versions:
+      - latest
+    ruby_global_version: latest

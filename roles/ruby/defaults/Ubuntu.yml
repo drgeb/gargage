@@ -1,8 +1,0 @@
----
-ruby_packages:
-  - git
-  - ruby
-  - ruby-dev
-
-ruby_rbenv_dir: "{{ ansible_env.HOME }}/.rbenv"
-ruby_rbenv_script: "git clone https://github.com/rbenv/rbenv.git {{ ruby_rbenv_dir }}"

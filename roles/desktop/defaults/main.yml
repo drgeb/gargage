@@ -1,0 +1,5 @@
+---
+platform: ''
+
+# Desktop packages to install
+desktop_packages: []

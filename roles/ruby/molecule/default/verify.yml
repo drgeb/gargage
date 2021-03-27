@@ -1,0 +1,21 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+  - name: run system ruby
+    command: "/usr/bin/ruby --version"
+    register: system_ruby
+
+  - name: verify system ruby installed
+    assert:
+      that:
+        - system_ruby.stdout | regex_search('ruby')
+
+  - name: run asdf ruby
+    command: "{{ ansible_env.HOME }}/.asdf/shims/ruby --version"
+    register: asdf_ruby
+
+  - name: verify asdf ruby installed
+    assert:
+      that:
+        - asdf_ruby.stdout | regex_search('ruby 3.0.0')

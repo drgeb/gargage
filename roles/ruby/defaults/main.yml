@@ -1,0 +1,12 @@
+---
+platform: ''
+
+# system package dependencies
+ruby_packages: []
+
+# Ruby versions to install
+ruby_versions:
+  - latest
+
+# Ruby version to globally activate
+ruby_global_version: latest

@@ -1,0 +1,9 @@
+---
+platform: ''
+
+# versions of terraform to install
+terraform_versions:
+  - latest
+
+# version of terraform to globally activate
+terraform_global_version: latest

@@ -56,4 +56,4 @@ command -v ansible > /dev/null || install_ansible
 
 # Run the playbook
 echo "Enter sudo password for BECOME password."
-ansible-playbook "${PLAYBOOK}.yml" -i hosts -K && banner
+ansible-playbook "playbooks/${PLAYBOOK}.yml" -i hosts -K && banner

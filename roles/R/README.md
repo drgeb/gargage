@@ -2,24 +2,21 @@
 
 Installs R and R-related development tools
 
-### Ubuntu
+### RedHat / CentOS / Amazon Linux
 
-* R_packages: The list of packages to install.  Default ['r-base', 'r-base-dev']
+* R_packages: The list of OS packages to install.
 * R_rstudio_enabled: Install RStudio?  Default true.
-* R_rstudio_version: RStudio version.  Default '1.2.5033'
-* R_rstudio_package: The DEB package for RStudio.
+* R_rstudio_version: The version of RStudio to install.
+* R_rstudio_package: The RStudio package URL
 
-### CentOS
+### Debian / Ubuntu
 
-* R_packages: The list of packages to install.  Default ['R', 'R-devel']
+* R_packages: The list of packages to install.
 * R_rstudio_enabled: Install RStudio?  Default true.
-* R_rstudio_version: RStudio version.  Default '1.2.5033'
-* R_rstudio_package: The RPM package for RStudio.
-
-### Amazon
-
-Same as CentOS.
+* R_rstudio_version: The version of RStudio to install.
+* R_rstudio_package: The RStudio package URL
 
 ### MacOSX
 
-* R_rstudio_enabled: Install RStudio?  Default true.
+* R_packages: The list of homebrew packages to install.
+* R_rstudio_enabled: Install RStudio? Default true.

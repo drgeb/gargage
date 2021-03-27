@@ -1,33 +1,25 @@
 # role ruby
 
-Installs Ruby development tools.  This generally installs the OS-provided
-packages, then installs rbenv, which can be used to install additional versions
-of Ruby.
+Installs Ruby development tools.
 
-### Ubuntu
+This generally installs the `asdf` utility with the ruby plugin, which can then be 
+used to install a variety of Ruby versions
 
-* ruby_packages: List of DEB packages to install.
-* ruby_rbenv_dir: Directory where rbenv should be installed.  Default = ~/.rbenv
-* ruby_rbenv_script: Script to install rbenv
+### Debian / Ubuntu / RedHat / CentOS
 
-### CentOS
-
-* ruby_packages: List of DEB packages to install.
-* ruby_rbenv_dir: Directory where rbenv should be installed.  Default = ~/.rbenv
-* ruby_rbenv_script: Script to install rbenv
+* ruby_packages: List of system packages to install.
+* ruby_versions: List of Ruby versions to install using asdf
+* ruby_global_version: Ruby version to activate in asdf
 
 ### Amazon
 
-*Note: Ruby2.6 is installed as the default ruby using amazon-linux-extras
-
-* ruby_packages: List of DEB packages to install.
-* ruby_rbenv_dir: Directory where rbenv should be installed.  Default = ~/.rbenv
-* ruby_rbenv_script: Script to install rbenv
+* ruby_extras: List of Amazon Linux Extras to enable
+* ruby_packages: List of system packages to install.
+* ruby_versions: List of Ruby versions to install using asdf.
+* ruby_global_version: Ruby version to activate in asdf
 
 ### MacOSX
 
-*Note: No system-level Ruby versions are installed beyond what comes out of the box
-for MacOSX. This playbook only installs rbenv.
-
-* ruby_rbenv_dir: Directory where rbenv should be installed.  Default = ~/.rbenv
-* ruby_rbenv_script: Script to install rbenv
+* ruby_packages: List of homebrew packages to install.
+* ruby_versions: List of Ruby versions to install using asdf.
+* ruby_global_version: Ruby version to activate in asdf

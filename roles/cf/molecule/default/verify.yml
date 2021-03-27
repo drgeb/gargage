@@ -1,0 +1,15 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+  - name: set global cf
+    command: "{{ ansible_env.HOME }}/.asdf/bin/asdf global cf 6.53.0"
+
+  - name: activate cf
+    command: "{{ ansible_env.HOME }}/.asdf/shims/cf -v"
+    register: asdf_cf
+
+  - name: test cf installed
+    assert:
+      that:
+        - asdf_cf.stdout | regex_search('cf version 6.53.0')

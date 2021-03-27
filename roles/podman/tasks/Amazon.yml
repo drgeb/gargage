@@ -1,13 +1,28 @@
 ---
+- name: enable epel
+  become: true
+  command:
+    cmd: 'amazon-linux-extras install epel'
+    creates: '/etc/yum.repos.d/epel.repo'
+
+- name: install dependencies
+  become: true
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - gnupg
+
 - name: install repo
   become: true
   yum_repository:
-    name: 'kubic_libcontainers'
-    description: "kubic libcontainers"
+    name: kubic
+    description: 'kubic libcontainers'
     baseurl: "{{ podman_repo_baseurl }}"
-    gpgcheck: true
     gpgkey: "{{ podman_repo_gpgkey }}"
+    gpgcheck: true
     enabled: true
+    state: present
 
 - name: install yum-plugin-copr
   become: true

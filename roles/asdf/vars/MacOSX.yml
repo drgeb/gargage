@@ -1,0 +1,4 @@
+---
+asdf_packages:
+  - curl
+  - git

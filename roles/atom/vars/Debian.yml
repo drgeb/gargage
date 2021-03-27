@@ -1,0 +1,6 @@
+---
+atom_packages:
+  - gpg
+
+atom_repo: 'deb https://packagecloud.io/AtomEditor/atom/any/ any main'
+atom_repo_key: 'https://packagecloud.io/AtomEditor/atom/gpgkey'

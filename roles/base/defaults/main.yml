@@ -1,0 +1,5 @@
+---
+platform: ''
+
+# O/S packages
+base_packages: []

@@ -1,0 +1,10 @@
+---
+- name: install packages
+  become: true
+  apt:
+    update_cache: true
+    name: "{{ python_packages }}"
+    state: present
+
+- name: include asdf tasks
+  include: asdf.yml

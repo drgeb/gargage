@@ -1,6 +1,0 @@
----
-- name: install miniconda
-  become: false
-  homebrew_cask:
-    name: miniconda
-    state: present

@@ -1,0 +1,12 @@
+---
+platform: ''
+
+# O/S package dependencies
+java_packages: []
+
+# Java versions to install
+java_versions:
+  - latest
+
+# Java version to globally activate
+java_global_version: latest

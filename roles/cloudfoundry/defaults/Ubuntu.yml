@@ -1,3 +1,0 @@
----
-cloudfoundry_repo: 'deb "https://packages.cloudfoundry.org/debian" stable main'
-cloudfoundry_repo_key: 'https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key'

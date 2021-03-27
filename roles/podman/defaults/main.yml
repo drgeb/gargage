@@ -1,0 +1,6 @@
+---
+platform: ''
+
+podman_packages:
+  - podman
+  - buildah

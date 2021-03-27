@@ -1,0 +1,14 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+    - name: check for vscode
+      shell: command -v code
+      args:
+        executable: /bin/bash
+      register: code_cmd
+
+    - name: verify vscode installed
+      assert:
+        that:
+          - '"code" in code_cmd.stdout'

@@ -1,0 +1,18 @@
+---
+- hosts: all
+  roles:
+    - base
+    - asdf
+    - awscli
+    - chrome
+    - cf
+    - desktop
+    - docker
+    - dodpki
+    - java
+    - kubectl
+    - nodejs
+    - oc
+    - python
+    - terraform
+    - vscode

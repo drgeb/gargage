@@ -1,0 +1,30 @@
+---
+- name: install asdf kubectl plugin
+  shell: |
+    . {{ ansible_env.HOME }}/.asdf/asdf.sh
+    asdf plugin add kubectl
+  args:
+    executable: /bin/bash
+    creates: "{{ ansible_env.HOME }}/.asdf/plugins/kubectl"
+
+- name: install versions
+  become: false
+  shell: |
+    . {{ ansible_env.HOME }}/.asdf/asdf.sh
+    asdf install kubectl {{ item }}
+  args:
+    executable: /bin/bash
+  register: asdf_install
+  changed_when: '"is already installed" not in asdf_install.stdout'
+  with_items:
+    - "{{ kubectl_versions }}"
+
+- name: set global version
+  become: false
+  shell: |
+    . {{ ansible_env.HOME }}/.asdf/asdf.sh
+    asdf global kubectl {{ kubectl_global_version }}
+  args:
+    executable: /bin/bash
+  changed_when: false
+  when: kubectl_global_version

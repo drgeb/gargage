@@ -1,0 +1,5 @@
+---
+platform: ''
+
+# Google Chrome package
+chrome_package: google-chrome-stable

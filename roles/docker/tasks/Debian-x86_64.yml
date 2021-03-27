@@ -1,0 +1,55 @@
+---
+- name: install packages
+  become: true
+  apt:
+    update_cache: true
+    name: "{{ docker_packages }}"
+    state: present
+
+- name: install repo key
+  become: true
+  apt_key:
+    url: "{{ docker_repo_key }}"
+    keyring: "{{ docker_repo_keyring }}"
+    state: present
+
+- name: install repo
+  become: true
+  apt_repository:
+    filename: 'docker'
+    repo: "{{ docker_repo }}"
+
+- name: install docker
+  become: true
+  apt:
+    update_cache: true
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: present
+  notify: "restart docker"
+
+- name: create docker group
+  become: true
+  group:
+    name: docker
+    state: present
+
+- name: append users to docker group
+  become: true
+  user:
+    name: "{{ item }}"
+    groups:
+      - docker
+    append: true
+  with_items:
+    - "{{ docker_users }}"
+
+- name: install docker-compose
+  become: true
+  shell: >
+    {{ docker_compose_script }}
+  args:
+    creates: '/usr/bin/docker-compose'
+    warn: false

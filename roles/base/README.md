@@ -2,17 +2,9 @@
 
 Installs base packages.
 
-### Ubuntu
+### Linux
 
-* base_packages: List of DEB packages to install.
-
-### CentOS
-
-* base_packages: List of RPM packages to install.
-
-### Amazon
-
-* base_packages: List of RPM packages to install.
+* base_packages: List of packages to install.
 
 ### MacOSX
 

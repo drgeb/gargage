@@ -1,0 +1,12 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+  - name: run podman
+    command: "podman --version"
+    register: podman_cmd
+
+  - name: verify python installed
+    assert:
+      that:
+        - podman_cmd.stdout | regex_search('podman version')

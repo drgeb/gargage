@@ -1,15 +1,8 @@
 ---
-- name: install tcl-tk
+- name: install packages
   homebrew:
-    name: tcl-tk
+    name: "{{ python_packages }}"
     state: present
 
-- name: install pyenv
-  homebrew:
-    name: pyenv
-    state: present
-
-- name: install pyenv-virtualenv
-  homebrew:
-    name: pyenv-virtualenv
-    state: present
+- name: include asdf tasks
+  include: asdf.yml
