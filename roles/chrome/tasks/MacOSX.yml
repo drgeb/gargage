@@ -1,0 +1,5 @@
+---
+- name: install chrome
+  homebrew_cask:
+    name: "{{ chrome_package }}"
+    state: present

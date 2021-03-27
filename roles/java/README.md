@@ -1,28 +1,25 @@
 # role java
 
-Installs Java development tools.  Primarily, it installs sdkman which can
-be used to manage Java and Java-related tools locally.
+Installs Java development tools.
 
-A system Java 8 JDK is also installed.
+This generally installs the `asdf` utility with the java plugin, which can then be 
+used to install a variety of Java versions
 
-### Ubuntu
+### Debian / Ubuntu / RedHat / CentOS
 
-Note: Gradle is installed from system packages.
-
-* java_packages: List of DEB packages to install.
-* java_sdkman_script: Script to install sdkman
-
-### CentOS
-
-* java_packages: List of YUM packages to install.
-* java_sdkman_script: Script to install sdkman
-*
+* java_packages: List of system packages to install.
+* java_versions: List of Java versions to install using asdf
+* java_global_version: Java version to activate in asdf
 
 ### Amazon
 
-* java_packages: List of YUM packages to install.
-* java_sdkman_script: Script to install sdkman
+* java_extras: List of Amazon Linux Extras to enable
+* java_packages: List of system packages to install.
+* java_versions: List of Java versions to install using asdf.
+* java_global_version: Java version to activate in asdf
 
 ### MacOSX
 
-* java_sdkman_script: Script to install sdkman
+* java_packages: List of homebrew packages to install.
+* java_versions: List of Java versions to install using asdf.
+* java_global_version: Java version to activate in asdf

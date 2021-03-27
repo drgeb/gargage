@@ -1,0 +1,12 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+  - name: run awscli
+    shell: "{{ ansible_env.HOME }}/.local/bin/aws --version"
+    register: awscli_output
+
+  - name: assert awscli installed
+    assert:
+      that:
+        - "'aws-cli/2' in awscli_output.stdout"

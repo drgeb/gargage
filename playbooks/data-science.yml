@@ -1,0 +1,22 @@
+---
+- hosts: all
+
+  roles:
+    - base
+    - asdf
+    - awscli
+    - chrome
+      cf
+    - dodpki
+    - python
+    - R
+    - vscode
+
+  vars:
+    python_versions:
+      - latest
+      - 3.8.8
+      - anaconda3-2020.11
+
+    R_rstudio_enabled: true
+    R_rstudio_version: '1.4.1066'

@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    cf_versions:
+      - 6.53.0
+    cf_global_version: 6.53.0
+
+  tasks:
+    - name: "Include cf"
+      include_role:
+        name: "cf"

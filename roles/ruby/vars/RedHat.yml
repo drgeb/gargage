@@ -1,0 +1,18 @@
+---
+ruby_packages:
+  - autoconf
+  - make
+  - gcc
+  - gdbm-devel
+  - gmp-devel
+  - libffi-devel
+  - openssl-devel
+  - readline-devel
+  - systemtap-sdt-devel
+  - zlib-devel
+  - ruby
+  - ruby-irb
+  - rubygem-rake
+  - rubygem-json
+  - rubygems
+  - ruby-devel

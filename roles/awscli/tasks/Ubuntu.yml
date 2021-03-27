@@ -1,6 +1,0 @@
----
-- name: install awscli
-  become: true
-  package:
-    name: awscli
-    state: present

@@ -1,0 +1,4 @@
+---
+# Use EL7 for Amazon Linux 2
+chefdk_repo_baseurl: 'https://packages.chef.io/repos/yum/stable/el/7/$basearch/'
+chefdk_repo_gpgkey: 'https://packages.chef.io/chef.asc'

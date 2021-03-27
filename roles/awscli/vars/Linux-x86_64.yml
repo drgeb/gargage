@@ -1,0 +1,12 @@
+---
+# empty = latest.  To pin a specific version, such as 2.0.30, set awscli_version="-2.0.30"
+awscli_version: ''
+
+# Where to install the awscli
+awscli_install_dir: "{{ ansible_env.HOME }}/.local/aws-cli"
+
+# Where to install the awscli executable
+awscli_bin_dir: "{{ ansible_env.HOME }}/.local/bin"
+
+# AWS CLI download link
+awscli_source_url: "https://awscli.amazonaws.com/awscli-exe-linux-x86_64{{ aws_cli_version }}.zip"

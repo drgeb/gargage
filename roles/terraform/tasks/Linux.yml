@@ -1,0 +1,30 @@
+---
+- name: install asdf terraform plugin
+  shell: |
+    . {{ ansible_env.HOME }}/.asdf/asdf.sh
+    asdf plugin add terraform
+  args:
+    executable: /bin/bash
+    creates: "{{ ansible_env.HOME }}/.asdf/plugins/terraform"
+
+- name: install versions
+  become: false
+  shell: |
+    . {{ ansible_env.HOME }}/.asdf/asdf.sh
+    asdf install terraform {{ item }}
+  args:
+    executable: /bin/bash
+  register: asdf_install
+  changed_when: '"is already installed" not in asdf_install.stdout'
+  with_items:
+    - "{{ terraform_versions }}"
+
+- name: set global version
+  become: false
+  shell: |
+    . {{ ansible_env.HOME }}/.asdf/asdf.sh
+    asdf global terraform {{ terraform_global_version }}
+  args:
+    executable: /bin/bash
+  changed_when: false
+  when: terraform_global_version

@@ -1,0 +1,12 @@
+---
+platform: ''
+
+# O/S package dependencies
+python_packages: []
+
+# Python versions to install
+python_versions:
+  - latest
+
+# Python version to globally activate
+python_global_version: latest

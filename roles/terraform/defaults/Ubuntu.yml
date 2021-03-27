@@ -1,5 +1,0 @@
----
-terraform_version: "0.12.24"
-
-terraform_url: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
-terraform_install_dir: "{{ ansible_env.HOME }}/.local/bin"

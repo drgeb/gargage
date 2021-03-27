@@ -1,8 +1,7 @@
 ---
-- name: install R
-  become: false
-  homebrew_cask:
-    name: r
+- name: install packages
+  homebrew:
+    name: "{{ R_packages }}"
     state: present
 
 - name: install rstudio
@@ -11,3 +10,6 @@
     name: rstudio
     state: present
   when: R_rstudio_enabled
+
+- name: include asdf tasks
+  include: asdf.yml

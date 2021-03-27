@@ -1,0 +1,11 @@
+---
+- name: install certificates
+  become: true
+  copy:
+    src: 'certs/'
+    dest: "{{ dodpki_certs_dir }}"
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  notify:
+    - 'update-ca-trust'

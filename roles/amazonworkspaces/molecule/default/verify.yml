@@ -1,0 +1,17 @@
+---
+# Tests
+
+- name: Verify
+  hosts: all
+  tasks:
+  - name: check package status
+    package:
+      name: workspacesclient
+      state: present
+    check_mode: true
+    register: pkg_status
+
+  - name: test workspaces packaged is installed
+    assert:
+      that:
+        - not pkg_status.changed

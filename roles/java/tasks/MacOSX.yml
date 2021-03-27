@@ -1,8 +1,8 @@
 ---
-- name: install sdkman
-  become: false
-  shell: >
-    {{ java_sdkman_script }}
-  args:
-    creates: "{{ ansible_env.HOME }}/.sdkman"
-    warn: false
+- name: install packages
+  homebrew:
+    name: "{{ java_packages }}"
+    state: present
+
+- name: include asdf tasks
+  include: asdf.yml

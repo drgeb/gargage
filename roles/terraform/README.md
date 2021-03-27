@@ -1,21 +1,8 @@
 # role terraform
 
-Installs Hashicorp Terraform client.
+Installs terraform using asdf
 
-### Ubuntu
+### All
 
-* terraform_version: Version of Terraform to install.
-* terraform_url: URL of the Terraform zip file
-* terraform_install_dir: Where Terraform should be installed.  Default = ~/.local/bin
-
-### CentOS
-
-Same as Ubuntu.
-
-### Amazon
-
-Same as Ubuntu.
-
-### MacOSX
-
-No config.  Installs with Homebrew.
+* terraform_versions: Versions of terraform to install
+* terraform_global_version: Version of terraform to globally activate

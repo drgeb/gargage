@@ -1,0 +1,27 @@
+---
+- name: Verify
+  hosts: all
+  vars:
+    python:
+      Amazon: '/usr/bin/python3.8'
+      CentOS: '/usr/bin/python3'
+      Ubuntu: '/usr/bin/python3'
+
+  tasks:
+    - name: run system python
+      command: "{{ python[ansible_distribution] }} --version"
+      register: system_python
+
+    - name: verify system python installed
+      assert:
+        that:
+          - system_python.stdout | regex_search('Python')
+
+    - name: run asdf python
+      command: "{{ ansible_env.HOME }}/.asdf/shims/python --version"
+      register: asdf_python
+
+    - name: verify asdf python installed
+      assert:
+        that:
+          - asdf_python.stdout | regex_search('Python 3.8.8')

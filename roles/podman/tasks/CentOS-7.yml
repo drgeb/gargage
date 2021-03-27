@@ -1,13 +1,24 @@
 ---
+- name: install dependencies
+  become: true
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - epel-release
+    - gnupg
+
 - name: install repo
   become: true
   yum_repository:
-    name: 'kubic_libcontainers'
-    description: "kubic libcontainers"
+    name: kubic
+    description: 'kubic libcontainers'
     baseurl: "{{ podman_repo_baseurl }}"
-    gpgcheck: true
     gpgkey: "{{ podman_repo_gpgkey }}"
+    gpgcheck: true
     enabled: true
+    state: present
+  when: podman_enable_kubic_repo
 
 - name: install packages
   become: true

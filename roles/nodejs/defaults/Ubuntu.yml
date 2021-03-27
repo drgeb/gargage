@@ -1,3 +1,0 @@
----
-nodejs_nvm_version: "v0.35.3"
-nodejs_nvm_script: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/{{ nodejs_nvm_version }}/install.sh | bash"

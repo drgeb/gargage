@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    oc_versions:
+      - 4.7.4
+    oc_global_version: 4.7.4
+
+  tasks:
+    - name: "Include oc"
+      include_role:
+        name: "oc"

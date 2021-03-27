@@ -1,0 +1,21 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+  - name: run system java
+    command: "/usr/bin/java -version"
+    register: system_java
+
+  - name: verify system java installed
+    assert:
+      that:
+        - system_java.stderr | regex_search('OpenJDK')
+
+  - name: run asdf java
+    command: "{{ ansible_env.HOME }}/.asdf/shims/java -version"
+    register: asdf_java
+
+  - name: verify asdf java installed
+    assert:
+      that:
+        - asdf_java.stderr | regex_search('openjdk version "16"')

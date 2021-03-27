@@ -1,0 +1,20 @@
+---
+platform: ''
+
+# base dependencies
+asdf_packages:
+  - tar
+  - gzip
+  - unzip
+  - curl
+  - gnupg
+  - git
+
+# asdf source repository
+asdf_repo_url: "https://github.com/asdf-vm/asdf.git"
+
+# where to install asdf
+asdf_install_dir: "{{ ansible_env.HOME }}/.asdf"
+
+# asdf plugins to install
+asdf_plugins: []

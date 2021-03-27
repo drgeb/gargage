@@ -1,0 +1,13 @@
+---
+ruby_packages:
+  - autoconf
+  - make
+  - gcc
+  - openssl
+  - systemtap-sdt-dev
+  - libffi-dev
+  - ruby
+  - rake
+  - ruby-dev
+  - ruby-readline
+  - ruby-json

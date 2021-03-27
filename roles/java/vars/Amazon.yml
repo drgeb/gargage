@@ -1,0 +1,6 @@
+---
+java_extras:
+  - java-openjdk11=stable
+
+java_packages:
+  - java-11-openjdk

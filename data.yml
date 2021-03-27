@@ -1,9 +1,0 @@
----
-- hosts: all
-  roles:
-    - base
-    - dodpki
-    - python
-    - anaconda
-    - desktop
-    - R

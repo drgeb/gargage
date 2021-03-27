@@ -1,0 +1,7 @@
+---
+- name: install packages
+  become: true
+  apt:
+    update_cache: true
+    name: "{{ desktop_packages }}"
+    state: present

@@ -1,0 +1,14 @@
+---
+base_packages:
+  - curl
+  - wget
+  - openssl
+  - git
+  - ansible
+  - jq
+  - gnu-sed
+  - gawk
+  - opensc
+
+base_casks:
+  - iterm2

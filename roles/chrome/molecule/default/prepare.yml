@@ -1,0 +1,11 @@
+---
+- name: Prepare
+  hosts: all
+  tasks:
+    - name: setup packages
+      apt:
+        update_cache: true
+        name:
+          - gnupg
+        state: present
+      when: ansible_os_family == 'Debian'

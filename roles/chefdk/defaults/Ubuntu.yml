@@ -1,3 +1,0 @@
----
-chefdk_repo: "deb https://packages.chef.io/repos/apt/stable bionic main"
-chefdk_repo_key: "https://packages.chef.io/chef.asc"

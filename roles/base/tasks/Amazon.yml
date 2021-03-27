@@ -1,12 +1,23 @@
 ---
+- name: core setup
+  become: true
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - system-lsb-core
+    - yum-utils
+    - gnupg
+
 - name: enable epel
-  become: yes
+  become: true
   command:
     cmd: 'amazon-linux-extras install epel'
     creates: '/etc/yum.repos.d/epel.repo'
+  when: base_enable_epel
 
-- name: install packages
-  become: yes
+- name: install base packages
+  become: true
   package:
     name: "{{ item }}"
     state: present

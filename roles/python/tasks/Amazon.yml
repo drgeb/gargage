@@ -1,1 +1,28 @@
-CentOS.yml
+---
+- name: get extras status
+  become: true
+  shell: |
+    amazon-linux-extras list
+  register: extras_list
+  changed_when: false
+
+- name: enable extras
+  become: true
+  shell: |
+    amazon-linux-extras enable {{ item }} > /dev/null
+    amazon-linux-extras list
+  register: extras
+  changed_when: extras_list.stdout != extras.stdout
+  with_items:
+    - "{{ python_extras }}"
+
+- name: install packages
+  become: true
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ python_packages }}"
+
+- name: include asdf tasks
+  include: asdf.yml

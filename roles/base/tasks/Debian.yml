@@ -1,0 +1,18 @@
+---
+- name: core setup
+  become: true
+  apt:
+    update_cache: true
+    name:
+      - lsb-core
+      - apt-file
+      - apt
+      - python-apt
+      - gnupg
+    state: present
+
+- name: install base packages
+  become: true
+  apt:
+    name: "{{ base_packages }}"
+    state: present

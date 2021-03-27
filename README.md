@@ -29,8 +29,7 @@ This playbook installs a subset of roles that might be useful for the data scien
 
 * base
 * dodpki
-* python
-* anaconda
+* python (includes anaconda)
 * desktop
 * R (includes RStudio)
 
@@ -46,7 +45,7 @@ This playbook installs a subset of roles that might be useful to developers.  It
 * base
 * dodpki
 * docker
-* kubernetes
+* kubectl
 * python
 * nodejs
 * java
@@ -143,18 +142,6 @@ Several roles contain variables to fine-tune the behavior of the role.  For exam
 ### Adding your own roles
 
 Each role is self-contained in the `roles` directory. It is possible to add your own role or download one from a 3rd party (i.e. ansible-galaxy).  My general approach to the roles is to right a separate task collection for each platform.  For example, `Ubuntu.yml` defines the tasks for Ubuntu, where `CentOS.yml` defines tasks for CentOS.
-
-### Testing
-
-Testing is done via Kitchen and Inspec.  Test routines are applied using kitchen-docker or kitchen-ec2 and can be found in the `tests` folder.  There is a `.test-setup.sh` script that installs the necessary Ruby Gems and Docker images necessary to run the test suite.
-
-To test:
-
-```
-kitchen test
-```
-
-**NOTE**:  Due to the limitations of running MacOSX in Docker or EC2, the MacOSX tasks are not extensively tested.
 
 ### Related Projects
 

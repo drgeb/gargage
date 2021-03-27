@@ -1,0 +1,24 @@
+---
+- name: check if repo exists
+  become: true
+  stat:
+    path: /etc/yum.repos.d/google-chrome.repo
+  register: repo_file
+
+- name: install google chrome repo
+  become: true
+  yum_repository:
+    name: "google-chrome"
+    description: "Google Chrome"
+    baseurl: "{{ chrome_repo_baseurl }}"
+    gpgkey: "{{ chrome_repo_gpgkey }}"
+    gpgcheck: true
+    enabled: true
+    state: present
+  when: not repo_file.stat.exists
+
+- name: install chrome
+  become: true
+  package:
+    name: "{{ chrome_package }}"
+    state: present

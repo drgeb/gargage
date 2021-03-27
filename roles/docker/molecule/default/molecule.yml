@@ -1,0 +1,50 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: centos7
+    image: "geerlingguy/docker-centos7-ansible:latest"
+    pre_build_image: true
+    privileged: true
+    command: /sbin/init
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    tmpfs:
+      - /run
+      - /tmp
+  - name: ubuntu20
+    image: "geerlingguy/docker-ubuntu2004-ansible:latest"
+    pre_build_image: true
+    privileged: true
+    command: /lib/systemd/systemd
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    tmpfs:
+      - /run
+      - /tmp
+#   - name: amazon2
+    # image: "geerlingguy/docker-amazonlinux2-ansible:latest"
+    # pre_build_image: true
+    # privileged: true
+    # command: /sbin/init
+    # capabilities:
+    #   - SYS_ADMIN
+    # volumes:
+    #   - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    # tmpfs:
+    #   - /run
+#       - /tmp
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
+lint: |
+  set -e
+  yamllint .
+  ansible-lint .

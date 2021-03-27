@@ -1,0 +1,12 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+  - name: run R
+    command: "R --version"
+    register: system_R
+
+  - name: verify R installed
+    assert:
+      that:
+        - system_R.stdout | regex_search('R version')

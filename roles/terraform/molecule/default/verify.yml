@@ -1,0 +1,15 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+  - name: set global terraform
+    command: "{{ ansible_env.HOME }}/.asdf/bin/asdf global terraform 0.14.9"
+
+  - name: activate terraform
+    command: "{{ ansible_env.HOME }}/.asdf/shims/terraform -version"
+    register: asdf_terraform
+
+  - name: test terraform installed
+    assert:
+      that:
+        - asdf_terraform.stdout | regex_search('Terraform v0.14.9')

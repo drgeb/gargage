@@ -2,19 +2,19 @@
 
 Installs Atom Editor
 
-### Ubuntu
+### Debian
 
 * atom_repo: DEB repo for atom
 * atom_repo_key: DEB repo key for atom
 
-### CentOS
+### RedHat
 
 * atom_repo_baseurl: YUM repo for atom
 * atom_repo_gpgkey: YUM repo key for atom
 
 ### Amazon
 
-Same as CentOS
+Same as RedHat
 
 ### MacOSX
 

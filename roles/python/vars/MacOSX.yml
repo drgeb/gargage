@@ -1,0 +1,8 @@
+---
+python_packages:
+  - openssl
+  - readline
+  - sqlite3
+  - xz
+  - zlib
+  - python3

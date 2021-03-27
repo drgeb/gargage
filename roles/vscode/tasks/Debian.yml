@@ -1,0 +1,26 @@
+---
+- name: install gnupg
+  become: true
+  apt:
+    update_cache: true
+    name: gnupg
+    state: present
+
+- name: install repo key
+  become: true
+  apt_key:
+    url: "{{ vscode_repo_key }}"
+    state: present
+
+- name: install repo
+  become: true
+  apt_repository:
+    filename: 'vscode'
+    repo: "{{ vscode_repo }}"
+    state: present
+
+- name: install vscode
+  become: true
+  apt:
+    name: code
+    state: present

@@ -1,8 +1,4 @@
-vendor
-test.yml
-.kitchen-test.yml
-.kitchen
-.ruby-version
 *.retry
 *.swp
+.cache
 reports

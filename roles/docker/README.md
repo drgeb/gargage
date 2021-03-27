@@ -3,32 +3,39 @@
 Installs Docker and related tools, including docker-compose.
 
 
-### Ubuntu
+### Ubuntu / Debian
 
-Cannonical `docker.io` is preferred for Ubuntu.
+Docker.com `docker-ce` is preferred for Ubuntu.
 
-* docker_packages: List of DEB packages to install.
-* docker_users: List of users to add to the 'docker' group. Default = current user
+* `docker_packages`: List of docker packages to install
+* `docker_absent_packages`: List of docker packages to remove
+* `docker_repo_key`: GPG key for docker.com repository
+* `docker_repo_keyring`: Path where `docker_repo_key` should be installed.
+* `docker_repo`: Docker.com repository
+* `docker_users`: List of users to add to the docker group
+* `docker_compose_version`: Version of docker-compose to install
+* `docker_compose_script`: Installation script for docker-compose
 
-### CentOS
+### CentOS / RedHat 7
 
-Docker.com `docker-ce` is preferred for CentOS.
+Docker.com `docker-ce` is preferred for CentOS /RedHat 7.
 
-* docker_repo_baseurl: The YUM repository for Docker-CE
-* docker_repo_gpgkey: The YUM repository key for Docker-CE
-* docker_packages: List of YUM packages to install.
-* docker_users: List of users to add to the 'docker' group. Default = current user
-* docker_compose_version: The version of Docker Compose to install.
-* docker_compose_script: The script to install Docker Compose.
+* `docker_packages`: List of docker packages to install
+* `docker_absent_packages`: List of docker packages to remove
+* `docker_repo_gpgkey`: GPG key for docker.com repository
+* `docker_repo_baseurl`: Docker.com repository
+* `docker_users`: List of users to add to the docker group
+* `docker_compose_version`: Version of docker-compose to install
+* `docker_compose_script`: Installation script for docker-compose
 
 ### Amazon
 
 Amazon Linux Extras `docker` is preferred for Amazon Linux.
 
-* docker_users: List of users to add to the 'docker' group. Default = current user
-* docker_compose_version: The version of Docker Compose to install.
-* docker_compose_script: The script to install Docker Compose.
+* `docker_users`: List of users to add to the docker group
+* `docker_compose_version`: Version of docker-compose to install
+* `docker_compose_script`: Installation script for docker-compose
 
 ### MacOSX
 
-Not currently supported.  Install Docker Desktop manually.
+Docker Desktop is installed via Homebrew Cask

@@ -1,0 +1,13 @@
+---
+podman_enable_kubic_repo: true
+
+podman_repo_branch: 'stable'
+
+podman_repo_baseurl: "http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/{{ podman_repo_branch }}/CentOS_7/"
+
+podman_repo_gpgkey: "http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/{{ podman_repo_branch }}/CentOS_7/repodata/repomd.xml.key"
+
+podman_packages:
+  - epel-release
+  - podman
+  - buildah

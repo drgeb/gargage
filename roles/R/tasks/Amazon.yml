@@ -1,1 +1,44 @@
-CentOS.yml
+---
+- name: enable extras
+  become: true
+  shell: |
+    amazon-linux-extras enable {{ item }} && touch /.{{ item }}.enabled
+  args:
+    creates: /.{{ item }}.enabled
+  with_items:
+    - "{{ R_extras }}"
+
+- name: install packages
+  become: true
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ R_packages }}"
+
+- name: copy rstudio rpm key
+  become: true
+  copy:
+    src: files/RPM-GPG-KEY-rstudio
+    dest: /usr/share/RPM-GPG-KEY-rstudio
+    owner: root
+    group: root
+    mode: 0644
+  when: R_rstudio_enabled
+
+- name: install rstudio rpm key
+  become: true
+  rpm_key:
+    key: "/usr/share/RPM-GPG-KEY-rstudio"
+    state: present
+  when: R_rstudio_enabled
+
+- name: install rstudio
+  become: true
+  yum:
+    name: "{{ R_rstudio_package }}"
+    state: present
+  when: R_rstudio_enabled
+
+- name: include asdf tasks
+  include: asdf.yml

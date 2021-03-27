@@ -1,0 +1,10 @@
+---
+R_extras:
+  - 'R4'
+  - 'epel'
+
+R_packages:
+  - R
+  - R-devel
+
+R_rstudio_package: "https://download1.rstudio.org/desktop/centos7/x86_64/rstudio-{{ R_rstudio_version }}-x86_64.rpm"

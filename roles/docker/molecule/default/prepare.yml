@@ -1,0 +1,12 @@
+---
+# Prepare
+- name: prepare
+  hosts: all
+  tasks:
+    - name: tmpfs exec
+      shell: "mount {{ item }} -o remount,exec"
+      args:
+        warn: false
+      with_items:
+        - '/run'
+        - '/tmp'

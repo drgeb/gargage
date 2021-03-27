@@ -1,0 +1,6 @@
+---
+chefdk_packages:
+  - gpg
+
+chefdk_repo: "deb https://packages.chef.io/repos/apt/stable {{ ansible_distribution_release }} main"
+chefdk_repo_key: "https://packages.chef.io/chef.asc"

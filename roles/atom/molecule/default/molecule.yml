@@ -1,0 +1,21 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: centos7
+    image: centos:7
+  - name: centos8
+    image: centos:8
+  - name: ubuntu20
+    image: ubuntu:20.04
+  - name: amazon2
+    image: amazonlinux:2
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+    # enabled: False
+verifier:
+  name: ansible

@@ -1,0 +1,17 @@
+---
+# openjdk packages expect man directory to exist
+# see https://github.com/geerlingguy/ansible-role-java/issues/64
+- name: Ensure 'man' directory exists.
+  file:
+    path: /usr/share/man/man1
+    state: directory
+    recurse: true
+
+- name: install packages
+  become: true
+  apt:
+    name: "{{ java_packages }}"
+    state: present
+
+- name: include asdf tasks
+  include: asdf.yml

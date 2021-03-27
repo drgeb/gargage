@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    nodejs_versions:
+      - '14.16.0'
+    nodejs_global_version: '14.16.0'
+
+  tasks:
+    - name: "Include nodejs"
+      include_role:
+        name: "nodejs"
