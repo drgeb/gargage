@@ -27,4 +27,4 @@
   args:
     executable: /bin/bash
   changed_when: false
-  when: oc_global_version
+  when: oc_global_version != None

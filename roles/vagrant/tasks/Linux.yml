@@ -27,4 +27,4 @@
   args:
     executable: /bin/bash
   changed_when: false
-  when: vagrant_global_version
+  when: vagrant_global_version != None

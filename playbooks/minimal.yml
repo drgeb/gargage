@@ -1,5 +1,9 @@
 # Just the basics
 ---
 - hosts: all
+
+  pre_tasks:
+    - include: tasks/homebrew.yml
+
   roles:
     - base

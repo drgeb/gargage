@@ -27,4 +27,4 @@
   args:
     executable: /bin/bash
   changed_when: false
-  when: kubectl_global_version
+  when: kubectl_global_version != None

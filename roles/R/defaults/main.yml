@@ -5,7 +5,7 @@ platform: ''
 R_versions: []
 
 # Version of R to globally activate
-R_global_version: None
+R_global_version: system
 
 # Install rstudio?
 R_rstudio_enabled: true

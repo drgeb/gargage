@@ -1,6 +1,6 @@
 ---
-- name: install casks
+- name: install packages
   become: false
-  homebrew_cask:
+  homebrew:
     name: podman
     state: present

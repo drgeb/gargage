@@ -1,5 +1,9 @@
 ---
 - hosts: all
+
+  pre_tasks:
+    - include: homebrew.yml
+
   roles:
     - base
     - asdf

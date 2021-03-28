@@ -1,5 +1,6 @@
 ---
 - name: install packages
+  become: true
   apt:
     update_cache: true
     name: "{{ atom_packages }}"

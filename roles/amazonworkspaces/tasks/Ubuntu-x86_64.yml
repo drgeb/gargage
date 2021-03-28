@@ -1,5 +1,6 @@
 ---
 - name: install dependent packages
+  become: true
   apt:
     update_cache: true
     name: "{{ amazonworkspaces_packages }}"
