@@ -27,4 +27,4 @@
   args:
     executable: /bin/bash
   changed_when: false
-  when: terraform_global_version
+  when: terraform_global_version != None

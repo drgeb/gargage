@@ -34,4 +34,4 @@
   args:
     executable: /bin/bash
   changed_when: false
-  when: asdf.stat.exists and R_global_version
+  when: asdf.stat.exists and R_global_version != None

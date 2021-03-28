@@ -16,6 +16,7 @@
         - "{{ ansible_os_family }}.yml"
         - "{{ ansible_system }}-{{ ansible_architecture }}.yml"
         - "{{ ansible_system }}.yml"
+        - none.yml
       paths:
         - 'vars'
 

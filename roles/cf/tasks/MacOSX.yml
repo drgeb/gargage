@@ -1,1 +1,30 @@
-Linux.yml
+---
+- name: install asdf cf plugin
+  shell: |
+    . {{ ansible_env.HOME }}/.asdf/asdf.sh
+    asdf plugin add cf
+  args:
+    executable: /bin/bash
+    creates: "{{ ansible_env.HOME }}/.asdf/plugins/cf"
+
+- name: install versions
+  become: false
+  shell: |
+    . {{ ansible_env.HOME }}/.asdf/asdf.sh
+    asdf install cf {{ item }}
+  args:
+    executable: /bin/bash
+  register: asdf_install
+  changed_when: '"is already installed" not in asdf_install.stdout'
+  with_items:
+    - "{{ cf_versions }}"
+
+- name: set global version
+  become: false
+  shell: |
+    . {{ ansible_env.HOME }}/.asdf/asdf.sh
+    asdf global cf {{ cf_global_version }}
+  args:
+    executable: /bin/bash
+  changed_when: false
+  when: cf_global_version != None

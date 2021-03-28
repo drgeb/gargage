@@ -1,4 +1,3 @@
 ---
 R_packages:
-  - r-base
-  - r-base-dev
+  - r

@@ -27,4 +27,4 @@
   args:
     executable: /bin/bash
   changed_when: false
-  when: cf_global_version
+  when: cf_global_version != None

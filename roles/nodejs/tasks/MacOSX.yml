@@ -1,1 +1,30 @@
-Linux.yml
+---
+- name: install asdf nodejs plugin
+  shell: |
+    . {{ ansible_env.HOME }}/.asdf/asdf.sh
+    asdf plugin add nodejs
+  args:
+    executable: /bin/bash
+    creates: "{{ ansible_env.HOME }}/.asdf/plugins/nodejs"
+
+- name: install versions
+  become: false
+  shell: |
+    . {{ ansible_env.HOME }}/.asdf/asdf.sh
+    asdf install nodejs {{ item }}
+  args:
+    executable: /bin/bash
+  register: asdf_install
+  changed_when: '"is already installed" not in asdf_install.stdout'
+  with_items:
+    - "{{ nodejs_versions }}"
+
+- name: set global version
+  become: false
+  shell: |
+    . {{ ansible_env.HOME }}/.asdf/asdf.sh
+    asdf global nodejs {{ nodejs_global_version }}
+  args:
+    executable: /bin/bash
+  changed_when: false
+  when: nodejs_global_version != None
