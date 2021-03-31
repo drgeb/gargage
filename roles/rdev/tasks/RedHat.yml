@@ -5,7 +5,7 @@
     name: "{{ item }}"
     state: present
   with_items:
-    - "{{ R_packages }}"
+    - "{{ rdev_packages }}"
 
 - name: copy rstudio rpm key
   become: true
@@ -15,21 +15,21 @@
     owner: root
     group: root
     mode: 0644
-  when: R_rstudio_enabled
+  when: rdev_rstudio_enabled
 
 - name: install rstudio rpm key
   become: true
   rpm_key:
     key: "/usr/share/RPM-GPG-KEY-rstudio"
     state: present
-  when: R_rstudio_enabled
+  when: rdev_rstudio_enabled
 
 - name: install rstudio
   become: true
   yum:
-    name: "{{ R_rstudio_package }}"
+    name: "{{ rdev_rstudio_package }}"
     state: present
-  when: R_rstudio_enabled
+  when: rdev_rstudio_enabled
 
 - name: include asdf tasks
   include: asdf.yml

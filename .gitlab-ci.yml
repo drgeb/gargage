@@ -6,6 +6,8 @@ services:
 
 stages:
   - test
+  - build
+  - publish
 
 variables:
   DOCKER_HOST: "tcp://docker:2375"
@@ -113,10 +115,10 @@ molecule_role_python:
   variables:
     ROLE: python
 
-molecule_role_R:
+molecule_role_rdev:
   <<: *role_test
   variables:
-    ROLE: R
+    ROLE: rdev
 
 molecule_role_ruby:
   <<: *role_test
@@ -142,3 +144,21 @@ molecule_role_vscode:
   <<: *role_test
   variables:
     ROLE: vscode
+
+build_collection:
+  stage: build
+  script:
+    - ansible-galaxy collection build
+  artifacts:
+    paths:
+      - '*.tar.gz'
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+
+publish_collection:
+  stage: publish
+  script:
+    - ansible-galaxy collection publish ./*.tar.gz --token=${GALAXY_TOKEN}
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+      when: manual

@@ -24,7 +24,7 @@
     - oc
     - podman
     - python
-    - R
+    - rdev
     - ruby
     - terraform
     - vagrant
@@ -58,7 +58,7 @@
       - latest
     oc_global_version: latest
 
-    R_rstudio_enabled: true
+    rdev_rstudio_enabled: true
 
     terraform_versions:
       - latest
