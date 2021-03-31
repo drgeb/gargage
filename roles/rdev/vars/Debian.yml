@@ -1,0 +1,6 @@
+---
+rdev_packages:
+  - r-base
+  - r-base-dev
+
+rdev_rstudio_package: "https://download1.rstudio.org/desktop/bionic/amd64/rstudio-{{ rdev_rstudio_version }}-amd64.deb"

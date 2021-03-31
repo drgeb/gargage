@@ -1,0 +1,7 @@
+---
+rdev_packages:
+  - epel-release
+  - R
+  - R-devel
+
+rdev_rstudio_package: "https://download1.rstudio.org/desktop/centos8/x86_64/rstudio-{{ rdev_rstudio_version }}-x86_64.rpm"

@@ -3,15 +3,15 @@
   become: true
   apt:
     update_cache: true
-    name: "{{ R_packages }}"
+    name: "{{ rdev_packages }}"
     state: present
 
 - name: install rstudio
   become: true
   apt:
-    deb: "{{ R_rstudio_package }}"
+    deb: "{{ rdev_rstudio_package }}"
     state: present
-  when: R_rstudio_enabled
+  when: rdev_rstudio_enabled
 
 - name: include asdf tasks
   include: asdf.yml

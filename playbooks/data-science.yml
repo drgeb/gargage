@@ -13,7 +13,7 @@
     - desktop
     - dodpki
     - python
-    - R
+    - rdev
     - vscode
 
   vars:
@@ -22,5 +22,5 @@
       - 3.8.8
       - anaconda3-2020.11
 
-    R_rstudio_enabled: true
-    R_rstudio_version: '1.4.1066'
+    rdev_rstudio_enabled: true
+    rdev_rstudio_version: '1.4.1066'
