@@ -2,3 +2,4 @@
 asdf_packages:
   - curl
   - git
+  - gnupg
