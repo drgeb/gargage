@@ -1,0 +1,17 @@
+---
+- name: install repo
+  become: true
+  yum_repository:
+    name: 'hashicorp'
+    description: "Hashicorps"
+    baseurl: "{{ vagrant_repo_baseurl }}"
+    repo_gpgcheck: true
+    gpgcheck: false
+    gpgkey: "{{ vagrant_repo_gpgkey }}"
+    enabled: true
+
+- name: install vagrant
+  become: true
+  package:
+    name: vagrant
+    state: present

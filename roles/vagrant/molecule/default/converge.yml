@@ -1,10 +1,6 @@
 ---
 - name: Converge
   hosts: all
-  vars:
-    vagrant_versions:
-      - 2.2.14
-    vagrant_global_version: 2.2.14
 
   tasks:
     - name: "Include vagrant"

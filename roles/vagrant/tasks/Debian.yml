@@ -1,0 +1,27 @@
+---
+- name: install packages
+  become: true
+  apt:
+    update_cache: true
+    name: "{{ vagrant_packages }}"
+    state: present
+
+- name: install repo key
+  become: true
+  apt_key:
+    url: "{{ vagrant_repo_key }}"
+    state: present
+
+- name: install repo
+  become: true
+  apt_repository:
+    filename: 'hashicorp'
+    repo: "{{ vagrant_repo }}"
+    state: present
+
+- name: install vagrant
+  become: true
+  apt:
+    update_cache: true
+    name: vagrant
+    state: present

@@ -2,12 +2,20 @@
 
 Installs vagrant.
 
-### Linux
+### RedHat family, Amazon Linux
 
-Vagrant is installed via asdf.
+Vagrant is installed via yum/dnf.
 
-* vagrant_versions: Versions of vagrant to install
-* vagrant_global_version: Version of vagrant to globally activate
+* vagrant_repo_baseurl: Yum/dnf repository base url
+* vagrant_repo_gpgkey: URL torepository GPG key
+
+### Debian family
+
+Vagrant is installed via apt.
+
+* vagrant_packages: system package prerequisites
+* vagrant_repo: Debian repository configuration
+* vagrant_repo_key: URL to repository GPG key
 
 ### MacOSX
 

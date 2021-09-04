@@ -1,0 +1,4 @@
+---
+# Use RHEL 7
+vagrant_repo_baseurl: 'https://rpm.releases.hashicorp.com/RHEL/7/$basearch/stable'
+vagrant_repo_gpgkey: 'https://rpm.releases.hashicorp.com/gpg'

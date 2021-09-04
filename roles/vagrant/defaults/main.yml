@@ -1,9 +1,2 @@
 ---
 platform: ''
-
-# versions of vagrant to install
-vagrant_versions:
-  - latest
-
-# version of vagrnt to globally activate
-vagrant_global_version: latest

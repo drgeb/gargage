@@ -1,0 +1,7 @@
+---
+vagrant_packages:
+  - gpg
+  - gpg-agent
+
+vagrant_repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
+vagrant_repo_key: 'https://apt.releases.hashicorp.com/gpg'
