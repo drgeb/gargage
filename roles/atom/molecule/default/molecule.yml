@@ -4,18 +4,17 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: centos7
-    image: centos:7
   - name: centos8
-    image: centos:8
+    image: "geerlingguy/docker-centos8-ansible:latest"
+    pre_build_image: true
   - name: ubuntu20
-    image: ubuntu:20.04
-  - name: amazon2
-    image: amazonlinux:2
+    image: "geerlingguy/docker-ubuntu2004-ansible:latest"
+    pre_build_image: true
 provisioner:
   name: ansible
-  lint:
-    name: ansible-lint
-    # enabled: False
 verifier:
   name: ansible
+lint: |
+  set -e
+  yamllint .
+  ansible-lint .

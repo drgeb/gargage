@@ -15,7 +15,7 @@
 - name: install repo
   become: true
   apt_repository:
-    filename: 'vscode'
+    filename: 'atom'
     repo: "{{ atom_repo }}"
     state: present
 

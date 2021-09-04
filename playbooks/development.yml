@@ -7,7 +7,6 @@
   roles:
     - base
     - asdf
-    - atom
     - awscli
       cf
     - docker

@@ -1,4 +1,5 @@
 *.retry
 *.swp
 .cache
+*.tar.gz
 reports
