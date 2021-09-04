@@ -6,8 +6,7 @@
       - kubectl
     kubectl_versions:
       - 1.20.5
-    kubectl_global_version:
-      - 1.20.5
+    kubectl_global_version: 1.20.5
 
   tasks:
     - name: "Include kubectl"
