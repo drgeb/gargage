@@ -17,7 +17,7 @@
   register: asdf_install
   changed_when: '"is already installed" not in asdf_install.stdout'
   with_items:
-    - '{{ {{ asdf_app }}_versions }}''
+    - '{{ vars["asdf_app"]_versions }}''
 
 - name: set global version
   become: false
