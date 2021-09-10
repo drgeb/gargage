@@ -1,0 +1,15 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+  - name: set global waypoint
+    command: "{{ ansible_env.HOME }}/.asdf/bin/asdf global waypoint 0.5.2"
+
+  - name: activate waypoint
+    command: "{{ ansible_env.HOME }}/.asdf/shims/waypoint -version"
+    register: asdf_waypoint
+
+  - name: test waypoint installed
+    assert:
+      that:
+        - asdf_waypoint.stdout | regex_search('waypoint v0.5.2')

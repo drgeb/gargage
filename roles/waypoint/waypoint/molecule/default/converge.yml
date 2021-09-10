@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    waypoint_versions:
+      - 0.5.2
+    waypoint_global_version: 0.5.2
+
+  tasks:
+    - name: "Include waypoint"
+      include_role:
+        name: "waypoint"

@@ -1,0 +1,6 @@
+---
+- name: install waypoint
+  become: false
+  homebrew:
+    name: waypoint
+    state: present

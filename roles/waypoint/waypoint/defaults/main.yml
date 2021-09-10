@@ -1,0 +1,9 @@
+---
+platform: ''
+
+# versions of waypoint to install
+waypoint_versions:
+  - latest
+
+# version of waypoint to globally activate
+waypoint_global_version: latest

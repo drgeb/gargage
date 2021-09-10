@@ -1,0 +1,20 @@
+---
+- name: install prerequisites
+  become: true
+  package:
+    name: unzip
+    state: present
+
+- name: ensure install dir exists
+  become: false
+  file:
+    name: "{{ waypoint_install_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: install waypoint
+  become: false
+  unarchive:
+    src: "{{ waypoint_url }}"
+    dest: "{{ waypoint_install_dir }}"
+    remote_src: true

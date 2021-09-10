@@ -1,0 +1,5 @@
+---
+waypoint_version: "0.5.2"
+
+waypoint_url: "https://releases.hashicorp.com/waypoint/{{ waypoint_version }}/waypoint_{{ waypoint_version }}_linux_amd64.zip"
+waypoint_install_dir: "{{ ansible_env.HOME }}/.local/bin"
