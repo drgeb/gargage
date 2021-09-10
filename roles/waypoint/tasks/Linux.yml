@@ -17,13 +17,13 @@
   register: asdf_install
   changed_when: '"is already installed" not in asdf_install.stdout'
   with_items:
-    - '{{ {{ asdf_app }}_versions }}'
+    - '{{vars["asdf_app"]_versions }}'
 
 - name: set global version
   become: false
   shell: |
     . {{ ansible_env.HOME }}/.asdf/asdf.sh
-    asdf global {{ asdf_app }} {{ {{ asdf_app }}_global_version }}
+    asdf global {{ asdf_app }} {{ vars["asdf_app"]_global_version }}
   args:
     executable: /bin/bash
   changed_when: false
