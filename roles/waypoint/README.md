@@ -1,21 +1,8 @@
 # role waypoint
 
-Installs Hashicorp waypoint client.
+Installs waypoint using asdf
 
-### Ubuntu
+### All
 
-* waypoint_version: Version of waypoint to install.
-* waypoint_url: URL of the waypoint zip file
-* waypoint_install_dir: Where waypoint should be installed.  Default = ~/.local/bin
-
-### CentOS
-
-Same as Ubuntu.
-
-### Amazon
-
-Same as Ubuntu.
-
-### MacOSX
-
-No config.  Installs with Homebrew.
+* waypoint_versions: Versions of waypoint to install
+* waypoint_global_version: Version of waypoint to globally activate
